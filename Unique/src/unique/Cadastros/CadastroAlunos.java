@@ -716,7 +716,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        //Temps:
         boolean salvar = true;
         
         if(txtBoxNome.getText().isEmpty()){
@@ -865,7 +864,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             }
             
             temp.setTurmas(new ArrayList<>());
-
             temp.setNivelAtual(nivel);
 
             //Obtendo a data:
@@ -900,11 +898,9 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
 
                 if(selectResponsaveis.list().size() > 0) {
                     List<Responsavel> listaTemp = selectResponsaveis.list();
-
                     for(Responsavel resp : listaTemp) {
                        conexao.delete(resp);
                     }
-
                     tx.commit();
                 }
 
@@ -981,20 +977,17 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                     if(crit.list().size() > 0){
                         try{
                             tx = conexao.beginTransaction();
-
                             List<Matricula> matriculas = crit.list();
                             matriculas.stream().forEach((m) -> {
                                 conexao.delete(m);
                             });
-
                             tx.commit();
                         } catch(Exception e){
                             JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                         }
                     }
-                } else {
+                } else
                     chamarTela = false;
-                }
             } else if(crit.list().size() > 0 && !temp.isAtivo()){
                 if(JOptionPane.showConfirmDialog(this, "O aluno está marcado como inativo, mas possui mensalidades em aberto. Deseja excluí-las?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     tx = conexao.beginTransaction();
@@ -1016,7 +1009,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                                     JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
-                            
                             if(!m.isPaga())
                                 conexao.delete(m);
                         });
@@ -1044,7 +1036,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                     if(JOptionPane.showConfirmDialog(this, "O Aluno " + temp.getNome() + " já possui uma matrícula para o nível " + temp.getNivelAtual().getCodigo() + ". Deseja gerar novamente?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                         try{
                             tx = conexao.beginTransaction();
-
                             List<Tabelas.MatriculaVip> matriculas = critVip.list();
                             matriculas.stream().forEach((m) -> {
                                 conexao.delete(m);
@@ -1078,14 +1069,12 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                 }
                 
                 conexao.close();
-                
                 unique.MatriculaVip matricula = new MatriculaVip(temp);
                 matricula.setVisible(true);
             } else {
                 if(chamarTela) {
                     GerarMensalidades janela = GerarMensalidades.getInstance();
                     janela.preencherCampos(temp);
-
                     janela.setVisible(rootPaneCheckingEnabled);
                 }
             }
