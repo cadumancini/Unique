@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
+    <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
+    <property name="hibernate.connection.url">jdbc:firebirdsql:localhost:C:\Banco\UNIQUE.FDB</property>
+    <property name="hibernate.connection.username">SYSDBA</property>
+    <property name="hibernate.connection.password">1123581321</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping class="Tabelas.Nivel"/>
+    <mapping class="Tabelas.Aluno"/>
+    <mapping class="Tabelas.Mensalidade"/>
+    <mapping class="Tabelas.Responsavel"/>
+    <mapping class="Tabelas.Funcionario"/>
+    <mapping class="Tabelas.Turma"/>
+    <mapping class="Tabelas.Historico"/>
+    <mapping class="Tabelas.Falta"/>
+    <mapping class="Tabelas.Config"/>
+    <mapping class="Tabelas.Matricula"/>
+    <mapping class="Tabelas.MatriculaVip"/>
+    <mapping class="Tabelas.PagtoMaterial"/>
+    <mapping class="Tabelas.Cobranca"/>
+    <mapping class="util.HibernateUtil"/>
+  </session-factory>
+</hibernate-configuration>

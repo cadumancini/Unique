@@ -1,0 +1,183 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Tabelas;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+/**
+ *
+ * @author CarlosEduardo
+ */
+
+@Entity
+@Table(name="Nivel")
+public class Nivel implements Serializable{
+    @Id
+    @GeneratedValue
+    private Long ID;
+    
+    @Column(nullable=false)
+    private String Codigo;
+    
+    @Column(nullable=false)
+    private String Nome;
+    
+    @Column(nullable=true)
+    private String Descricao;
+    
+    @Column(nullable=true)
+    private Double ValorAulas;
+    
+    @Column(nullable=true)
+    private Double ValorMaterial;
+    
+    @Column(nullable=true)
+    private Long Duracao;
+    
+    @Column(nullable=true)
+    private int QtdHoras;
+    
+    @Column(nullable=false)
+    private boolean VIP;
+    
+    @Column(nullable=true)
+    private int MinutosSemanais;
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    /**
+     * @return the Codigo
+     */
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    /**
+     * @param Codigo the Codigo to set
+     */
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    /**
+     * @return the Nome
+     */
+    public String getNome() {
+        return Nome;
+    }
+
+    /**
+     * @param Nome the Nome to set
+     */
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    /**
+     * @return the Descricao
+     */
+    public String getDescricao() {
+        return Descricao;
+    }
+
+    /**
+     * @param Descricao the Descricao to set
+     */
+    public void setDescricao(String Descricao) {
+        this.Descricao = Descricao;
+    }
+
+    /**
+     * @return the ValorAulas
+     */
+    public Double getValorAulas() {
+        return ValorAulas;
+    }
+
+    /**
+     * @param ValorAulas the Valor to set
+     */
+    public void setValorAulas(Double ValorAulas) {
+        this.ValorAulas = ValorAulas;
+    }
+
+    /**
+     * @return the ValorMaterial
+     */
+    public Double getValorMaterial() {
+        return ValorMaterial;
+    }
+
+    /**
+     * @param ValorMaterial the ValorMaterial to set
+     */
+    public void setValorMaterial(Double ValorMaterial) {
+        this.ValorMaterial = ValorMaterial;
+    }
+
+    /**
+     * @return the Duracao
+     */
+    public Long getDuracao() {
+        return Duracao;
+    }
+
+    /**
+     * @param Duracao the Duracao to set
+     */
+    public void setDuracao(Long Duracao) {
+        this.Duracao = Duracao;
+    }
+
+    /**
+     * @return the QtdHoras
+     */
+    public int getQtdHoras() {
+        return QtdHoras;
+    }
+
+    /**
+     * @param QtdHoras the QtdHoras to set
+     */
+    public void setQtdHoras(int QtdHoras) {
+        this.QtdHoras = QtdHoras;
+    }
+
+    /**
+     * @return the MinutosSemanais
+     */
+    public int getMinutosSemanais() {
+        return MinutosSemanais;
+    }
+
+    /**
+     * @param MinutosSemanais the MinutosSemanais to set
+     */
+    public void setMinutosSemanais(int MinutosSemanais) {
+        this.MinutosSemanais = MinutosSemanais;
+    }
+
+    /**
+     * @return the VIP
+     */
+    public boolean isVIP() {
+        return VIP;
+    }
+
+    /**
+     * @param VIP the VIP to set
+     */
+    public void setVIP(boolean VIP) {
+        this.VIP = VIP;
+    }
+}
