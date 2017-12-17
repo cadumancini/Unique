@@ -717,6 +717,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         boolean salvar = true;
+        boolean mudouNivel = false;
         
         if(txtBoxNome.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "O campo Nome não pode ficar vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -776,6 +777,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             Aluno aluno = (Aluno) conexao.get(Aluno.class, Long.parseLong(lblId.getText()));
             //O aluno mudou de nível?
             if((!aluno.getNivelAtual().getCodigo().equals(comboBoxNivel.getSelectedItem().toString())) && (aluno != null)){
+                mudouNivel = true;
                 Criteria crit = conexao.createCriteria(Mensalidade.class);
                 crit.add(Restrictions.eq("Aluno", aluno));
                 crit.add(Restrictions.eq("Nivel", aluno.getNivelAtual()));
@@ -845,7 +847,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             temp.setCidade(txtBoxCidade.getText());
             temp.setEstado(comboBoxEstado.getSelectedItem().toString());
             temp.setEmail(txtBoxEmail.getText());
-            //temp.setDesconto(Long.parseLong(txtBoxDesconto.getText()));
             temp.setDesconto(0L);
             temp.setTelefone(txtBoxTelefone.getText());
             temp.setCelular(txtBoxCelular.getText());
@@ -879,10 +880,8 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                 //Inicializando o Hibernate:
                 conexao = HibernateUtil.openSession();
                 tx = conexao.beginTransaction();
-
                 conexao.saveOrUpdate(temp);
                 tx.commit();
-
                 conexao.close();
             } catch(Exception e){
                 JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -892,7 +891,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                 //Limpando os responsáveis:
                 conexao =  HibernateUtil.openSession();
                 tx = conexao.beginTransaction();
-
                 Criteria selectResponsaveis = conexao.createCriteria(Responsavel.class);
                 selectResponsaveis.add(Restrictions.eq("Aluno", temp));
 
@@ -948,7 +946,9 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             
             //Temos mensalidades ou matrículas nesse nível?
             if(crit.list().size() > 0 && temp.isAtivo() && !temp.isVip()){
-                if(JOptionPane.showConfirmDialog(this, "O Aluno " + temp.getNome() + " já possui mensalidades geradas para o nível " + temp.getNivelAtual().getCodigo() + ". Deseja limpar e gerar novamente?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                if(JOptionPane.showConfirmDialog(this, "O Aluno " + temp.getNome() + 
+                        " possui mensalidades geradas para o nível " + temp.getNivelAtual().getCodigo() + 
+                        ". Deseja limpar e gerar novamente?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     tx = conexao.beginTransaction();
                     chamarTela = true;
 
