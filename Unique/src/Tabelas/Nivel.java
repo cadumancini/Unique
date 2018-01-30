@@ -46,6 +46,9 @@ public class Nivel implements Serializable{
     
     @Column(nullable=true)
     private int MinutosSemanais;
+    
+    @Column(nullable=true)
+    private boolean Prorrogavel;
 
     public Long getID() {
         return ID;
@@ -179,5 +182,19 @@ public class Nivel implements Serializable{
      */
     public void setVIP(boolean VIP) {
         this.VIP = VIP;
+    }
+
+    /**
+     * @return the Prorrogavel
+     */
+    public boolean isProrrogavel() {
+        return Prorrogavel;
+    }
+
+    /**
+     * @param Prorrogavel the Prorrogavel to set
+     */
+    public void setProrrogavel(boolean Prorrogavel) {
+        this.Prorrogavel = Prorrogavel;
     }
 }
