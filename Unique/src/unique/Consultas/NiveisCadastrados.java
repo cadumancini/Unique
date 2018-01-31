@@ -101,11 +101,14 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                 horasSemanais = horasStr + ":" + minutosStr;
                 
                 String vip = "Não";
-                
                 if(n.isVIP())
                     vip = "Sim";
+                
+                String prorrogavel = "Não";
+                if(n.isProrrogavel())
+                    prorrogavel = "Sim";
 
-                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, vip};
+                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, vip, prorrogavel};
 
                 model.addRow(linha);
             } 
@@ -116,7 +119,6 @@ public class NiveisCadastrados extends javax.swing.JFrame {
         }
         
         resizeColumnWidth(tblNiveis);
-        
         this.setLocationRelativeTo(null);   
     }
     
@@ -189,11 +191,11 @@ public class NiveisCadastrados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP"
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -226,7 +228,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 173, Short.MAX_VALUE)))
+                        .addGap(0, 265, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -257,11 +259,15 @@ public class NiveisCadastrados extends javax.swing.JFrame {
         int totalMinutos = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
         if(linha > -1){
             boolean vip = false;
+            boolean prorrogavel = false;
             
             System.out.println(tblNiveis.getValueAt(linha, 9));
             
             if(tblNiveis.getValueAt(linha, 9) == "Sim")
                 vip = true;
+            
+            if(tblNiveis.getValueAt(linha, 10) == "Sim")
+                prorrogavel = true;
             
             cadastroNiveis.preencherCampos(Long.parseLong(tblNiveis.getValueAt(linha, 0).toString()),
                                             tblNiveis.getValueAt(linha, 1).toString(), 
@@ -271,7 +277,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                                             Double.parseDouble(tblNiveis.getValueAt(linha, 5).toString()),
                                             Long.parseLong(tblNiveis.getValueAt(linha, 6).toString()),
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 7).toString()),
-                                            totalMinutos, vip);
+                                            totalMinutos, vip, prorrogavel);
         }
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
