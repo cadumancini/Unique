@@ -80,7 +80,7 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtValorPagoMaterial.setDocument(new JTextFieldLimit(8, false));
         txtValorPagoMaterial.setText("0.000,00");
         
-        //Escondendo oalguns campos:
+        //Escondendo alguns campos:
         txtNroIdentCheque.setEnabled(false);
         txtNroIdentCheque.setEnabled(false);
 
@@ -168,6 +168,10 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtBoxDataCompensacao = new javax.swing.JFormattedTextField();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtBoxQtdAulas = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtHorasSemanais = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Matrícula de Aluno VIP");
@@ -329,6 +333,53 @@ public class MatriculaVip extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Aulas por Semana:");
+
+        txtBoxQtdAulas.setColumns(8);
+        try {
+            txtBoxQtdAulas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtBoxQtdAulas.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBoxQtdAulas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBoxQtdAulas.setNextFocusableComponent(txtHorasSemanais);
+        txtBoxQtdAulas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBoxQtdAulasFocusGained(evt);
+            }
+        });
+        txtBoxQtdAulas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBoxQtdAulasMouseClicked(evt);
+            }
+        });
+        txtBoxQtdAulas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBoxQtdAulasKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBoxQtdAulasKeyTyped(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Horas Semanais:");
+
+        try {
+            txtHorasSemanais.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtHorasSemanais.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtHorasSemanais.setNextFocusableComponent(txtBoxValorAulaExtra);
+        txtHorasSemanais.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHorasSemanaisFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -350,7 +401,9 @@ public class MatriculaVip extends javax.swing.JFrame {
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel7)
                                     .addComponent(lblNroIdentCheque)
-                                    .addComponent(lblDatComCheque))
+                                    .addComponent(lblDatComCheque)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
@@ -361,7 +414,9 @@ public class MatriculaVip extends javax.swing.JFrame {
                                     .addComponent(txtValorPagoMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNroIdentCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNivel))))
+                                    .addComponent(txtNivel)
+                                    .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 98, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -389,6 +444,14 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtBoxVlrMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -413,7 +476,7 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDatComCheque)
                     .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -437,7 +500,7 @@ public class MatriculaVip extends javax.swing.JFrame {
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
             (evt.getKeyChar() == '9')))
-    return;
+            return;
     }//GEN-LAST:event_txtBoxVlrMensalidadeKeyPressed
 
     private void txtBoxVlrMensalidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxVlrMensalidadeKeyTyped
@@ -485,7 +548,7 @@ public class MatriculaVip extends javax.swing.JFrame {
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
             (evt.getKeyChar() == '9')))
-        return;
+            return;
     }//GEN-LAST:event_txtBoxValorAulaExtraKeyPressed
 
     private void txtBoxValorAulaExtraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxValorAulaExtraKeyTyped
@@ -536,7 +599,7 @@ public class MatriculaVip extends javax.swing.JFrame {
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
             (evt.getKeyChar() == '9')))
-    return;
+            return;
     }//GEN-LAST:event_txtValorPagoMaterialKeyPressed
 
     private void txtValorPagoMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorPagoMaterialKeyTyped
@@ -546,20 +609,18 @@ public class MatriculaVip extends javax.swing.JFrame {
         if(((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
-            (evt.getKeyChar() == '9')) && (temp.startsWith("0")))
-    {
-        temp = temp.replaceAll("\\,|\\.", "");
-        temp = temp.substring(1);
+            (evt.getKeyChar() == '9')) && (temp.startsWith("0"))){
+            temp = temp.replaceAll("\\,|\\.", "");
+            temp = temp.substring(1);
 
-        StringBuilder builder = new StringBuilder(temp);
-        builder.insert(1, '.');
-        builder.insert(5, ',');
-        temp = builder.toString();
+            StringBuilder builder = new StringBuilder(temp);
+            builder.insert(1, '.');
+            builder.insert(5, ',');
+            temp = builder.toString();
 
-        txtValorPagoMaterial.setText(temp);
+            txtValorPagoMaterial.setText(temp);
         }
-        else if(evt.getKeyChar() == 8) //Backspace
-        {
+        else if(evt.getKeyChar() == 8){ //Backspace
             temp = temp.replaceAll("\\,|\\.", "");
             temp = '0' + temp;
 
@@ -574,7 +635,7 @@ public class MatriculaVip extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //PAssando o foco para o campo de valor:
-        txtBoxValorAulaExtra.requestFocusInWindow();
+        txtBoxQtdAulas.requestFocusInWindow();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -586,6 +647,13 @@ public class MatriculaVip extends javax.swing.JFrame {
         if(comboMaterialEscola.getSelectedIndex() > 0 && Double.parseDouble(valorTemp) > aluno.getNivelAtual().getValorMaterial()) {
             JOptionPane.showMessageDialog(this, "O valor informado para pagamento do material é maior que o valor total do material nesse nível (R$ " + aluno.getNivelAtual().getValorMaterial() + ")", "Erro", JOptionPane.ERROR_MESSAGE);
             txtValorPagoMaterial.requestFocusInWindow();
+            return;
+        }
+        
+        if(txtBoxQtdAulas.getText().equals("") || txtBoxQtdAulas.getText().equals(" ") || 
+                txtBoxQtdAulas.getText().equals("0")){
+            JOptionPane.showMessageDialog(this, "A quantidade de aulas não foi preenchida. Verifique!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtBoxQtdAulas.requestFocusInWindow();
             return;
         }
         
@@ -613,7 +681,6 @@ public class MatriculaVip extends javax.swing.JFrame {
         if(JOptionPane.showConfirmDialog(this, "Confirma matricula do aluno(a) " + aluno.getNome() + ", no nível " + aluno.getNivelAtual().getCodigo() + "?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             //Salvando a matricula atual:
             Tabelas.MatriculaVip matricula = new Tabelas.MatriculaVip();
-
             matricula.setAluno(aluno);
 
             if(comboMaterialEscola.getSelectedIndex() == 0)
@@ -637,7 +704,7 @@ public class MatriculaVip extends javax.swing.JFrame {
 
             matricula.setValorMaterial(aluno.getNivelAtual().getValorMaterial());
 
-            //DAta da matricula:
+            //Data da matricula:
             String strDataHoje = dateFormat.format(Calendar.getInstance().getTime());
             Date dataHoje = null;
             try {
@@ -645,8 +712,14 @@ public class MatriculaVip extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            //Definindo a duração de cada aula:
+            String[] tempo = txtHorasSemanais.getText().split(":");
+            int horasSemanais = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
+            matricula.setMinutosSemanais(horasSemanais);
 
             matricula.setDataMatricula(dataHoje);
+            matricula.setAulasSemanais(Long.parseLong(txtBoxQtdAulas.getText()));
 
             //Salvando no banco:
             Session conexao;
@@ -656,10 +729,8 @@ public class MatriculaVip extends javax.swing.JFrame {
             
             try {
                 tx = conexao.beginTransaction();
-
                 conexao.saveOrUpdate(matricula);
                 tx.commit();
-
                 conexao.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -753,6 +824,26 @@ public class MatriculaVip extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void txtBoxQtdAulasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBoxQtdAulasFocusGained
+        txtBoxQtdAulas.select(txtBoxQtdAulas.getColumns(), txtBoxQtdAulas.getColumns());
+    }//GEN-LAST:event_txtBoxQtdAulasFocusGained
+
+    private void txtBoxQtdAulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBoxQtdAulasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdAulasMouseClicked
+
+    private void txtBoxQtdAulasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxQtdAulasKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdAulasKeyPressed
+
+    private void txtBoxQtdAulasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxQtdAulasKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdAulasKeyTyped
+
+    private void txtHorasSemanaisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHorasSemanaisFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHorasSemanaisFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -802,14 +893,18 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDatComCheque;
     private javax.swing.JLabel lblNroIdentCheque;
     private javax.swing.JFormattedTextField txtBoxDataCompensacao;
+    private javax.swing.JFormattedTextField txtBoxQtdAulas;
     private javax.swing.JFormattedTextField txtBoxValorAulaExtra;
     private javax.swing.JFormattedTextField txtBoxVlrMensalidade;
+    private javax.swing.JFormattedTextField txtHorasSemanais;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNroIdentCheque;

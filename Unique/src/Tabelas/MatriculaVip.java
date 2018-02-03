@@ -41,6 +41,12 @@ public class MatriculaVip implements Serializable{
     @Column(nullable=false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DataMatricula;
+    
+    @Column(nullable=false)
+    private Long AulasSemanais;
+    
+    @Column(nullable=false)
+    private int MinutosSemanais;
 
     public Long getID() {
         return ID;
@@ -146,5 +152,33 @@ public class MatriculaVip implements Serializable{
      */
     public void setValorAulaExcedente(Double ValorAulaExcedente) {
         this.ValorAulaExcedente = ValorAulaExcedente;
+    }
+
+    /**
+     * @return the AulasSemanais
+     */
+    public Long getAulasSemanais() {
+        return AulasSemanais;
+    }
+
+    /**
+     * @param AulasSemanais the AulasSemanais to set
+     */
+    public void setAulasSemanais(Long AulasSemanais) {
+        this.AulasSemanais = AulasSemanais;
+    }
+
+    /**
+     * @return the MinutosSemanais
+     */
+    public int getMinutosSemanais() {
+        return MinutosSemanais;
+    }
+
+    /**
+     * @param MinutosSemanais the MinutosSemanais to set
+     */
+    public void setMinutosSemanais(int MinutosSemanais) {
+        this.MinutosSemanais = MinutosSemanais;
     }
 }
