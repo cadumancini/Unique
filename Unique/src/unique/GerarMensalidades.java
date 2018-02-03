@@ -151,7 +151,8 @@ public class GerarMensalidades extends javax.swing.JFrame {
         }
         txtDuracao.setText(aluno.getNivelAtual().getDuracao().toString());
         
-        for(int i = 1; i <= aluno.getNivelAtual().getDuracao(); i++)
+        //for(int i = 1; i <= aluno.getNivelAtual().getDuracao(); i++)
+        for(int i = 1; i <= 14; i++)
             comboAulas.addItem(i);
         
         int mesAtual = Calendar.getInstance().get(Calendar.MONTH) + 2;
