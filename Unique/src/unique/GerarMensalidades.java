@@ -555,14 +555,12 @@ public class GerarMensalidades extends javax.swing.JFrame {
                     String valorTmp = txtValorPagoMaterial.getText();
                     valorTmp = valorTemp.replaceAll("\\.", "");
                     valorTmp = valorTemp.replaceAll("\\,", ".");
-                    double valorMaterial = Double.parseDouble(valorTmp);
                     
                     temp.setAluno(aluno);
                     temp.setNivel(aluno.getNivelAtual());
                     temp.setPaga(true);
                     temp.setValorAulas(aluno.getNivelAtual().getValorAulas());
                     temp.setValorMaterial(aluno.getNivelAtual().getValorMaterial());
-                    //temp.setValorPago(valorAulas + valorMaterial);
                     temp.setValorPago(valorAulas);
                     temp.setMesVencto(mes);
                     temp.setAnoVencto(ano);

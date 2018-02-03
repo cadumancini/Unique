@@ -6,6 +6,7 @@
 package unique;
 
 import Tabelas.Aluno;
+import Tabelas.Mensalidade;
 import Tabelas.PagtoMaterial;
 import java.awt.Container;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -172,6 +173,8 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtBoxQtdAulas = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         txtHorasSemanais = new javax.swing.JFormattedTextField();
+        txtMesAno = new javax.swing.JFormattedTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Matrícula de Aluno VIP");
@@ -212,6 +215,7 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtBoxVlrMensalidade.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtBoxVlrMensalidade.setText("");
         txtBoxVlrMensalidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBoxVlrMensalidade.setNextFocusableComponent(txtMesAno);
         txtBoxVlrMensalidade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBoxVlrMensalidadeFocusGained(evt);
@@ -380,6 +384,17 @@ public class MatriculaVip extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txtMesAno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtMesAno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMesAno.setNextFocusableComponent(txtBoxQtdAulas);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("Mês/Ano da Primeira Parcela:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -403,20 +418,23 @@ public class MatriculaVip extends javax.swing.JFrame {
                                     .addComponent(lblNroIdentCheque)
                                     .addComponent(lblDatComCheque)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-                                    .addComponent(txtBoxVlrMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBoxValorAulaExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboMaterialEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboDinheiroCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtValorPagoMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNroIdentCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNivel)
-                                    .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                                        .addComponent(txtBoxVlrMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtBoxValorAulaExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboMaterialEscola, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboDinheiroCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtValorPagoMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNroIdentCheque, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNivel)
+                                        .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 98, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -444,6 +462,10 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtBoxVlrMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,7 +498,7 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDatComCheque)
                     .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -635,7 +657,7 @@ public class MatriculaVip extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //PAssando o foco para o campo de valor:
-        txtBoxQtdAulas.requestFocusInWindow();
+        txtMesAno.requestFocusInWindow();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -738,7 +760,44 @@ public class MatriculaVip extends javax.swing.JFrame {
             }
             
             if(conexao.isOpen())
-            conexao.close();
+                conexao.close();
+            
+            String[] mesAno = txtMesAno.getText().split("/");
+            int mes = Integer.parseInt(mesAno[0]);
+            int ano = Integer.parseInt(mesAno[1]);
+            
+            for(int x = 0; x < 12; x++) {
+                conexao = HibernateUtil.openSession();
+                tx = conexao.beginTransaction();
+
+                try{
+                    Mensalidade temp = new Mensalidade();
+
+                    temp.setAluno(aluno);
+                    temp.setNivel(aluno.getNivelAtual());
+                    temp.setPaga(false);
+                    temp.setValorAulas(aluno.getNivelAtual().getValorAulas());
+                    temp.setValorMaterial(0d);
+                    temp.setValorPago(0d);
+                    temp.setMesVencto(mes);
+                    temp.setAnoVencto(ano);
+                    temp.setDataPagto(null);
+
+                    conexao.saveOrUpdate(temp);
+                    tx.commit();
+                    mes++;
+
+                    if(mes > 12) {
+                        mes = 1;
+                        ano++;
+                    }
+                }catch (Exception e) {
+                    conexao.close();
+                    JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+
+                conexao.close();
+            }
             
             //Estamos comprando o material aqui na escola?
             if(comboMaterialEscola.getSelectedIndex() > 0) {
@@ -811,6 +870,35 @@ public class MatriculaVip extends javax.swing.JFrame {
                     } catch (JRException ex) {
                         Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(this, "Não foi possível listar o contrato. Motivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                if(JOptionPane.showConfirmDialog(this, "Deseja imprimir o carnê de pagamento?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    //Gerando relatorio:
+                    HashMap map = new HashMap();
+                    JasperPrint jasperPrint = null;
+                    Connection connection = null;
+                    try {
+                        connection = DriverManager.getConnection("jdbc:firebirdsql:localhost:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    map.put("AlunoID", aluno.getID());
+                    try {
+                        JasperReport compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\CarneVip2.jrxml");
+                        jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
+                        JRViewer viewer = new JRViewer(jasperPrint);
+                        JFrame report = new JFrame();
+                        report.setExtendedState(MAXIMIZED_BOTH);
+                        report.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        report.setTitle("Carnê de Pagamento");
+                        Container c = report.getContentPane();
+                        c.add(viewer);
+                        report.setVisible(true);
+                        
+                    } catch (JRException ex) {
+                        Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, "Não foi possível listar o carnê de pagamento. Motivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -890,6 +978,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -905,6 +994,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtBoxValorAulaExtra;
     private javax.swing.JFormattedTextField txtBoxVlrMensalidade;
     private javax.swing.JFormattedTextField txtHorasSemanais;
+    private javax.swing.JFormattedTextField txtMesAno;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNroIdentCheque;

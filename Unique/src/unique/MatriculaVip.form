@@ -47,20 +47,24 @@
                                   <Component id="lblDatComCheque" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNome" pref="371" max="32767" attributes="0"/>
-                                  <Component id="txtBoxVlrMensalidade" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtBoxValorAulaExtra" min="-2" max="-2" attributes="0"/>
-                                  <Component id="comboMaterialEscola" min="-2" pref="64" max="-2" attributes="0"/>
-                                  <Component id="comboDinheiroCheque" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtValorPagoMaterial" min="-2" pref="64" max="-2" attributes="0"/>
-                                  <Component id="txtNroIdentCheque" min="-2" pref="354" max="-2" attributes="0"/>
-                                  <Component id="txtBoxDataCompensacao" min="-2" pref="125" max="-2" attributes="0"/>
-                                  <Component id="txtNivel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtBoxQtdAulas" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="txtHorasSemanais" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtMesAno" min="-2" pref="70" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtNome" pref="371" max="32767" attributes="0"/>
+                                      <Component id="txtBoxVlrMensalidade" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtBoxValorAulaExtra" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboMaterialEscola" min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Component id="comboDinheiroCheque" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtValorPagoMaterial" min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Component id="txtNroIdentCheque" min="-2" pref="354" max="-2" attributes="0"/>
+                                      <Component id="txtBoxDataCompensacao" min="-2" pref="125" max="-2" attributes="0"/>
+                                      <Component id="txtNivel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtBoxQtdAulas" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="txtHorasSemanais" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -98,6 +102,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBoxVlrMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtMesAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -139,12 +148,12 @@
                   <Component id="lblDatComCheque" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBoxDataCompensacao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -219,6 +228,9 @@
         <Property name="text" type="java.lang.String" value=""/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtMesAno"/>
         </Property>
       </Properties>
       <Events>
@@ -419,6 +431,27 @@
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtHorasSemanaisFocusGained"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtMesAno">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/####" subtype="-1" type="5"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="txtBoxQtdAulas"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="M&#xea;s/Ano da Primeira Parcela:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
