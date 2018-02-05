@@ -44,6 +44,18 @@ public class Matricula implements Serializable{
     @Column(nullable=false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DataMatricula;
+    
+    @Column(nullable=true)
+    private int MesIni;
+    
+    @Column(nullable=true)
+    private int AnoIni;
+    
+    @Column(nullable=true)
+    private int MesFim;
+    
+    @Column(nullable=true)
+    private int AnoFim;
 
     public Long getID() {
         return ID;
@@ -163,6 +175,62 @@ public class Matricula implements Serializable{
      */
     public void setDataMatricula(Date DataMatricula) {
         this.DataMatricula = DataMatricula;
+    }
+
+    /**
+     * @return the MesIni
+     */
+    public int getMesIni() {
+        return MesIni;
+    }
+
+    /**
+     * @param MesIni the MesIni to set
+     */
+    public void setMesIni(int MesIni) {
+        this.MesIni = MesIni;
+    }
+
+    /**
+     * @return the AnoIni
+     */
+    public int getAnoIni() {
+        return AnoIni;
+    }
+
+    /**
+     * @param AnoIni the AnoIni to set
+     */
+    public void setAnoIni(int AnoIni) {
+        this.AnoIni = AnoIni;
+    }
+
+    /**
+     * @return the MesFim
+     */
+    public int getMesFim() {
+        return MesFim;
+    }
+
+    /**
+     * @param MesFim the MesFim to set
+     */
+    public void setMesFim(int MesFim) {
+        this.MesFim = MesFim;
+    }
+
+    /**
+     * @return the AnoFim
+     */
+    public int getAnoFim() {
+        return AnoFim;
+    }
+
+    /**
+     * @param AnoFim the AnoFim to set
+     */
+    public void setAnoFim(int AnoFim) {
+        this.AnoFim = AnoFim;
     }
     
 }
