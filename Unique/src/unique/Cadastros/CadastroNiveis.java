@@ -66,9 +66,9 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 txtDescricao.setEditable(true);
                 txtValorAulas.setEditable(true);
                 txtValorMaterial.setEditable(true);
-                txtDuracao.setEnabled(true);
-                txtTotalHoras.setEnabled(true);
-                txtHorasSemanais.setEnabled(true);
+                txtDuracao.setEditable(true);
+                txtTotalHoras.setEditable(true);
+                txtHorasSemanais.setEditable(true);
                 checkBoxVip.setEnabled(true);   
                 checkBoxProrrogavel.setEnabled(true);
 
