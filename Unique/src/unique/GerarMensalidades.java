@@ -831,7 +831,11 @@ public class GerarMensalidades extends javax.swing.JFrame {
 
             map.put("AlunoID", aluno.getID());
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Contrato.jrxml");
+                JasperReport compiled;
+                if(aluno.getNivelAtual().isProrrogavel())
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Contrato.jrxml");
+                else
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoKids.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

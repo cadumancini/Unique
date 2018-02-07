@@ -1363,9 +1363,10 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                 JasperReport compiled;
                 if(aluno.isVip())
                     compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoVip.jrxml");
-                else
+                else if(aluno.getNivelAtual().isProrrogavel())
                     compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Contrato.jrxml");
-                    
+                else
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoKids.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1403,7 +1404,11 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
 
             map.put("AlunoID", aluno.getID());
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Carne.jrxml");
+                JasperReport compiled;
+                if(!aluno.isVip())
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Carne.jrxml");
+                else
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\CarneVip2.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1512,8 +1517,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
 
                         if(list.getNivelAtual() != null){
                             btnContrato.setEnabled(true);
-                            if(!list.isVip())
-                                btnCarne.setEnabled(true);
+                            btnCarne.setEnabled(true);
                         }
                     } else{
                         comboSituacao.setSelectedIndex(1);
