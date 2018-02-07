@@ -74,21 +74,21 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnConfiguracoes" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnPagamento" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnPagamento1" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnConsultaMensalidades1" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="btnConsultaMensalidades" min="-2" pref="110" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnCadastroFuncionarios" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnConsultaFuncionarios" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnConsultaMensalidades" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="btnConfiguracoes" min="-2" pref="110" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnConsultaMensalidades1" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="191" max="32767" attributes="0"/>
                   </Group>
@@ -129,7 +129,7 @@
                                   <Component id="btnPagamento1" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="btnConsultaMensalidades1" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnConsultaMensalidades" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -137,10 +137,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnCadastroFuncionarios" min="-2" pref="100" max="-2" attributes="0"/>
                                   <Component id="btnConsultaFuncionarios" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="btnConsultaMensalidades" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="btnConfiguracoes" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnConfiguracoes" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="btnConsultaMensalidades1" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace pref="117" max="32767" attributes="0"/>
                               <Component id="btnSair" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -464,6 +464,7 @@
           <Image iconType="3" name="/unique/Imagens/vip.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Gera&#xe7;&#xe3;o de&lt;br&gt;Mensalidades VIP&lt;/center&gt;&lt;/html&gt;"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
