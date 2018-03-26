@@ -59,6 +59,9 @@ public class MatriculaVip implements Serializable{
     
     @Column(nullable=true)
     private int AnoFim;
+    
+    @Column(nullable=true)
+    private Long QtdeParcelasAulas;
 
     public Long getID() {
         return ID;
@@ -248,5 +251,19 @@ public class MatriculaVip implements Serializable{
      */
     public void setAnoFim(int AnoFim) {
         this.AnoFim = AnoFim;
+    }
+
+    /**
+     * @return the QtdeParcelasAulas
+     */
+    public Long getQtdeParcelasAulas() {
+        return QtdeParcelasAulas;
+    }
+
+    /**
+     * @param QtdeParcelasAulas the QtdeParcelasAulas to set
+     */
+    public void setQtdeParcelasAulas(Long QtdeParcelasAulas) {
+        this.QtdeParcelasAulas = QtdeParcelasAulas;
     }
 }
