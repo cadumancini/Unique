@@ -137,7 +137,7 @@ public class PagamentoParcela extends javax.swing.JFrame {
                     else
                         lblDiasAtraso.setText(String.valueOf(diferencaDias));
 
-                    if((diferencaMes <= 0) && (!m.getNivel().isVIP())){
+                    if((diferencaMes <= 0) /*&& (!m.getNivel().isVIP())*/){
                         int diaAtual = Calendar.getInstance().get(Calendar.DATE);
 
                         //Estamos pagando no memo mês de vencimento OU adiantados?
