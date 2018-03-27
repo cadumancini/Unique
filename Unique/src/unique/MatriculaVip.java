@@ -373,7 +373,7 @@ public class MatriculaVip extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Horas Semanais:");
+        jLabel8.setText("Horas por Aula:");
 
         try {
             txtHorasSemanais.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
