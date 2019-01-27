@@ -166,7 +166,7 @@ public class PagamentoParcela extends javax.swing.JFrame {
                         diferencaMes = 12 - (diferencaMes * (-1));
                     
                     valorMulta += CalculaJurosComposto(totalPagar, 0.02, (int)diferencaMes);       //Mes
-                    valorMulta += CalculaJurosComposto(totalPagar, 0.0033, (int)diferencaDias);    //Dias
+                    valorMulta += CalculaJurosComposto(totalPagar, 0.00033, (int)diferencaDias);   //Dias
                     
                     if(valorMulta < 0.5d)
                         valorMulta = 0d;
