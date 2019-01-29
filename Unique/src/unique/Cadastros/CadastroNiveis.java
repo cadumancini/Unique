@@ -60,8 +60,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt){
         if(evt.getKeyChar()== KeyEvent.VK_ENTER || evt.getKeyChar() == KeyEvent.VK_TAB){
-            if(!txtCodigo.getText().isEmpty())
-            {
+            if(!txtCodigo.getText().isEmpty()){
                 txtNome.setEditable(true);
                 txtDescricao.setEditable(true);
                 txtValorAulas.setEditable(true);
@@ -230,6 +229,10 @@ public class CadastroNiveis extends javax.swing.JFrame {
         checkBoxVip = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         checkBoxProrrogavel = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtCargaHorMin = new javax.swing.JTextField();
+        txtCargaHorMax = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Níveis");
@@ -466,9 +469,34 @@ public class CadastroNiveis extends javax.swing.JFrame {
 
         checkBoxProrrogavel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         checkBoxProrrogavel.setEnabled(false);
+        checkBoxProrrogavel.setNextFocusableComponent(txtCargaHorMin);
         checkBoxProrrogavel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 checkBoxProrrogavelMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("Carga Horária Mínima:");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setText("Carga Horária Máxima:");
+
+        txtCargaHorMin.setEditable(false);
+        txtCargaHorMin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCargaHorMin.setNextFocusableComponent(txtCargaHorMax);
+        txtCargaHorMin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCargaHorMinFocusGained(evt);
+            }
+        });
+
+        txtCargaHorMax.setEditable(false);
+        txtCargaHorMax.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCargaHorMax.setNextFocusableComponent(btnSalvar);
+        txtCargaHorMax.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCargaHorMaxFocusGained(evt);
             }
         });
 
@@ -492,7 +520,9 @@ public class CadastroNiveis extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -517,11 +547,12 @@ public class CadastroNiveis extends javax.swing.JFrame {
                                             .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtTotalHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(checkBoxProrrogavel)))
+                                    .addComponent(checkBoxProrrogavel)
+                                    .addComponent(txtCargaHorMax, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCargaHorMin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel9))
-                        .addGap(0, 91, Short.MAX_VALUE))
+                        .addGap(0, 64, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar)
@@ -578,7 +609,15 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11))
                     .addComponent(checkBoxProrrogavel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtCargaHorMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtCargaHorMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -893,22 +932,32 @@ public class CadastroNiveis extends javax.swing.JFrame {
 
     private void checkBoxVipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxVipMouseClicked
         // TODO add your handling code here:
-        if(checkBoxVip.isSelected()){
-            txtDuracao.setEnabled(false);
-            txtTotalHoras.setEnabled(false);
-            txtHorasSemanais.setEnabled(false);
-            checkBoxProrrogavel.setEnabled(false);
-        } else{
-            txtDuracao.setEnabled(true);
-            txtTotalHoras.setEnabled(true);
-            txtHorasSemanais.setEnabled(true);
-            checkBoxProrrogavel.setEnabled(true);
-        }
+        if(checkBoxVip.isSelected())
+            habilitarCamposVip(false);
+        else
+            habilitarCamposVip(true);
     }//GEN-LAST:event_checkBoxVipMouseClicked
 
+    private void habilitarCamposVip(boolean ativar){
+        txtDuracao.setEnabled(ativar);
+        txtTotalHoras.setEnabled(ativar);
+        txtHorasSemanais.setEnabled(ativar);
+        checkBoxProrrogavel.setEnabled(ativar);
+        txtCargaHorMin.setEnabled(!ativar); // contrario dos demais
+        txtCargaHorMax.setEnabled(!ativar); // contrario dos demais       
+    }
+    
     private void checkBoxProrrogavelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxProrrogavelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxProrrogavelMouseClicked
+
+    private void txtCargaHorMinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCargaHorMinFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCargaHorMinFocusGained
+
+    private void txtCargaHorMaxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCargaHorMaxFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCargaHorMaxFocusGained
 
     public void preencherCampos(Long id, String codigo, String nome, String descr, Double valorAulas, Double valorMaterial, 
             Long duracao, int totalHoras, int minutosSemanais, boolean vip, boolean prorrogavel){
@@ -1047,6 +1096,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1057,6 +1108,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txtCargaHorMax;
+    private javax.swing.JTextField txtCargaHorMin;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JFormattedTextField txtDuracao;
