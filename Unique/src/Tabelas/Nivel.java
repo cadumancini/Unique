@@ -41,6 +41,12 @@ public class Nivel implements Serializable{
     @Column(nullable=true)
     private int QtdHoras;
     
+    @Column(nullable=true)
+    private int CargaHorMin;
+    
+    @Column(nullable=true)
+    private int CargaHorMax;
+    
     @Column(nullable=false)
     private boolean VIP;
     
@@ -196,5 +202,33 @@ public class Nivel implements Serializable{
      */
     public void setProrrogavel(boolean Prorrogavel) {
         this.Prorrogavel = Prorrogavel;
+    }
+
+    /**
+     * @return the CargaHorMin
+     */
+    public int getCargaHorMin() {
+        return CargaHorMin;
+    }
+
+    /**
+     * @param CargaHorMin the CargaHorMin to set
+     */
+    public void setCargaHorMin(int CargaHorMin) {
+        this.CargaHorMin = CargaHorMin;
+    }
+
+    /**
+     * @return the CargaHorMax
+     */
+    public int getCargaHorMax() {
+        return CargaHorMax;
+    }
+
+    /**
+     * @param CargaHorMax the CargaHorMax to set
+     */
+    public void setCargaHorMax(int CargaHorMax) {
+        this.CargaHorMax = CargaHorMax;
     }
 }
