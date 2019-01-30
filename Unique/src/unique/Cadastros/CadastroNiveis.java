@@ -68,8 +68,12 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 txtDuracao.setEditable(true);
                 txtTotalHoras.setEditable(true);
                 txtHorasSemanais.setEditable(true);
+                txtCargaHorMin.setEditable(true);
+                txtCargaHorMax.setEditable(true);
                 checkBoxVip.setEnabled(true);   
                 checkBoxProrrogavel.setEnabled(true);
+                txtCargaHorMin.setEnabled(false);
+                txtCargaHorMax.setEnabled(false);
 
                 try{
                     conexao = HibernateUtil.openSession();
@@ -147,15 +151,14 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         checkBoxProrrogavel.setSelected(n.isProrrogavel());
                         
                         if(n.isVIP()){
-                            txtDuracao.setEnabled(false);
-                            txtHorasSemanais.setEnabled(false);
-                            txtTotalHoras.setEnabled(false);
-                            checkBoxProrrogavel.setEnabled(false);
-                        } else{
-                            txtDuracao.setEnabled(true);
-                            txtHorasSemanais.setEnabled(true);
-                            txtTotalHoras.setEnabled(true);
-                            checkBoxProrrogavel.setEnabled(true);
+                            habilitarCamposVip(false);
+                            txtCargaHorMin.setText(Integer.toString(n.getCargaHorMin()));
+                            txtCargaHorMax.setText(Integer.toString(n.getCargaHorMax()));
+                        }
+                        else{
+                            habilitarCamposVip(true);
+                            txtCargaHorMin.setText("");
+                            txtCargaHorMax.setText("");
                         }
 
                         id = n.getID();
@@ -171,6 +174,9 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         txtDuracao.setText("");
                         txtTotalHoras.setText("");
                         txtHorasSemanais.setText("");
+                        txtCargaHorMin.setText("");
+                        txtCargaHorMax.setText("");
+                        
                         btnExcluir.setEnabled(false);
                         checkBoxVip.setSelected(false);
                         txtDuracao.setEditable(true);
@@ -178,6 +184,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         txtTotalHoras.setEditable(true);
                         checkBoxVip.setEnabled(true);
                         checkBoxProrrogavel.setEnabled(true);
+                        txtCargaHorMin.setEditable(true);
+                        txtCargaHorMax.setEditable(true);
                     }
                     conexao.close();
                 } catch(Exception e){
@@ -490,6 +498,11 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 txtCargaHorMinFocusGained(evt);
             }
         });
+        txtCargaHorMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCargaHorMinKeyPressed(evt);
+            }
+        });
 
         txtCargaHorMax.setEditable(false);
         txtCargaHorMax.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -497,6 +510,11 @@ public class CadastroNiveis extends javax.swing.JFrame {
         txtCargaHorMax.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCargaHorMaxFocusGained(evt);
+            }
+        });
+        txtCargaHorMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCargaHorMaxKeyPressed(evt);
             }
         });
 
@@ -650,13 +668,36 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 nivel.setQtdHoras(0);
                 nivel.setMinutosSemanais(0);
                 nivel.setDuracao(0L);
+                int cargaMin = 0, cargaMax = 0;
+                try{
+                    cargaMin = (Integer.parseInt(txtCargaHorMin.getText()));
+                    cargaMax = (Integer.parseInt(txtCargaHorMax.getText()));
+                    if(cargaMin == 0 || cargaMax == 0){
+                        JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima não podem ser preenchidos com zero!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                        txtCargaHorMin.requestFocusInWindow();
+                        tx.rollback();
+                        conexao.close();
+                        return;
+                    }
+                    nivel.setCargaHorMin(cargaMin);
+                    nivel.setCargaHorMax(cargaMax);
+                } catch (Exception e){
+                    JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima devem ser preenchidos com valores inteiros!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                    txtCargaHorMin.requestFocusInWindow();                    
+                    tx.rollback();
+                    conexao.close();
+                    return;
+                }
             } else{
                 nivel.setQtdHoras(Integer.parseInt(txtTotalHoras.getText()));
                 String[] tempo = txtHorasSemanais.getText().split(":");
                 int horasSemanais = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
                 nivel.setMinutosSemanais(horasSemanais);
-                
                 nivel.setDuracao(Long.parseLong(txtDuracao.getText()));
+                nivel.setCargaHorMin(0);
+                nivel.setCargaHorMax(0);
             }
             
             nivel.setCodigo(txtCodigo.getText());
@@ -678,9 +719,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
             try
             {
                 conexao.saveOrUpdate(nivel);
-
                 tx.commit();
-
                 txtCodigo.requestFocusInWindow();
                 btnExcluir.setEnabled(true);
 
@@ -722,6 +761,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
         txtDuracao.setText("");
         txtTotalHoras.setText("");
         txtHorasSemanais.setText("");
+        txtCargaHorMin.setText("");
+        txtCargaHorMax.setText("");
         btnExcluir.setEnabled(false);
         checkBoxVip.setSelected(false);
         checkBoxProrrogavel.setSelected(false);
@@ -755,6 +796,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
                     txtDuracao.setText("");
                     txtTotalHoras.setText("");
                     txtHorasSemanais.setText("");
+                    txtCargaHorMin.setText("");
+                    txtCargaHorMax.setText("");
                     checkBoxVip.setSelected(false);
                     checkBoxProrrogavel.setSelected(false);
 
@@ -765,7 +808,6 @@ public class CadastroNiveis extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Operação mal sucedida. Motivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
             conexao.close();
         }
         else
@@ -827,17 +869,14 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorAulasKeyTyped
 
     private void txtValorAulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorAulasMouseClicked
-        // TODO add your handling code here:
         txtValorAulas.selectAll();
     }//GEN-LAST:event_txtValorAulasMouseClicked
 
     private void txtValorMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorMaterialMouseClicked
-        // TODO add your handling code here:
         txtValorMaterial.selectAll();
     }//GEN-LAST:event_txtValorMaterialMouseClicked
 
     private void txtValorAulasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorAulasKeyPressed
-        // TODO add your handling code here:
         if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
@@ -846,7 +885,6 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorAulasKeyPressed
 
     private void txtValorMaterialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorMaterialKeyPressed
-        // TODO add your handling code here:
         if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
             (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
             (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
@@ -855,7 +893,6 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorMaterialKeyPressed
 
     private void txtValorMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorMaterialKeyTyped
-        // TODO add your handling code here:
         String temp = txtValorMaterial.getText();
         
         if(((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
@@ -888,50 +925,42 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorMaterialKeyTyped
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
         buscaNiveis = NiveisCadastrados.getInstance();
         buscaNiveis.setCadastroNiveis(this);
         buscaNiveis.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtDuracaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDuracaoFocusGained
-        // TODO add your handling code here:
         txtDuracao.selectAll();
     }//GEN-LAST:event_txtDuracaoFocusGained
 
     private void txtHorasSemanaisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHorasSemanaisFocusGained
-        // TODO add your handling code here:
+        txtHorasSemanais.selectAll();
     }//GEN-LAST:event_txtHorasSemanaisFocusGained
 
     private void txtTotalHorasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTotalHorasFocusGained
-        // TODO add your handling code here:
         txtTotalHoras.selectAll();
     }//GEN-LAST:event_txtTotalHorasFocusGained
 
     private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
-        // TODO add your handling code here:
         if(txtCodigo.getText().length() != 0){
             txtCodigo.setText(txtCodigo.getText().toUpperCase());
         }
     }//GEN-LAST:event_txtCodigoKeyReleased
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
         instance = null;
     }//GEN-LAST:event_formWindowClosed
 
     private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
-        // TODO add your handling code here:
         txtNome.setText(txtNome.getText().toUpperCase());
     }//GEN-LAST:event_txtNomeKeyReleased
 
     private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
-        // TODO add your handling code here:
         txtDescricao.setText(txtDescricao.getText().toUpperCase());
     }//GEN-LAST:event_txtDescricaoKeyReleased
 
     private void checkBoxVipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxVipMouseClicked
-        // TODO add your handling code here:
         if(checkBoxVip.isSelected())
             habilitarCamposVip(false);
         else
@@ -952,15 +981,31 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxProrrogavelMouseClicked
 
     private void txtCargaHorMinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCargaHorMinFocusGained
-        // TODO add your handling code here:
+        txtCargaHorMin.selectAll();
     }//GEN-LAST:event_txtCargaHorMinFocusGained
 
     private void txtCargaHorMaxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCargaHorMaxFocusGained
-        // TODO add your handling code here:
+        txtCargaHorMax.selectAll();
     }//GEN-LAST:event_txtCargaHorMaxFocusGained
 
+    private void txtCargaHorMinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCargaHorMinKeyPressed
+        if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
+            (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
+            (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
+            (evt.getKeyChar() == '9')))
+            return;
+    }//GEN-LAST:event_txtCargaHorMinKeyPressed
+
+    private void txtCargaHorMaxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCargaHorMaxKeyPressed
+        if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
+            (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
+            (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
+            (evt.getKeyChar() == '9')))
+            return;
+    }//GEN-LAST:event_txtCargaHorMaxKeyPressed
+
     public void preencherCampos(Long id, String codigo, String nome, String descr, Double valorAulas, Double valorMaterial, 
-            Long duracao, int totalHoras, int minutosSemanais, boolean vip, boolean prorrogavel){
+            Long duracao, int totalHoras, int minutosSemanais, boolean vip, boolean prorrogavel, int cargaMin, int cargaMax){
         this.id = id;
         
         txtCodigo.setText(codigo);
@@ -970,12 +1015,13 @@ public class CadastroNiveis extends javax.swing.JFrame {
         checkBoxVip.setSelected(vip);
         checkBoxProrrogavel.setSelected(prorrogavel);
         if(vip){
-            txtDuracao.setEnabled(false);
-            txtTotalHoras.setEnabled(false);
-            txtHorasSemanais.setEnabled(false);
-            checkBoxProrrogavel.setEnabled(false);
+            habilitarCamposVip(false);
+            txtCargaHorMin.setText(Integer.toString(cargaMin));
+            txtCargaHorMax.setText(Integer.toString(cargaMax));
         } else{
-            checkBoxProrrogavel.setEnabled(true);
+            habilitarCamposVip(true);
+            txtCargaHorMin.setText("");
+            txtCargaHorMax.setText("");
             txtDuracao.setText(duracao.toString());
             txtTotalHoras.setText(String.valueOf(totalHoras));
             int horas, minutos;
@@ -1045,6 +1091,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
         txtDuracao.setEditable(true);
         txtTotalHoras.setEditable(true);
         txtHorasSemanais.setEditable(true);
+        txtCargaHorMin.setEditable(true);
+        txtCargaHorMax.setEditable(true);
         checkBoxVip.setEnabled(true);
         
         txtNome.requestFocusInWindow();

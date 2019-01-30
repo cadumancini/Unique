@@ -48,7 +48,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             List<Nivel> results = crit.list(); 
             DefaultTableModel model = (DefaultTableModel) tblNiveis.getModel();
 
-            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais;
+            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, cargaMin, cargaMax;
 
             for(Nivel n : results)
             {
@@ -107,8 +107,12 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                 String prorrogavel = "Não";
                 if(n.isProrrogavel())
                     prorrogavel = "Sim";
+                
+                cargaMin = Integer.toString(n.getCargaHorMin());
+                cargaMax = Integer.toString(n.getCargaHorMax());
 
-                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, vip, prorrogavel};
+                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, 
+                    duracao, cargaHoraria, horasSemanais, vip, prorrogavel, cargaMin, cargaMax};
 
                 model.addRow(linha);
             } 
@@ -191,11 +195,11 @@ public class NiveisCadastrados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável"
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável", "Carga Mín.", "Carga Máx."
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -228,7 +232,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 265, Short.MAX_VALUE)))
+                        .addGap(0, 347, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -277,7 +281,9 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                                             Double.parseDouble(tblNiveis.getValueAt(linha, 5).toString()),
                                             Long.parseLong(tblNiveis.getValueAt(linha, 6).toString()),
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 7).toString()),
-                                            totalMinutos, vip, prorrogavel);
+                                            totalMinutos, vip, prorrogavel, 
+                                            Integer.parseInt(tblNiveis.getValueAt(linha, 11).toString()),
+                                            Integer.parseInt(tblNiveis.getValueAt(linha, 12).toString()));
         }
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
