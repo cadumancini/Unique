@@ -48,7 +48,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             List<Nivel> results = crit.list(); 
             DefaultTableModel model = (DefaultTableModel) tblNiveis.getModel();
 
-            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, cargaMin, cargaMax;
+            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, cargaMin, cargaMax, gotIt;
 
             for(Nivel n : results)
             {
@@ -104,6 +104,10 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                 if(n.isVIP())
                     vip = "Sim";
                 
+                gotIt = "Não";
+                if(n.isGotIt())
+                    gotIt = "Sim";
+                
                 String prorrogavel = "Não";
                 if(n.isProrrogavel())
                     prorrogavel = "Sim";
@@ -112,7 +116,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                 cargaMax = Integer.toString(n.getCargaHorMax());
 
                 String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, 
-                    duracao, cargaHoraria, horasSemanais, vip, prorrogavel, cargaMin, cargaMax};
+                    duracao, cargaHoraria, horasSemanais, vip, prorrogavel, cargaMin, cargaMax, gotIt};
 
                 model.addRow(linha);
             } 
@@ -195,11 +199,11 @@ public class NiveisCadastrados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável", "Carga Mín.", "Carga Máx."
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável", "Carga Mín.", "Carga Máx.", "Got It!"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -232,7 +236,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 347, Short.MAX_VALUE)))
+                        .addGap(0, 431, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -257,13 +261,13 @@ public class NiveisCadastrados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        // TODO add your handling code here:
         int linha = tblNiveis.getSelectedRow();
         String[] tempo = tblNiveis.getValueAt(linha, 8).toString().split(":");
         int totalMinutos = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
         if(linha > -1){
             boolean vip = false;
             boolean prorrogavel = false;
+            boolean gotIt = false;
             
             System.out.println(tblNiveis.getValueAt(linha, 9));
             
@@ -272,6 +276,9 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             
             if(tblNiveis.getValueAt(linha, 10) == "Sim")
                 prorrogavel = true;
+            
+            if(tblNiveis.getValueAt(linha, 13) == "Sim")
+                gotIt = true;
             
             cadastroNiveis.preencherCampos(Long.parseLong(tblNiveis.getValueAt(linha, 0).toString()),
                                             tblNiveis.getValueAt(linha, 1).toString(), 
@@ -283,18 +290,17 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 7).toString()),
                                             totalMinutos, vip, prorrogavel, 
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 11).toString()),
-                                            Integer.parseInt(tblNiveis.getValueAt(linha, 12).toString()));
+                                            Integer.parseInt(tblNiveis.getValueAt(linha, 12).toString()), 
+                                            gotIt);
         }
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
         instance = null;
     }//GEN-LAST:event_formWindowClosed
 
