@@ -71,6 +71,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 txtCargaHorMin.setEditable(true);
                 txtCargaHorMax.setEditable(true);
                 checkBoxVip.setEnabled(true);   
+                checkBoxGotIt.setEnabled(true);   
                 checkBoxProrrogavel.setEnabled(true);
                 txtCargaHorMin.setEnabled(false);
                 txtCargaHorMax.setEnabled(false);
@@ -160,6 +161,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
                             txtCargaHorMin.setText("");
                             txtCargaHorMax.setText("");
                         }
+                        
+                        checkBoxGotIt.setSelected(n.isGotIt());
 
                         id = n.getID();
                         btnExcluir.setEnabled(true);
@@ -183,6 +186,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         txtHorasSemanais.setEditable(true);
                         txtTotalHoras.setEditable(true);
                         checkBoxVip.setEnabled(true);
+                        checkBoxGotIt.setEnabled(true);
                         checkBoxProrrogavel.setEnabled(true);
                         txtCargaHorMin.setEditable(true);
                         txtCargaHorMax.setEditable(true);
@@ -241,6 +245,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtCargaHorMin = new javax.swing.JTextField();
         txtCargaHorMax = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        checkBoxGotIt = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Níveis");
@@ -518,6 +524,18 @@ public class CadastroNiveis extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Got It!:");
+
+        checkBoxGotIt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        checkBoxGotIt.setEnabled(false);
+        checkBoxGotIt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkBoxGotItMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -552,8 +570,12 @@ public class CadastroNiveis extends javax.swing.JFrame {
                                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(39, 39, 39)
                                         .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBoxVip))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkBoxVip)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkBoxGotIt))
                                     .addComponent(txtValorAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
@@ -597,35 +619,39 @@ public class CadastroNiveis extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkBoxVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtValorAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtTotalHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkBoxVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel14)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtValorAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtTotalHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtHorasSemanais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11))
+                            .addComponent(checkBoxGotIt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(checkBoxProrrogavel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -655,6 +681,12 @@ public class CadastroNiveis extends javax.swing.JFrame {
             txtNome.requestFocusInWindow();
         }
         
+        if(checkBoxGotIt.isSelected() && checkBoxVip.isSelected()){
+            JOptionPane.showMessageDialog(this, "Os campos de VIP e Got It não podem ficar marcados ao mesmo tempo!", "Erro", JOptionPane.ERROR_MESSAGE);
+            salvar = false;
+            checkBoxVip.requestFocusInWindow();
+        }
+        
         if(salvar){
             // Inserindo novo nível:
             conexao = HibernateUtil.openSession();
@@ -662,6 +694,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
 
             Nivel nivel = new Nivel();
             nivel.setVIP(checkBoxVip.isSelected());
+            nivel.setGotIt(checkBoxGotIt.isSelected());
             nivel.setProrrogavel(checkBoxProrrogavel.isSelected());
             
             if(nivel.isVIP()){
@@ -734,25 +767,23 @@ public class CadastroNiveis extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    
-    
     private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        // TODO add your handling code here:
         txtNome.selectAll();
     }//GEN-LAST:event_txtNomeFocusGained
 
     private void txtDescricaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusGained
-        // TODO add your handling code here:
         txtDescricao.selectAll();
     }//GEN-LAST:event_txtDescricaoFocusGained
 
     private void txtCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusGained
-        // TODO add your handling code here:
         txtCodigo.selectAll();
     }//GEN-LAST:event_txtCodigoFocusGained
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        limparCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void limparCampos(){
         txtCodigo.requestFocusInWindow();
         txtNome.setText("");
         txtDescricao.setText("");
@@ -765,11 +796,11 @@ public class CadastroNiveis extends javax.swing.JFrame {
         txtCargaHorMax.setText("");
         btnExcluir.setEnabled(false);
         checkBoxVip.setSelected(false);
+        checkBoxGotIt.setSelected(false);
         checkBoxProrrogavel.setSelected(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
+    }
+    
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
         int opcao = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o Nível: " + txtCodigo.getText() + "?", "Confirmação", JOptionPane.YES_NO_OPTION);
         
         if(opcao == JOptionPane.YES_OPTION)
@@ -784,24 +815,9 @@ public class CadastroNiveis extends javax.swing.JFrame {
                 try
                 {
                     Nivel n = (Nivel)results.get(0);
-
                     conexao.delete(n);
                     tx.commit();
-
-                    txtCodigo.requestFocusInWindow();
-                    txtNome.setText("");
-                    txtDescricao.setText("");
-                    txtValorAulas.setText("");
-                    txtValorMaterial.setText("");
-                    txtDuracao.setText("");
-                    txtTotalHoras.setText("");
-                    txtHorasSemanais.setText("");
-                    txtCargaHorMin.setText("");
-                    txtCargaHorMax.setText("");
-                    checkBoxVip.setSelected(false);
-                    checkBoxProrrogavel.setSelected(false);
-
-                    btnExcluir.setEnabled(false);
+                    limparCampos();
                 }catch(Exception ex){
                     tx.rollback();
                     ex.printStackTrace();
@@ -818,25 +834,21 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnExcluirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnExcluirFocusGained
-        // TODO add your handling code here:
         if(!btnExcluir.isEnabled())
             btnCancelar.requestFocusInWindow();
     }//GEN-LAST:event_btnExcluirFocusGained
 
     private void txtValorAulasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorAulasFocusGained
-        // TODO add your handling code here:
         //txtValorAulas.select(0, txtValorAulas.getColumns());
         txtValorAulas.select(txtValorAulas.getColumns(), txtValorAulas.getColumns());
     }//GEN-LAST:event_txtValorAulasFocusGained
 
     private void txtValorMaterialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorMaterialFocusGained
-        // TODO add your handling code here:
         //txtValorMaterial.select(0, txtValorMaterial.getColumns());
         txtValorAulas.select(txtValorAulas.getColumns(), txtValorAulas.getColumns());
     }//GEN-LAST:event_txtValorMaterialFocusGained
 
     private void txtValorAulasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorAulasKeyTyped
-        // TODO add your handling code here:
         String temp = txtValorAulas.getText();
         
         if(((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
@@ -961,8 +973,14 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescricaoKeyReleased
 
     private void checkBoxVipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxVipMouseClicked
-        if(checkBoxVip.isSelected())
+        if(checkBoxVip.isSelected()){
             habilitarCamposVip(false);
+            if(checkBoxGotIt.isSelected()){
+                JOptionPane.showMessageDialog(this, "Atenção: o campo Got It está marcado, e os dois não podem ficar marcados ao mesmo tempo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                checkBoxVip.setSelected(false);
+                checkBoxGotIt.requestFocusInWindow();
+            }
+        }
         else
             habilitarCamposVip(true);
     }//GEN-LAST:event_checkBoxVipMouseClicked
@@ -1004,8 +1022,18 @@ public class CadastroNiveis extends javax.swing.JFrame {
             return;
     }//GEN-LAST:event_txtCargaHorMaxKeyPressed
 
+    private void checkBoxGotItMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxGotItMouseClicked
+        if(checkBoxGotIt.isSelected()){
+            if(checkBoxVip.isSelected()){
+                JOptionPane.showMessageDialog(this, "Atenção: o campo VIP está marcado, e os dois não podem ficar marcados ao mesmo tempo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                checkBoxGotIt.setSelected(false);
+                checkBoxVip.requestFocusInWindow();
+            }
+        }
+    }//GEN-LAST:event_checkBoxGotItMouseClicked
+
     public void preencherCampos(Long id, String codigo, String nome, String descr, Double valorAulas, Double valorMaterial, 
-            Long duracao, int totalHoras, int minutosSemanais, boolean vip, boolean prorrogavel, int cargaMin, int cargaMax){
+            Long duracao, int totalHoras, int minutosSemanais, boolean vip, boolean prorrogavel, int cargaMin, int cargaMax, boolean gotIt){
         this.id = id;
         
         txtCodigo.setText(codigo);
@@ -1014,6 +1042,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
         
         checkBoxVip.setSelected(vip);
         checkBoxProrrogavel.setSelected(prorrogavel);
+        checkBoxGotIt.setSelected(gotIt);
         if(vip){
             habilitarCamposVip(false);
             txtCargaHorMin.setText(Integer.toString(cargaMin));
@@ -1094,6 +1123,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
         txtCargaHorMin.setEditable(true);
         txtCargaHorMax.setEditable(true);
         checkBoxVip.setEnabled(true);
+        checkBoxGotIt.setEnabled(true);
         
         txtNome.requestFocusInWindow();
         btnExcluir.setEnabled(true);
@@ -1139,6 +1169,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JCheckBox checkBoxGotIt;
     private javax.swing.JCheckBox checkBoxProrrogavel;
     private javax.swing.JCheckBox checkBoxVip;
     private javax.swing.JLabel jLabel1;
@@ -1146,6 +1177,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
