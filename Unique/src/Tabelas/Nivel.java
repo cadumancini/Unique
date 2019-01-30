@@ -50,6 +50,9 @@ public class Nivel implements Serializable{
     @Column(nullable=false)
     private boolean VIP;
     
+    @Column(nullable=false)
+    private boolean GotIt;
+    
     @Column(nullable=true)
     private int MinutosSemanais;
     
@@ -230,5 +233,19 @@ public class Nivel implements Serializable{
      */
     public void setCargaHorMax(int CargaHorMax) {
         this.CargaHorMax = CargaHorMax;
+    }
+
+    /**
+     * @return the GotIt
+     */
+    public boolean isGotIt() {
+        return GotIt;
+    }
+
+    /**
+     * @param GotIt the GotIt to set
+     */
+    public void setGotIt(boolean GotIt) {
+        this.GotIt = GotIt;
     }
 }
