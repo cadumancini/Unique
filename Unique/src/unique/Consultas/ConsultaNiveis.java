@@ -201,11 +201,11 @@ public class ConsultaNiveis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (Meses)", "VIP"
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (Meses)", "VIP", "Got It!"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -225,7 +225,7 @@ public class ConsultaNiveis extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -518,11 +518,14 @@ public class ConsultaNiveis extends javax.swing.JFrame {
                     duracao = n.getDuracao().toString();
                 
                 String vip = "Não";
-                
                 if(n.isVIP())
                     vip = "Sim";
+                
+                String gotIt = "Não";
+                if(n.isGotIt())
+                    gotIt = "Sim";
 
-                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, vip};
+                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, vip, gotIt};
 
                 model.addRow(linha);
             }
