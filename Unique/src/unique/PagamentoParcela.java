@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -67,9 +68,8 @@ public class PagamentoParcela extends javax.swing.JFrame {
             Criteria select = conexao.createCriteria(Config.class);
             select.add(Restrictions.eq("ID", 1L));
 
-            if(select.list().size() > 0){
+            if(select.list().size() > 0)
                 configuracoes = (Config)select.list().get(0);
-            }
 
             conexao.close();
         } catch(Exception e){
@@ -113,10 +113,11 @@ public class PagamentoParcela extends javax.swing.JFrame {
 
                     //Calculando os dias de atraso:
                     Date dataAtual = Calendar.getInstance().getTime();
-                    Date dataVencimento = null;
+                    Date dataVencimento = null, dataParaDesconto = null;
                     try {
                         int mesCorreto = Integer.parseInt(textMes) + 1;
                         dataVencimento = DateFormat.getDateInstance().parse("01/" + mesCorreto + "/" + textAno);
+                        dataParaDesconto = DateFormat.getDateInstance().parse("01/" + textMes + "/" + textAno);
                     } catch (ParseException ex) {
                         Logger.getLogger(PagamentoParcela.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -146,15 +147,21 @@ public class PagamentoParcela extends javax.swing.JFrame {
                         if((Calendar.getInstance().get(Calendar.MONTH) + 1 <= Integer.parseInt(textMes) &&
                             Calendar.getInstance().get(Calendar.YEAR) <= Integer.parseInt(textAno)) ||
                             Integer.parseInt(textAno) > Calendar.getInstance().get(Calendar.YEAR)){
+                            Date diaDescMaior = retornaDiaUtilApos(configuracoes.getDiaLimiteDescontoMaior(), dataParaDesconto);
+                            Date diaDescMenor = retornaDiaUtilApos(configuracoes.getDiaLimiteDescontoMenor(), dataParaDesconto);
+                            
                             //Desconto maior se aplica?
-                            if((diaAtual <= configuracoes.getDiaLimiteDescontoMaior()) ||
+                            /*
+                            if((configuracoes.isDescontoMaiorEnbled()) && ((diaAtual <= configuracoes.getDiaLimiteDescontoMaior()) ||
                                (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes)) ||
-                                    (Calendar.getInstance().get(Calendar.YEAR) < Integer.parseInt(textAno))){
+                                    (Calendar.getInstance().get(Calendar.YEAR) < Integer.parseInt(textAno)))){ */
+                            if(configuracoes.isDescontoMaiorEnbled() && dataAtual.getTime() <= diaDescMaior.getTime()){
                                 //Aplicando o desconto maior:
                                 lblVlrDesconto.setText("R$ " + configuracoes.getDescontoMaior());
                                 totalPagar -= configuracoes.getDescontoMaior();
-                            } else if((diaAtual <= configuracoes.getDiaLimiteDescontoMenor()) ||
-                               (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes))) {
+                            /*} else if((configuracoes.isDescontoMenorEnbled()) && ((diaAtual <= configuracoes.getDiaLimiteDescontoMenor()) ||
+                               (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes)))){ */
+                            } else if(configuracoes.isDescontoMenorEnbled() && dataAtual.getTime() <= diaDescMenor.getTime()){
                                 //Aplicando o desconto menor:
                                 lblVlrDesconto.setText("R$ " + configuracoes.getDescontoMenor());
                                 totalPagar -= configuracoes.getDescontoMenor();
@@ -178,6 +185,26 @@ public class PagamentoParcela extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    private Date retornaDiaUtilApos(int qtdDias, Date dataInicial){
+        int diasUteis = 0;
+        Date dataUtilRetorno = dataInicial;
+        GregorianCalendar gc = new GregorianCalendar();
+        Calendar cal = Calendar.getInstance();
+        while (diasUteis < qtdDias){
+            gc.setTime(dataUtilRetorno);
+            if(gc.get(GregorianCalendar.DAY_OF_WEEK) != 1 && gc.get(GregorianCalendar.DAY_OF_WEEK) != 7) // 1 = domingo; 7 = sábado
+                diasUteis++;
+            
+            if(diasUteis < qtdDias){
+                // Adicionando um dia:
+                cal.setTime(dataUtilRetorno);
+                cal.add(Calendar.DATE, 1);
+                dataUtilRetorno = cal.getTime();
+            }
+        }
+        return dataUtilRetorno;
     }
     
     private double CalculaJurosComposto(double valor, double porcentagemJuros, int qtdAplicacoes){

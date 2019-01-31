@@ -142,7 +142,7 @@ public class Configuracoes extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Dia Limite:");
+        jLabel4.setText("Dia Útil Limite:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Valor do Desconto (R$):");
@@ -212,7 +212,7 @@ public class Configuracoes extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Dia Limite:");
+        jLabel8.setText("Dia Útil Limite:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Valor do Desconto (R$):");
