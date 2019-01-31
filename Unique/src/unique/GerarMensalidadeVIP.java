@@ -397,14 +397,14 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                     JasperPrint jasperPrint = null;
                     Connection connection = null;
                     try {
-                        connection = DriverManager.getConnection("jdbc:firebirdsql:localhost:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                        connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
                     } catch (SQLException ex) {
                         Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                     map.put("MensalidadeID", mens.getID());
                     try {
-                        JasperReport compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\CarneVip.jrxml");
+                        JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip.jrxml");
                         jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                         JRViewer viewer = new JRViewer(jasperPrint);
                         JFrame report = new JFrame();
@@ -451,14 +451,14 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                 JasperPrint jasperPrint = null;
                 Connection connection = null;
                 try {
-                    connection = DriverManager.getConnection("jdbc:firebirdsql:localhost:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                    connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
                 } catch (SQLException ex) {
                     Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 map.put("MensalidadeID", mens.getID());
                 try {
-                    JasperReport compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\CarneVip.jrxml");
+                    JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip.jrxml");
                     jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                     JRViewer viewer = new JRViewer(jasperPrint);
                     JFrame report = new JFrame();
