@@ -1,12 +1,12 @@
 [OK] Alteração Contrato Adultos
 [OK] Alteração Contrato Kids
-Alteração Contrato VIP
+[OK] Alteração Contrato VIP
 [OK] Alteração Carnê (juros e desconto)
 [OK] Criação de Campo para Carga Horária Mínima e Máxima no Nível (caso VIP)
 [OK] Criação de Campo para indicar que é um nível Got It no Nível
 [OK] Alteração na forma de cálculo de juros
 [OK] Alteração na forma do cálculo do desconto (até xº dia útil do mês)
-Criação do Contrato Got It
+[TESTAR APÓS ITEM ABAIXO] Criação do Contrato Got It
 Alteração nas impressões de contrato (chamar Contrato Got It!)
 Alteração para conexão de Banco de Dados em outro computador
 [OK] Depois de criar campos na base, setar todos valores para o default
