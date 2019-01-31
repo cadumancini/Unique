@@ -1365,6 +1365,8 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                     compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoVip.jrxml");
                 else if(aluno.getNivelAtual().isProrrogavel())
                     compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\Contrato.jrxml");
+                else if(aluno.getNivelAtual().isGotIt())
+                    compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoGotIt.jrxml");
                 else
                     compiled = JasperCompileManager.compileReport("C:\\Banco\\Relatorios\\ContratoKids.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
