@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2019-01-31T11:16:00 -->
+<!-- 2019-01-31T16:06:48 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -729,7 +729,7 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<text><![CDATA[Do material didático:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="259" width="554" height="64" uuid="bf5bb4df-9c7b-4e8c-bdec-33d4bff68542"/>
+				<reportElement x="0" y="259" width="554" height="51" uuid="bf5bb4df-9c7b-4e8c-bdec-33d4bff68542"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
