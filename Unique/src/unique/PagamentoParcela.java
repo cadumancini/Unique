@@ -151,17 +151,17 @@ public class PagamentoParcela extends javax.swing.JFrame {
                             Date diaDescMenor = retornaDiaUtilApos(configuracoes.getDiaLimiteDescontoMenor(), dataParaDesconto);
                             
                             //Desconto maior se aplica?
-                            /*
+                            
                             if((configuracoes.isDescontoMaiorEnbled()) && ((diaAtual <= configuracoes.getDiaLimiteDescontoMaior()) ||
                                (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes)) ||
-                                    (Calendar.getInstance().get(Calendar.YEAR) < Integer.parseInt(textAno)))){ */
-                            if(configuracoes.isDescontoMaiorEnbled() && dataAtual.getTime() <= diaDescMaior.getTime()){
+                                    (Calendar.getInstance().get(Calendar.YEAR) < Integer.parseInt(textAno)))){ 
+                            //if(configuracoes.isDescontoMaiorEnbled() && dataAtual.getTime() <= diaDescMaior.getTime()){
                                 //Aplicando o desconto maior:
                                 lblVlrDesconto.setText("R$ " + configuracoes.getDescontoMaior());
                                 totalPagar -= configuracoes.getDescontoMaior();
-                            /*} else if((configuracoes.isDescontoMenorEnbled()) && ((diaAtual <= configuracoes.getDiaLimiteDescontoMenor()) ||
-                               (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes)))){ */
-                            } else if(configuracoes.isDescontoMenorEnbled() && dataAtual.getTime() <= diaDescMenor.getTime()){
+                            } else if((configuracoes.isDescontoMenorEnbled()) && ((diaAtual <= configuracoes.getDiaLimiteDescontoMenor()) ||
+                               (Calendar.getInstance().get(Calendar.MONTH) + 1 < Integer.parseInt(textMes)))){ 
+                            //} else if(configuracoes.isDescontoMenorEnbled() && dataAtual.getTime() <= diaDescMenor.getTime()){
                                 //Aplicando o desconto menor:
                                 lblVlrDesconto.setText("R$ " + configuracoes.getDescontoMenor());
                                 totalPagar -= configuracoes.getDescontoMenor();
