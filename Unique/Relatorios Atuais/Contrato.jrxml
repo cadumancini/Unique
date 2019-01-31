@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2019-01-31T11:19:33 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -673,11 +674,11 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textFieldExpression><![CDATA[$F{AULASDESCONTO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="76" width="187" height="12" uuid="70be5d81-5c73-42f7-bc4c-bd1426267051"/>
+				<reportElement x="0" y="76" width="554" height="12" uuid="70be5d81-5c73-42f7-bc4c-bd1426267051"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Política de Vantagens: pagamentos efetuados até o]]></text>
+				<text><![CDATA[Política de Vantagens: pagamentos efetuados até o 5º dia útil de cada mês terá um abatimento de R$ 10,00 na parcela.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="86" width="555" height="132" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
@@ -839,16 +840,10 @@ Caso a turma tenha 2 alunos a carga horária será de 1 hora por semana.
 				</reportElement>
 			</line>
 			<image>
-				<reportElement mode="Transparent" x="35" y="651" width="50" height="33" uuid="9c76ae1d-2ab8-4576-a85f-43a9a422d8f8"/>
+				<reportElement mode="Transparent" x="465" y="620" width="50" height="33" uuid="9c76ae1d-2ab8-4576-a85f-43a9a422d8f8"/>
 				<graphicElement fill="Solid"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaCristiane.png"]]></imageExpression>
 			</image>
-			<line>
-				<reportElement x="1" y="678" width="150" height="1" uuid="c54260e9-0d03-4f3d-9f5b-cc97cea43ffe">
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-			</line>
 			<image>
 				<reportElement x="0" y="324" width="14" height="15" uuid="aab90eb2-a731-43c0-9d83-cf74514048db"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/checkBox.png"]]></imageExpression>
@@ -886,7 +881,7 @@ Caso a turma tenha 2 alunos a carga horária será de 1 hora por semana.
 				<textFieldExpression><![CDATA[$V{vCompraProprio}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="421" y="624" width="120" height="32" uuid="2c917a1b-2974-4018-99bd-60e6fa225979"/>
+				<reportElement x="14" y="657" width="120" height="32" uuid="2c917a1b-2974-4018-99bd-60e6fa225979"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaFabio.png"]]></imageExpression>
 			</image>
 			<staticText>
@@ -997,34 +992,6 @@ Testemunha 1 									                                            Testemunha 2]]
 				</textElement>
 				<text><![CDATA[Turmas reduzidas: carga horária de 76 horas.]]></text>
 			</staticText>
-			<textField pattern="00">
-				<reportElement x="188" y="76" width="10" height="12" uuid="beea1d0e-c400-425f-99c4-7095849fd82b"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{DIALIMITEDESCONTOMAIOR}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="198" y="76" width="172" height="12" uuid="ddcec3e0-8b93-47e0-95ae-a7eadc1dcc40"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[º dia útil de cada mês terá um abatimento de R$]]></text>
-			</staticText>
-			<textField pattern="#,##0.00">
-				<reportElement x="371" y="76" width="27" height="12" uuid="7b488d51-c419-4d0a-9d13-0150e43b91d8"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{DESCONTOMAIOR}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="398" y="76" width="144" height="12" uuid="2a356675-4e39-4cd5-8ff8-4823597092a2"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[na parcela.]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="0" y="254" width="224" height="12" uuid="7d7d5591-cd19-4a83-b226-deeffbeff0f9"/>
 				<textElement textAlignment="Left">
@@ -1032,6 +999,12 @@ Testemunha 1 									                                            Testemunha 2]]
 				</textElement>
 				<text><![CDATA[até 4x (entrada + 3x) no cartão ou cheque pré.]]></text>
 			</staticText>
+			<line>
+				<reportElement x="1" y="678" width="150" height="1" uuid="c54260e9-0d03-4f3d-9f5b-cc97cea43ffe">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

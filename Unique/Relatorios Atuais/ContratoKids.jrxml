@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2019-01-31T11:16:00 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -624,7 +625,7 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="690" splitType="Stretch">
+		<band height="702" splitType="Stretch">
 			<rectangle>
 				<reportElement x="-2" y="-1" width="559" height="691" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
 			</rectangle>
@@ -633,245 +634,173 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Do curso:]]></text>
+				<text><![CDATA[Contrato de prestação de serviços:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="7" width="169" height="12" uuid="b707ded2-19e4-424d-bf3b-66700f2e474b"/>
+				<reportElement x="1" y="7" width="406" height="12" uuid="b707ded2-19e4-424d-bf3b-66700f2e474b"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[1.  O curso será ministrado num período de até]]></text>
+				<text><![CDATA[Esse contrato destina-se a prestação de serviços de aula de inglês para o curso Kids. A duração do contrato é de ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="171" y="7" width="14" height="12" uuid="3272c2eb-95b0-4543-9dc7-7d3dc81098dc"/>
+				<reportElement x="407" y="7" width="14" height="12" uuid="3272c2eb-95b0-4543-9dc7-7d3dc81098dc"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DURACAO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="185" y="7" width="120" height="12" uuid="b9836862-6583-44f5-b8f3-4a9d24645309"/>
+				<reportElement x="421" y="7" width="134" height="12" uuid="b9836862-6583-44f5-b8f3-4a9d24645309"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[meses, com carga horária de até ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="305" y="7" width="16" height="12" uuid="305b3669-9cce-45b0-9bc3-c784141a6f0e"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{QTDHORAS}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="324" y="7" width="230" height="12" uuid="ec35a1aa-ac1a-4442-8c24-872bdbd7185b"/>
-				<textElement textAlignment="Justified">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[horas. Haverá recesso escolar no mês de julho e férias nos ]]></text>
+				<text><![CDATA[meses e obedecerá a faixa etária e o]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="18" width="325" height="12" uuid="ed16bf34-2bd2-46dc-a377-cdaf5e81f78b"/>
+				<reportElement x="0" y="45" width="315" height="12" uuid="4ecb495b-d4d3-46d0-9d6a-5c71cd9f0492"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[meses de dezembro e janeiro.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="28" width="106" height="12" uuid="4ecb495b-d4d3-46d0-9d6a-5c71cd9f0492"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[1.1. O valor do curso é de R$ ]]></text>
+				<text><![CDATA[1.1. O valor do contrato de prestação de serviços da carga horária citada acima é de R$]]></text>
 			</staticText>
 			<textField pattern="#,##0.00">
-				<reportElement x="107" y="28" width="35" height="12" uuid="30558757-37cb-4c65-8036-ffcf5131f01e"/>
+				<reportElement x="315" y="45" width="35" height="12" uuid="30558757-37cb-4c65-8036-ffcf5131f01e"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VALORAULAS}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="142" y="28" width="168" height="12" uuid="897e67aa-466d-450d-a892-ca5cb83ae70e"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[que poderá ser pago em até 12 parcelas de R$ ]]></text>
-			</staticText>
 			<textField pattern="#,##0.00">
-				<reportElement x="311" y="28" width="38" height="12" uuid="776e3d9f-0f0c-4252-8bc7-597b549bf33b"/>
+				<reportElement x="518" y="45" width="38" height="12" uuid="776e3d9f-0f0c-4252-8bc7-597b549bf33b"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VALORMAXPARCELAS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="351" y="28" width="196" height="12" uuid="90e8b554-760d-4e74-9038-7502aa6117f3"/>
+				<reportElement x="0" y="54" width="191" height="12" uuid="90e8b554-760d-4e74-9038-7502aa6117f3"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[ou à vista com 5% de desconto, sendo o valor de R$]]></text>
 			</staticText>
 			<textField pattern="#,##0.00">
-				<reportElement x="0" y="38" width="36" height="12" uuid="0cb71266-2557-4309-814c-05a9efeded12"/>
+				<reportElement x="190" y="54" width="36" height="12" uuid="0cb71266-2557-4309-814c-05a9efeded12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{AULASDESCONTO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="38" y="38" width="94" height="12" uuid="a21a31f2-5b76-4b51-a6bb-de313a480f3b"/>
+				<reportElement x="226" y="54" width="94" height="12" uuid="a21a31f2-5b76-4b51-a6bb-de313a480f3b"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[. Neste caso o contratante]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="57" width="554" height="22" uuid="70be5d81-5c73-42f7-bc4c-bd1426267051"/>
+				<reportElement x="0" y="73" width="554" height="12" uuid="70be5d81-5c73-42f7-bc4c-bd1426267051"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Política de Vantagens: pagamentos efetuados do dia 01 ao dia 05 de cada mês (dias corridos) haverá um abatimento de R$ 15,00, do dia 06 ao dia 10 de cada mês (dias corridos) haverá um abatimento de R$ 10,00 no valor da parcela.]]></text>
+				<text><![CDATA[Política de Vantagens: pagamentos efetuados até o 5º dia útil de cada mês terá um abatimento de R$ 10,00 na parcela.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="78" width="555" height="122" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
+				<reportElement x="0" y="82" width="555" height="134" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[1.2. O pagamento das parcelas será efetuado na escola através de carnê.
-1.3. Pagamentos efetuados no mês seguinte do mês vigente será cobrada multa de 2% ao mês mais 0,33% ao dia.
-1.4. O não comparecimento do aluno aos atos escolares não exime o pagamento, tendo em vista a disponibilidade do serviço colocado ao contratante.
+1.3. Pagamentos efetuados no mês seguinte do mês vigente será cobrada multa de 2% ao mês mais 0,033% ao dia.
+1.4. O não comparecimento do aluno aos atos escolares não exime o pagamento.
 1.5. O aluno será considerado matriculado no curso desejado no ato da assinatura deste contrato de prestação de serviços.
 1.6. No preço do curso não estão incluídos os custos com materiais didáticos e demais taxas que serão eventualmente cobradas.
 1.7. O requerimento de rematrícula somente será deferido após certificação pela diretoria de que o Contratante esteja quite com suas obrigações financeiras do curso anterior e as previstas para o pagamento no ato da matrícula.
-1.8. Caso o Contratante tenha pago a primeira parcela do curso e desista expressamente do contrato antes do início das aulas o Contratado lhe devolverá o valor integral desta parcela, porém caso o Contratante desista após o início das aulas o Contratado devolverá 70% do valor da primeira parcela somente se o aluno não tenha assistido a nenhuma aula. 
-1.9. Ao final da vigência deste contrato a Unique se reserva ao direito de proceder aumentos em sua tabela de preços de acordo com orientação do Sindicato da Categoria ou variação de seus custos operacionais.]]></text>
+1.8. Caso o Contratante tenha pago a primeira parcela do contrato e desista expressamente do curso antes do início das aulas o Contratado lhe devolverá o valor de 50% desta parcela, porém caso o Contratante desista após o início das aulas esta parcela não será devolvida mesmo que este o aluno não tenha assistido nenhuma aula. 
+1.9. Ao final da vigência deste contrato a Unique se reserva ao direito de proceder aumentos em sua tabela de preços de acordo com orientação do Sindicato da Categoria ou variação de seus custos operacionais.
+1.10. Obedecendo as leis trabalhistas vigentes no Brasil haverá recesso escolar no mês de Julho e férias nos meses de Dezembro e Janeiro.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="199" width="555" height="12" uuid="626f7435-7d46-4810-a836-cd133f13edc0"/>
+				<reportElement x="0" y="212" width="555" height="12" uuid="626f7435-7d46-4810-a836-cd133f13edc0"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Do material didático:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="209" width="554" height="12" uuid="2720a598-9138-4914-bff1-6b7f07f99ac5"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[2. O material didático poderá ser adquirido tanto através da Unique quanto numa livraria, ficando a critério do contratante.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="219" width="282" height="12" uuid="76436f73-a0c9-4da6-ac1c-9f7d822f630e"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[2.1. Caso seja adquirido através da Unique o contratante pagará o valor de R$]]></text>
-			</staticText>
-			<textField pattern="#,##0.00">
-				<reportElement x="283" y="219" width="44" height="12" uuid="1b1ff813-f2d9-4257-b6a2-8141d11683bb"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{VALORMATERIAL}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="327" y="219" width="158" height="12" uuid="d023a994-3e94-4bcd-b5f3-21d36a4ee321"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[que poderá ser parcelado em 2 vezes de R$]]></text>
-			</staticText>
-			<textField pattern="#,##0.00">
-				<reportElement x="487" y="219" width="40" height="12" uuid="12405b0d-be18-45bb-b5df-45c1f5fef86d"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{MATERIALPARCELA}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="527" y="217" width="2" height="12" uuid="21f4be66-f8cb-42f7-a76d-66feabbe8f9f"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="228" width="554" height="64" uuid="bf5bb4df-9c7b-4e8c-bdec-33d4bff68542"/>
+				<reportElement x="0" y="259" width="554" height="64" uuid="bf5bb4df-9c7b-4e8c-bdec-33d4bff68542"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[2.2. O aluno é responsável por seu material didático, em caso de perda deverá adquirir um novo material e não será permitido frequentar as aulas sem ter o material didático.
-2.3. O Contratante deverá adquirir obrigatoriamente, ao final do estágio em curso, seu material didático para o estágio seguinte, condição esta para que o mesmo seja entregue em tempo hábil para composição das turmas, compra, transporte e entrega.
-2.4. O uso do material didático (conjunto de livros) é obrigatório. Não serão aceitos quaisquer tipos de reprodução de material didático, nos termos
-da Lei de Direitos Autorais.]]></text>
+2.3. Só será permitido frequentar as aulas sem o material didático por 30 dias, após esse período é obrigação do contratante providenciar esse material.
+2.4. O uso do material didático (conjunto de livros) é obrigatório. Não serão aceitos quaisquer tipos de reprodução de material didático como cópias, seguindo os termos da Lei de Direitos Autorais.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="315" width="555" height="12" uuid="658de013-6e37-4d38-9f1d-a18282fd73f2"/>
+				<reportElement x="0" y="332" width="555" height="12" uuid="658de013-6e37-4d38-9f1d-a18282fd73f2"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Da desistência:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="324" width="554" height="32" uuid="95822aea-3e84-48d6-982e-7dc631a26e53"/>
+				<reportElement x="0" y="340" width="554" height="44" uuid="95822aea-3e84-48d6-982e-7dc631a26e53"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[3. Caso o contratante desista do curso é sua obrigação comunicar a Unique.
-3.1. Em caso de desistência, se o contratante comunicar a Unique até o dia 10 não será cobrada a parcela do mês, porém, caso o contratante  comunicar a desistência após o dia 10 ou não comunicá-la será cobrada a parcela do mês integral.
-]]></text>
+				<text><![CDATA[3.Caso o contratante desista do curso é sua obrigação comunicar a Unique.
+3.1. Em caso de desistência, será cobrado o mês que ele comunicar a escola, a partir do próximo mês será isento do pagamento do contrato 
+3.2. É dever do contratante pagar o material didático integralmente, caso adquirido através da Unique. Não há devolução do mesmo.
+3.3. Caso o contratante tenha feito todo o curso e não renove o contrato é obrigação do mesmo arcar com as parcelas pendentes.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="375" width="555" height="12" uuid="42c6c9a7-91e9-4faf-964b-3eef7cbb2298"/>
+				<reportElement x="0" y="382" width="555" height="12" uuid="42c6c9a7-91e9-4faf-964b-3eef7cbb2298"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Das aulas:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="384" width="554" height="61" uuid="251d5b6a-5724-4e02-83d8-e03f4fb072ec"/>
+				<reportElement x="0" y="391" width="554" height="44" uuid="251d5b6a-5724-4e02-83d8-e03f4fb072ec"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[4.Nos cursos para crianças de 3 a 5 anos, as aulas serão ministradas em 2 dias de 40 minutos cada.
-4.1. Nos cursos para crianças de 6 a 10 anos, as aulas serão ministradas em 2 dias de 1 hora cada.
-4.2. Nos cursos para adolescentes Got It! as aulas serão ministradas em 2 dias de 1 hora e 15 minutos cada.
-4.3. Para as turmas de adolescentes Got It! caso haja até 4 alunos a Unique poderá reduzir a carga horária para 2 dias de 1 hora cada ou 1 dia de 2 horas.
-4.4. Caso o aluno falte não é responsabilidade da Unique repor as aulas e o conteúdo perdido.
-4.5. A frequência às aulas é fundamental para o desenvolvimento do aluno.]]></text>
+				<text><![CDATA[4. Nos cursos para crianças de 3 a 5 anos (Playtime), as aulas serão ministradas em 2 dias de 40 minutos cada.
+4.1. Nos cursos para crianças de 6 a 10 anos (Let’s Go), as aulas serão ministradas em 2 dias de 1 hora cada.
+4.2. Caso o aluno falte não é responsabilidade da Unique repor as aulas e o conteúdo perdido.
+4.3. A frequência às aulas é fundamental para o desenvolvimento do aluno.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="442" width="555" height="12" uuid="2121ccb0-0282-41d5-adf1-7a920f0fd8eb"/>
+				<reportElement x="0" y="433" width="555" height="12" uuid="2121ccb0-0282-41d5-adf1-7a920f0fd8eb"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Das turmas:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="451" width="554" height="43" uuid="64bbbd47-f7ca-43e3-bbfe-66dc062c3c57"/>
+				<reportElement x="0" y="440" width="554" height="54" uuid="64bbbd47-f7ca-43e3-bbfe-66dc062c3c57"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[5. São consideradas turmas reduzidas até 04 alunos.
-5.1 São consideradas turmas regulares de 05 alunos a 08 alunos.
+				<text><![CDATA[5. No curso Playtime as turmas poderão ter no máximo 06 alunos.
+5.1. No curso Let’s Go as turmas poderão ter no máximo 08 alunos. Caso a turma tenha de 1 a 2 alunos, a carga horária será reduzida para 1 dia de 1 hora por semana. 
 5.2. É de direito da Unique fazer mudanças de horários, junção e/ou cancelamento de grupos de acordo com as necessidades da mesma.
 5.3. O aluno poderá trocar de turma desde que haja outra do mesmo nível em que ele esteja e que esta não ultrapasse o número máximo de alunos.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="490" width="555" height="12" uuid="29742bc6-f822-4756-9d76-d5d3523328fd"/>
+				<reportElement x="0" y="491" width="555" height="12" uuid="29742bc6-f822-4756-9d76-d5d3523328fd"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Da inadimplência:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="500" width="554" height="75" uuid="353c112d-c3ef-47e7-ab3d-317f5a9e6867"/>
+				<reportElement x="0" y="501" width="554" height="71" uuid="353c112d-c3ef-47e7-ab3d-317f5a9e6867"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[6. Em caso de inadimplência, poderá a Contratada cobrar multa de 2% sobre a parcela do mês devida, juros de mora de 0,33% ao dia e atualização monetária, bem como  poderá adotar todas as providências legais de cobrança cabíveis, inclusive, inscrever o nome do  Contratante e de seu responsável legal/financeiro em cadastro ou serviços legalmente  constituídos e destinados à proteção da cobrança do crédito advindo deste contrato, valendo o  presente contrato como título executivo extrajudicial, nos termos do art. 585, II, do SCPC, reconhecendo, o Contratante, desde já, este título, como líquido, certo e exigível, ou, ainda,  qualquer tipo de cobrança prevista na legislação brasileira, independentemente de prévia notificação, podendo tais providências serem tomadas isolada, gradativa ou cumulativamente. Todas as despesas da Contratada decorrentes da(s) cobrança(s) prevista(s) neste item poderão ser cobradas do Contratante a título de reembolso. 
-]]></text>
+				<text><![CDATA[6. Em caso de inadimplência, poderá a Contratada cobrar multa de 2% sobre a parcela do mês devida, juros de mora de 0,033% ao dia e atualização monetária, bem como  poderá adotar todas as providências legais de cobrança cabíveis, inclusive, inscrever o nome do  Contratante e de seu responsável legal/financeiro em cadastro ou serviços legalmente  constituídos e destinados à proteção da cobrança do crédito advindo deste contrato, valendo o  presente contrato como título executivo extrajudicial, nos termos do art. 585, II, do SCPC, reconhecendo, o Contratante, desde já, este título, como líquido, certo e exigível, ou, ainda,  qualquer tipo de cobrança prevista na legislação brasileira, independentemente de prévia notificação, podendo tais providências serem tomadas isolada, gradativa ou cumulativamente. Todas as despesas da Contratada decorrentes da(s) cobrança(s) prevista(s) neste item poderão ser cobradas do Contratante a título de reembolso. ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="569" width="555" height="12" uuid="57ca001d-2d1a-4868-a4f6-b2ffe0ba0da7"/>
@@ -881,20 +810,19 @@ da Lei de Direitos Autorais.]]></text>
 				<text><![CDATA[Do foro:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="577" width="554" height="44" uuid="53991362-2229-46d5-8bc8-93e87b2570a6"/>
+				<reportElement x="0" y="576" width="554" height="44" uuid="53991362-2229-46d5-8bc8-93e87b2570a6"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[7. Fica eleito o foro da comarca de Matão para dirimir qualquer ação fundada no presente contrato, renunciando as partes qualquer outro que tenham por mais privilegiado que venha a ser.   
-7.1. O presente contrato é feito em duas vias, de iguais teor e forma, assinado, neste ato, pelas partes, na presença das testemunhas abaixo, para 
-]]></text>
+				<text><![CDATA[7.Fica eleito o foro da comarca de Matão para dirimir qualquer ação fundada no presente contrato, renunciando as partes qualquer outro que tenham por mais privilegiado que venha a ser.   
+7.1. O presente contrato é feito em duas vias, de iguais teor e forma, assinado, neste ato, pelas partes, na presença das testemunhas abaixo, para que se produza todos os efeitos legais.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="617" width="554" height="15" uuid="c31ec93d-c755-41af-91c8-3bcbaae63d98"/>
+				<reportElement x="0" y="619" width="554" height="15" uuid="c31ec93d-c755-41af-91c8-3bcbaae63d98"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Matão, _____ de ________________ de _______.]]></text>
+				<text><![CDATA[Matão, _____ de ________________ de 20____.]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="645" width="150" height="1" uuid="940c8e90-2d4a-4e64-a741-2bb27e4daae3">
@@ -909,73 +837,234 @@ da Lei de Direitos Autorais.]]></text>
 				</reportElement>
 			</line>
 			<image>
-				<reportElement mode="Transparent" x="35" y="651" width="50" height="33" uuid="9c76ae1d-2ab8-4576-a85f-43a9a422d8f8"/>
+				<reportElement mode="Transparent" x="468" y="620" width="50" height="33" uuid="9c76ae1d-2ab8-4576-a85f-43a9a422d8f8"/>
 				<graphicElement fill="Solid"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaCristiane.png"]]></imageExpression>
 			</image>
-			<line>
-				<reportElement x="1" y="678" width="150" height="1" uuid="c54260e9-0d03-4f3d-9f5b-cc97cea43ffe">
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="606" width="248" height="12" uuid="d2df811d-a879-408e-abe0-bae6ea2d5952"/>
-				<textElement textAlignment="Justified">
-					<font size="8.5" isBold="false"/>
-				</textElement>
-				<text><![CDATA[que se produza todos os efeitos legais.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="356" width="554" height="22" uuid="a49d99f0-da86-4812-bad6-d58f7db64f1f"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[3.2. É dever do contratante pagar o material didático integralmente, caso adquirido através da Unique. Não há devolução do mesmo.
-3.3. Caso o contratante tenha feito todo o curso e não renove o contrato é obrigação do mesmo arcar com as parcelas pendentes.]]></text>
-			</staticText>
 			<image>
-				<reportElement x="0" y="289" width="14" height="15" uuid="aab90eb2-a731-43c0-9d83-cf74514048db"/>
+				<reportElement x="0" y="309" width="14" height="15" uuid="aab90eb2-a731-43c0-9d83-cf74514048db"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/checkBox.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="0" y="301" width="14" height="15" uuid="7b4e446e-4816-4ae8-93ee-274862434753"/>
+				<reportElement x="0" y="321" width="14" height="15" uuid="7b4e446e-4816-4ae8-93ee-274862434753"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/checkBox.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="15" y="290" width="539" height="12" uuid="c219edf3-b450-44ca-9731-357956f6b801"/>
+				<reportElement x="15" y="310" width="539" height="12" uuid="c219edf3-b450-44ca-9731-357956f6b801"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[O aluno fará aquisição do material didático através da Unique.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="15" y="304" width="539" height="12" uuid="a4b04649-3e96-4f96-9c12-0b135f8c27cf"/>
+				<reportElement x="15" y="324" width="539" height="12" uuid="a4b04649-3e96-4f96-9c12-0b135f8c27cf"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[O aluno fará aquisição do material didático por meios próprios.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="4" y="289" width="10" height="12" uuid="45568877-c8e3-4ee7-86fd-7b5ba00e44d6"/>
+				<reportElement x="4" y="309" width="10" height="12" uuid="45568877-c8e3-4ee7-86fd-7b5ba00e44d6"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{vCompraEsola}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="303" width="10" height="12" uuid="5bc270f7-ad9e-4e23-804d-5a68fd6ab241"/>
+				<reportElement x="4" y="323" width="10" height="12" uuid="5bc270f7-ad9e-4e23-804d-5a68fd6ab241"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{vCompraProprio}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="421" y="624" width="120" height="32" uuid="2c917a1b-2974-4018-99bd-60e6fa225979"/>
+				<reportElement x="14" y="656" width="120" height="32" uuid="2c917a1b-2974-4018-99bd-60e6fa225979"/>
 				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaFabio.png"]]></imageExpression>
 			</image>
+			<line>
+				<reportElement x="405" y="645" width="150" height="1" uuid="88cef93d-9cf9-48a1-a180-e8a18f34f276">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="321" y="54" width="150" height="12" uuid="77f56a51-cd75-46c6-9dfb-f618c7aa8e7e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="1" y="648" width="554" height="42" uuid="e51dfeae-2930-4d29-aaf8-6ccd25397383"/>
+				<reportElement x="470" y="54" width="36" height="12" uuid="fd8adca9-72ed-4029-a27d-2e6249513579"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[optou por]]></text>
+			</staticText>
+			<textField pattern="00">
+				<reportElement x="506" y="54" width="14" height="12" uuid="58316c97-070a-4d0d-8bdf-fa21e859e089"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARCELAS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="521" y="54" width="34" height="12" uuid="c521a11c-6f4d-41fd-919c-3ae3f4cac21d"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[parcelas]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="24" y="64" width="38" height="12" uuid="880aba49-5ecc-4647-a536-c1eeb37b747c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORPARCELA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="62" y="64" width="120" height="12" uuid="9967e70e-c5af-4b5b-b0dd-a25ab6ee5b89"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, sendo a primeira a ser paga em]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="182" y="64" width="35" height="12" uuid="53af5731-2a3f-4be8-a6de-e2be7a4f58ae">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vMesIni}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="64" width="4" height="12" uuid="62b38552-feec-4ba7-857f-2956091831b9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="221" y="64" width="22" height="12" uuid="cff940ce-69f5-4e5c-b843-a38a833f43ca">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANOINI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="244" y="64" width="54" height="12" uuid="fc505bbc-d75e-4bf5-bee4-028f5cbc36f9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[finalizando em]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="64" width="37" height="12" uuid="7645391f-176b-4002-90a0-ed5a6062c74e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vMesFim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="64" width="4" height="12" uuid="b8fcf721-da02-41f0-b3c2-5fdd2b753ae8"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="64" width="23" height="12" uuid="9b2c735b-2a1b-44a8-8a8e-a2571edc2036">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANOFIM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="363" y="64" width="4" height="12" uuid="120c67bf-4c43-4a14-99a5-10a00c728e5d"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="16" width="169" height="12" uuid="545877a0-4484-4b20-80e2-8b8d54bbbee0"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ano escolar de cada aluno.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="25" width="359" height="12" uuid="059e7445-17a7-4dbd-bce5-89bffdb2e609"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1. A carga horária deste contrato dependerá do nível cursado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="34" width="554" height="12" uuid="e70cbaef-624a-4370-b4cc-c00dfa595c73"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Curso: Playtime: carga horária de 50 horas                                                                Curso: Let’s Go: carga horária de 76 horas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="45" width="168" height="12" uuid="50ac6718-d36a-4222-97da-0e6cae314433"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[que poderá ser pago em até 12 parcelas de R$ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="22" height="12" uuid="1ae8ed82-f5cc-4ef6-a2c3-c756678019b1"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[de R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="222" width="554" height="21" uuid="e5f9850a-4f66-4413-b112-0ed5fad9b2ef"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[2. O material didático poderá ser adquirido na Unique ou por meios próprios, através de sites ou livrarias. Não será permitido o uso de material previamente utilizado por outro aluno. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="240" width="282" height="12" uuid="6635a9b3-cb3b-470a-ad5d-68e786f516c0"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[2.1. Caso seja adquirido através da Unique o contratante pagará o valor de R$]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="283" y="240" width="44" height="12" uuid="b169f273-ffed-48ad-9bf2-29e9c6678842"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORMATERIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="240" width="224" height="12" uuid="15b71600-ddba-48b8-a7b4-b7781d98e5db"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[que poderá ser parcelado em até 2x (entrada+ 30 dias) ou em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="250" width="224" height="12" uuid="4d1c5cdb-1934-4c79-9a83-2ac0bb1a5596"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[até 4x (entrada + 3x) no cartão ou cheque pré.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="648" width="554" height="42" uuid="e51dfeae-2930-4d29-aaf8-6ccd25397383"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
@@ -985,117 +1074,11 @@ da Lei de Direitos Autorais.]]></text>
 Testemunha 1 									                                            Testemunha 2]]></text>
 			</staticText>
 			<line>
-				<reportElement x="405" y="645" width="150" height="1" uuid="88cef93d-9cf9-48a1-a180-e8a18f34f276">
+				<reportElement x="1" y="678" width="150" height="1" uuid="c54260e9-0d03-4f3d-9f5b-cc97cea43ffe">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
-			<textField>
-				<reportElement x="133" y="38" width="150" height="12" uuid="77f56a51-cd75-46c6-9dfb-f618c7aa8e7e"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="283" y="38" width="36" height="12" uuid="fd8adca9-72ed-4029-a27d-2e6249513579"/>
-				<textElement textAlignment="Justified">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[optou por]]></text>
-			</staticText>
-			<textField pattern="00">
-				<reportElement x="319" y="38" width="14" height="12" uuid="58316c97-070a-4d0d-8bdf-fa21e859e089"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PARCELAS}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="334" y="38" width="54" height="12" uuid="c521a11c-6f4d-41fd-919c-3ae3f4cac21d"/>
-				<textElement textAlignment="Justified">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[parcelas de R$ ]]></text>
-			</staticText>
-			<textField pattern="#,##0.00">
-				<reportElement x="388" y="38" width="38" height="12" uuid="880aba49-5ecc-4647-a536-c1eeb37b747c"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{VALORPARCELA}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="426" y="38" width="128" height="12" uuid="9967e70e-c5af-4b5b-b0dd-a25ab6ee5b89"/>
-				<textElement textAlignment="Justified">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[, sendo a primeira a ser paga em]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="47" width="35" height="12" uuid="53af5731-2a3f-4be8-a6de-e2be7a4f58ae">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{vMesIni}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="35" y="47" width="4" height="12" uuid="62b38552-feec-4ba7-857f-2956091831b9"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[/]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="39" y="47" width="22" height="12" uuid="cff940ce-69f5-4e5c-b843-a38a833f43ca">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ANOINI}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="62" y="47" width="54" height="12" uuid="fc505bbc-d75e-4bf5-bee4-028f5cbc36f9"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[finalizando em]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="117" y="47" width="37" height="12" uuid="7645391f-176b-4002-90a0-ed5a6062c74e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{vMesFim}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="155" y="47" width="4" height="12" uuid="b8fcf721-da02-41f0-b3c2-5fdd2b753ae8"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[/]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="158" y="47" width="23" height="12" uuid="9b2c735b-2a1b-44a8-8a8e-a2571edc2036">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ANOFIM}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="181" y="47" width="4" height="12" uuid="120c67bf-4c43-4a14-99a5-10a00c728e5d"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[.]]></text>
-			</staticText>
 		</band>
 	</detail>
 </jasperReport>
