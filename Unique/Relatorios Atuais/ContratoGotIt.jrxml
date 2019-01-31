@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2019-01-31T16:12:06 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="AlunoID" class="java.lang.Long">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select a.ID, a.NOME, a.ativo, a.ENDERECO, a.NUMERO, a.BAIRRO, c.DESCRICAO,
+        a.CIDADE, a.ESTADO, a.CEP, a.EMAIL, a.TELEFONE, a.CELULAR, 
+        a.CPF, a.RG, b.NOME as respNome, b.CPF as respCpf, b.RG as respRg, b.TELEFONE as respTel, b.CELULAR as respCelular,
+        c.CODIGO, (c.MINUTOSSEMANAIS / 60) as horasSemanais, (c.MINUTOSSEMANAIS - ((c.MINUTOSSEMANAIS / 60)*60)) as minutosSemanais,
+        (e.VALORAULAS / 12) as VALORMAXPARCELAS,
+        c.QTDHORAS, c.DURACAO, e.VALORAULAS, (e.VALORAULAS * 0.95) as aulasdesconto, e.VALORMATERIAL, (e.VALORMATERIAL / 2) as materialparcela, 
+        e.QTDEPARCELASAULAS as parcelas, (e.VALORAULAS / e.QTDEPARCELASAULAS) as valorparcela,
+        d.descontoMaior, d.descontoMenor, d.diaLimiteDescontoMaior, d.diaLimiteDescontoMenor, e.MATERIALESCOLA as materialDaEscola,
+        e.mesini, e.anoini, e.mesfim, e.anofim,
+        CASE when DATEDIFF(YEAR, a.NASCIMENTO, CURRENT_DATE) >= 18 then
+        	a.NOME
+        else
+        	b.NOME
+        end as CONTRATANTE
+from aluno a
+left join RESPONSAVEL b on a.ID = b.ALUNO_ID
+inner join nivel c on a.NIVELATUAL_ID = c.ID
+inner join matricula e on a.ID = e.ALUNO_ID and c.ID = e.NIVEL_ID
+inner join config d on 1 = 1
+where a.ID = $P{AlunoID}
+AND a.ATIVO = 1]]>
+	</queryString>
+	<field name="ID" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="NOME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="ATIVO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ATIVO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="ENDERECO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ENDERECO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="NUMERO" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="BAIRRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="BAIRRO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="DESCRICAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESCRICAO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
+	</field>
+	<field name="CIDADE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CIDADE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="CEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CEP"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="TELEFONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TELEFONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="CELULAR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CELULAR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="CPF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CPF"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="RG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RG"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
+	</field>
+	<field name="RESPNOME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RESPNOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
+	</field>
+	<field name="RESPCPF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RESPCPF"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
+	</field>
+	<field name="RESPRG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RESPRG"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
+	</field>
+	<field name="RESPTEL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RESPTEL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
+	</field>
+	<field name="RESPCELULAR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RESPCELULAR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
+	</field>
+	<field name="CODIGO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODIGO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
+	</field>
+	<field name="HORASSEMANAIS" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="HORASSEMANAIS"/>
+	</field>
+	<field name="MINUTOSSEMANAIS" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="MINUTOSSEMANAIS"/>
+	</field>
+	<field name="VALORMAXPARCELAS" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="VALORMAXPARCELAS"/>
+	</field>
+	<field name="QTDHORAS" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="QTDHORAS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
+	</field>
+	<field name="DURACAO" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="DURACAO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
+	</field>
+	<field name="VALORAULAS" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="VALORAULAS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="AULASDESCONTO" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="AULASDESCONTO"/>
+	</field>
+	<field name="VALORMATERIAL" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="VALORMATERIAL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="MATERIALPARCELA" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="MATERIALPARCELA"/>
+	</field>
+	<field name="PARCELAS" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="PARCELAS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="VALORPARCELA" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="VALORPARCELA"/>
+	</field>
+	<field name="DESCONTOMAIOR" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="DESCONTOMAIOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
+	</field>
+	<field name="DESCONTOMENOR" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="DESCONTOMENOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
+	</field>
+	<field name="DIALIMITEDESCONTOMAIOR" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DIALIMITEDESCONTOMAIOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
+	</field>
+	<field name="DIALIMITEDESCONTOMENOR" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DIALIMITEDESCONTOMENOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
+	</field>
+	<field name="MATERIALDAESCOLA" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MATERIALDAESCOLA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="MESINI" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MESINI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="ANOINI" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ANOINI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="MESFIM" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MESFIM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="ANOFIM" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ANOFIM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
+	</field>
+	<field name="CONTRATANTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CONTRATANTE"/>
+	</field>
+	<variable name="Desconto1" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{VALORPARCELA} - $F{DESCONTOMAIOR}]]></variableExpression>
+	</variable>
+	<variable name="Desconto2" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{VALORPARCELA} - $F{DESCONTOMENOR}]]></variableExpression>
+	</variable>
+	<variable name="diaInicioDescMen" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{DIALIMITEDESCONTOMAIOR} + 1]]></variableExpression>
+	</variable>
+	<variable name="vCompraEsola" class="java.lang.String">
+		<variableExpression><![CDATA[$F{MATERIALDAESCOLA} == 1 ? "X" : ""]]></variableExpression>
+	</variable>
+	<variable name="vCompraProprio" class="java.lang.String">
+		<variableExpression><![CDATA[$F{MATERIALDAESCOLA} == 0 ? "X" : ""]]></variableExpression>
+	</variable>
+	<variable name="vMesIni" class="java.lang.String">
+		<variableExpression><![CDATA[$F{MESINI} == 1 ? "janeiro" : $F{MESINI} == 2 ? "fevereiro" :$F{MESINI} == 3 ? "março" : $F{MESINI} == 4 ? "abril" : $F{MESINI} == 5 ? "maio" : $F{MESINI} == 6 ? "junho" : $F{MESINI} == 7 ? "julho" : $F{MESINI} == 8 ? "agosto" : $F{MESINI} == 9 ? "setembro" : $F{MESINI} == 10 ? "outubro" : $F{MESINI} == 11 ? "novembro" : "dezembro"]]></variableExpression>
+	</variable>
+	<variable name="vMesFim" class="java.lang.String">
+		<variableExpression><![CDATA[$F{MESFIM} == 1 ? "janeiro" : $F{MESFIM} == 2 ? "fevereiro" :$F{MESFIM} == 3 ? "março" : $F{MESFIM} == 4 ? "abril" : $F{MESFIM} == 5 ? "maio" : $F{MESFIM} == 6 ? "junho" : $F{MESFIM} == 7 ? "julho" : $F{MESFIM} == 8 ? "agosto" : $F{MESFIM} == 9 ? "setembro" : $F{MESFIM} == 10 ? "outubro" : $F{MESFIM} == 11 ? "novembro" : "dezembro"]]></variableExpression>
+	</variable>
+	<group name="ID">
+		<groupExpression><![CDATA[$F{ID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="97" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="-2" y="78" width="559" height="9" uuid="8110d5bb-69c1-4c5e-8a18-b18342a8093b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-2" y="69" width="559" height="9" uuid="4d7778c2-a31b-4c06-954a-84bbec6fa836">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-2" y="60" width="559" height="9" uuid="1c9e517f-2d11-48d1-9290-5e2fa57201fe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-2" y="51" width="559" height="9" uuid="a87f013f-d577-4c6a-abd8-4058687b3cce">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-2" y="42" width="559" height="9" uuid="ec16d6af-6655-46b2-9582-c42cca890bed">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-2" y="33" width="559" height="9" uuid="7dd704fd-08d5-41ee-afec-a9012e3c14fc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="32" width="30" height="11" uuid="33c87047-032f-4701-8c2c-df937ec8b2f5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="32" width="523" height="11" uuid="52d6065c-3200-4245-bb7f-3abc97b9706a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="41" width="47" height="11" uuid="6780a401-d74a-42e9-9f72-02950ffe61d4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="48" y="41" width="273" height="11" uuid="c884020b-77f8-49ae-acd3-6c35e5eb56d8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENDERECO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="41" width="15" height="11" uuid="cb533cc6-f684-43db-a491-4a4bc8963d02">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="41" width="25" height="11" uuid="85316ab6-c488-4d63-8433-56287e7b3a27">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="41" width="30" height="11" uuid="85894692-298b-4f02-9d14-54826bf611fd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Bairro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="41" width="145" height="11" uuid="250b6d38-e404-421e-b1ef-1fcb1534cd40">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BAIRRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="50" width="36" height="11" uuid="4210da05-5338-4894-b263-d69af8469906">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cidade:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="50" width="145" height="11" uuid="7375ebf5-3de3-4d32-bc07-b2b0ce128516">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CIDADE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="185" y="50" width="18" height="11" uuid="ab326f73-e58b-4a6d-ac8b-39f030ca31ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[UF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="203" y="50" width="29" height="11" uuid="61c5bf21-4b63-4013-b777-3d2aa63b1533">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="235" y="50" width="25" height="11" uuid="d5f0311b-a9c5-49b1-ab6b-d409cc5d6286">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CEP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="50" width="63" height="11" uuid="250f01fd-728f-4ff1-8b2d-ba6fc3dda02d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CEP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="50" width="34" height="11" uuid="c270702e-0f8f-4ec6-bee3-d34dea29f342">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="50" width="195" height="11" uuid="271c9f9a-68cc-4733-8d82-662f662f9673">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="59" width="44" height="11" uuid="5841aa9d-bc45-4f85-8a18-909fdac23e94">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="59" width="86" height="11" uuid="811a98de-e4ef-4b61-9e10-16d69b8e465b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="59" width="36" height="11" uuid="965107a5-664a-428b-894e-ffe26f5618c7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="59" width="85" height="11" uuid="ec4c5c0b-3d23-4d2a-b4da-3bfe62c3f85a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CELULAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="59" width="24" height="11" uuid="2b93385e-c15d-44eb-96e0-2a685f0ef1bb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="59" width="85" height="11" uuid="6a945cfa-6076-43b2-9249-d02e9f82e1a3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CPF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="440" y="59" width="19" height="11" uuid="a209e920-70bc-450b-a481-7d447335f7e9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="59" width="95" height="11" uuid="fd822bf6-2af2-4580-8bbb-616829011251">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="68" width="62" height="11" uuid="5ab2ddd0-ba2e-46c5-9e7b-8ce58dcaf37a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Responsável:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="68" width="24" height="11" uuid="a26cd872-7f85-4aa0-9fde-040cdfc31aec">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="68" width="19" height="11" uuid="7b0b1bed-c363-422c-badf-e4f04e3455d2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="63" y="68" width="260" height="11" uuid="c18bd603-72d7-4fdb-80f9-64d5c5bcfa34">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESPNOME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="349" y="68" width="84" height="11" uuid="9e085aec-4e87-4317-a181-3a8bd27ed8ee">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESPCPF}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="460" y="68" width="95" height="11" uuid="5d0b8194-2c36-4f3c-a733-a268c62b339f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESPRG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="77" width="113" height="11" uuid="91f5c6cb-09ad-4a38-87d5-3b832a3948e7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefone do responsável:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="114" y="77" width="148" height="11" uuid="272b9474-ef0c-497e-a62c-209307897bf3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESPTEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="77" width="106" height="11" uuid="4ef87590-ad92-4dc5-9163-e0b54d3266d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Celular do responsável:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="369" y="77" width="186" height="11" uuid="8dedd793-908a-4a00-af25-27ed3ca4ee2a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESPCELULAR}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-2" y="0" width="559" height="33" uuid="497e2f55-af09-48e3-a0da-4df9e1703c27"/>
+			</rectangle>
+			<image hAlign="Right">
+				<reportElement mode="Transparent" x="33" y="1" width="109" height="31" uuid="d018f444-54f6-4b0a-ad2d-0f31cb4e943a"/>
+				<imageExpression><![CDATA["C:/Banco/Relatorios/logoUnique.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Transparent" x="180" y="1" width="370" height="32" uuid="9c0aa1c7-a6cb-49e2-b7a8-19a979297e89"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="0.8" firstLineIndent="0"/>
+				</textElement>
+				<text><![CDATA[Unique Instituto de Idiomas S/S Ltda. – ME      Fone: (16) 3384-7741
+Rua José Bonifácio, 731 – Centro – Cep: 15.990-040 – Matão-SP
+CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-2" y="87" width="559" height="9" uuid="4c9413c7-7024-4400-93ce-e38fd6b3934d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="86" width="32" height="11" uuid="d8682ed8-829a-49db-b9dc-3d2c35b88045">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Curso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="86" width="26" height="11" uuid="2ac1f523-5677-4857-9df3-b7426d72a230">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Livro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="34" y="86" width="225" height="11" uuid="0f30f113-157a-440a-820c-4169d1aa8bf7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="86" width="264" height="11" uuid="aae256da-944a-406d-b390-3e329fa2ac23">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="702" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-2" y="-1" width="559" height="691" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="-1" width="555" height="12" uuid="b87ec5ef-a768-4fb2-a3e6-e039906bb82a"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contrato de prestação de serviços:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="9" width="447" height="12" uuid="b707ded2-19e4-424d-bf3b-66700f2e474b"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Esse contrato destina-se a prestação de serviços de aula de inglês para o curso de adolescentes. A duração do contrato é de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="447" y="9" width="14" height="12" uuid="3272c2eb-95b0-4543-9dc7-7d3dc81098dc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DURACAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="462" y="9" width="38" height="12" uuid="b9836862-6583-44f5-b8f3-4a9d24645309"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[meses.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="315" height="12" uuid="4ecb495b-d4d3-46d0-9d6a-5c71cd9f0492"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1.1. O valor do contrato de prestação de serviços da carga horária citada acima é de R$]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="315" y="42" width="35" height="12" uuid="30558757-37cb-4c65-8036-ffcf5131f01e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORAULAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="518" y="42" width="38" height="12" uuid="776e3d9f-0f0c-4252-8bc7-597b549bf33b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORMAXPARCELAS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="52" width="191" height="12" uuid="90e8b554-760d-4e74-9038-7502aa6117f3"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ou à vista com 5% de desconto, sendo o valor de R$]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="190" y="52" width="36" height="12" uuid="0cb71266-2557-4309-814c-05a9efeded12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AULASDESCONTO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="226" y="52" width="94" height="12" uuid="a21a31f2-5b76-4b51-a6bb-de313a480f3b"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[. Neste caso o contratante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="73" width="555" height="141" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Política de Vantagens: pagamentos efetuados até o 5º dia útil de cada mês terá um abatimento de R$ 10,00 na parcela.
+1.2. O pagamento das parcelas será efetuado na escola através de carnê.
+1.3. Pagamentos efetuados no mês seguinte do mês vigente será cobrada multa de 2% ao mês mais 0,033% ao dia.
+1.4. O não comparecimento do aluno aos atos escolares não exime o pagamento.
+1.5. O aluno será considerado matriculado no curso desejado no ato da assinatura deste contrato de prestação de serviços.
+1.6. No preço do curso não estão incluídos os custos com materiais didáticos e demais taxas que serão eventualmente cobradas.
+1.7. O requerimento de rematrícula somente será deferido após certificação pela diretoria de que o Contratante esteja quite com suas obrigações financeiras do curso anterior e as previstas para o pagamento no ato da matrícula.
+1.8. Caso o Contratante tenha pago a primeira parcela do contrato e desista expressamente do curso antes do início das aulas o Contratado lhe devolverá o valor de 50% desta parcela, porém caso o Contratante desista após o início das aulas esta parcela não será devolvida mesmo que este o aluno não tenha assistido a nenhuma aula. 
+1.9. Ao final da vigência deste contrato a Unique se reserva ao direito de proceder aumentos em sua tabela de preços de acordo com orientação do Sindicato da Categoria ou variação de seus custos operacionais.
+1.10. Obedecendo as leis trabalhistas vigentes no Brasil haverá recesso escolar no mês de Julho e férias nos meses de Dezembro e Janeiro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="214" width="555" height="12" uuid="626f7435-7d46-4810-a836-cd133f13edc0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Do material didático:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="263" width="554" height="51" uuid="bf5bb4df-9c7b-4e8c-bdec-33d4bff68542"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[2.2. O aluno é responsável por seu material didático, em caso de perda deverá adquirir um novo material e não será permitido frequentar as aulas sem ter o material didático.
+2.3. Só será permitido frequentar as aulas sem o material didático por 30 dias, após esse período é obrigação do contratante providenciar esse material.
+2.4. O uso do material didático (conjunto de livros) é obrigatório. Não serão aceitos quaisquer tipos de reprodução de material didático como cópias, seguindo os termos da Lei de Direitos Autorais.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="338" width="555" height="12" uuid="658de013-6e37-4d38-9f1d-a18282fd73f2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Da desistência:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="348" width="554" height="42" uuid="95822aea-3e84-48d6-982e-7dc631a26e53"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[3.Caso o contratante desista do curso é sua obrigação comunicar a Unique.
+3.1. Em caso de desistência, será cobrado o mês que ele comunicar a escola, a partir do próximo mês será isento do pagamento do contrato. 
+3.2. É dever do contratante pagar o material didático integralmente, caso adquirido através da Unique. Não há devolução do mesmo.
+3.3. Caso o contratante tenha feito todo o curso e não renove o contrato é obrigação do mesmo arcar com as parcelas pendentes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="388" width="555" height="12" uuid="42c6c9a7-91e9-4faf-964b-3eef7cbb2298"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Das aulas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="397" width="554" height="51" uuid="251d5b6a-5724-4e02-83d8-e03f4fb072ec"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[4. Nos cursos para adolescentes Got It! de turma regulares, as aulas serão ministradas em 2 dias de 1 hora e 15 minutos cada.
+4.3. Para os adolescentes do Got It! de turmas reduzidas, as aulas serão ministradas em 2 dias de 1 hora cada ou 1 dia de 2 horas.
+4.1. Caso a turma tenha de 1 a 2 alunos a carga horária será de 1 hora por semana.
+4.3. Caso o aluno falte não é responsabilidade da Unique repor as aulas e o conteúdo perdido.
+4.4. A frequência às aulas é fundamental para o desenvolvimento do aluno.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="447" width="555" height="12" uuid="2121ccb0-0282-41d5-adf1-7a920f0fd8eb"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Das turmas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="457" width="554" height="32" uuid="64bbbd47-f7ca-43e3-bbfe-66dc062c3c57"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[5. São consideradas turmas reduzidas de 03 a 04 alunos e turmas regulares de 05 alunos a 08 alunos. 
+5.1. É de direito da Unique fazer mudanças de horários, junção e/ou cancelamento de grupos de acordo com as necessidades da mesma.
+5.2. O aluno poderá trocar de turma desde que haja outra do mesmo nível em que ele esteja e que esta não ultrapasse o número máximo de alunos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="487" width="555" height="12" uuid="29742bc6-f822-4756-9d76-d5d3523328fd"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Da inadimplência:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="497" width="554" height="71" uuid="353c112d-c3ef-47e7-ab3d-317f5a9e6867"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[6. Em caso de inadimplência, poderá a Contratada cobrar multa de 2% sobre a parcela do mês devida, juros de mora de 0,033% ao dia e atualização monetária, bem como  poderá adotar todas as providências legais de cobrança cabíveis, inclusive, inscrever o nome do  Contratante e de seu responsável legal/financeiro em cadastro ou serviços legalmente  constituídos e destinados à proteção da cobrança do crédito advindo deste contrato, valendo o  presente contrato como título executivo extrajudicial, nos termos do art. 585, II, do SCPC, reconhecendo, o Contratante, desde já, este título, como líquido, certo e exigível, ou, ainda,  qualquer tipo de cobrança prevista na legislação brasileira, independentemente de prévia notificação, podendo tais providências serem tomadas isolada, gradativa ou cumulativamente. Todas as despesas da Contratada decorrentes da(s) cobrança(s) prevista(s) neste item poderão ser cobradas do Contratante a título de reembolso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="566" width="555" height="12" uuid="57ca001d-2d1a-4868-a4f6-b2ffe0ba0da7"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Do foro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="576" width="554" height="44" uuid="53991362-2229-46d5-8bc8-93e87b2570a6"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[7. Fica eleito o foro da comarca de Matão para dirimir qualquer ação fundada no presente contrato, renunciando as partes qualquer outro que tenham por mais privilegiado que venha a ser.   
+7.1. O presente contrato é feito em duas vias, de iguais teor e forma, assinado, neste ato, pelas partes, na presença das testemunhas abaixo, para que se produza todos os efeitos legais.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="619" width="554" height="15" uuid="c31ec93d-c755-41af-91c8-3bcbaae63d98"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Matão, _____ de ________________ de 20____.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="645" width="150" height="1" uuid="940c8e90-2d4a-4e64-a741-2bb27e4daae3">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="405" y="678" width="150" height="1" uuid="392a2ea5-e859-4fad-bc00-1e4458c5b492">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement mode="Transparent" x="468" y="620" width="50" height="33" uuid="9c76ae1d-2ab8-4576-a85f-43a9a422d8f8"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaCristiane.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="313" width="14" height="15" uuid="aab90eb2-a731-43c0-9d83-cf74514048db"/>
+				<imageExpression><![CDATA["C:/Banco/Relatorios/checkBox.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="325" width="14" height="15" uuid="7b4e446e-4816-4ae8-93ee-274862434753"/>
+				<imageExpression><![CDATA["C:/Banco/Relatorios/checkBox.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="15" y="314" width="539" height="12" uuid="c219edf3-b450-44ca-9731-357956f6b801"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[O aluno fará aquisição do material didático através da Unique.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="328" width="539" height="12" uuid="a4b04649-3e96-4f96-9c12-0b135f8c27cf"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[O aluno fará aquisição do material didático por meios próprios.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="313" width="10" height="12" uuid="45568877-c8e3-4ee7-86fd-7b5ba00e44d6"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vCompraEsola}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="327" width="10" height="12" uuid="5bc270f7-ad9e-4e23-804d-5a68fd6ab241"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vCompraProprio}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="14" y="656" width="120" height="32" uuid="2c917a1b-2974-4018-99bd-60e6fa225979"/>
+				<imageExpression><![CDATA["C:/Banco/Relatorios/assinaturaFabio.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="405" y="645" width="150" height="1" uuid="88cef93d-9cf9-48a1-a180-e8a18f34f276">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="321" y="52" width="150" height="12" uuid="77f56a51-cd75-46c6-9dfb-f618c7aa8e7e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="470" y="52" width="36" height="12" uuid="fd8adca9-72ed-4029-a27d-2e6249513579"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[optou por]]></text>
+			</staticText>
+			<textField pattern="00">
+				<reportElement x="506" y="52" width="14" height="12" uuid="58316c97-070a-4d0d-8bdf-fa21e859e089"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARCELAS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="521" y="52" width="34" height="12" uuid="c521a11c-6f4d-41fd-919c-3ae3f4cac21d"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[parcelas]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="24" y="63" width="38" height="12" uuid="880aba49-5ecc-4647-a536-c1eeb37b747c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORPARCELA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="62" y="63" width="120" height="12" uuid="9967e70e-c5af-4b5b-b0dd-a25ab6ee5b89"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, sendo a primeira a ser paga em]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="182" y="63" width="35" height="12" uuid="53af5731-2a3f-4be8-a6de-e2be7a4f58ae">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vMesIni}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="63" width="4" height="12" uuid="62b38552-feec-4ba7-857f-2956091831b9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="221" y="63" width="22" height="12" uuid="cff940ce-69f5-4e5c-b843-a38a833f43ca">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANOINI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="244" y="63" width="54" height="12" uuid="fc505bbc-d75e-4bf5-bee4-028f5cbc36f9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[finalizando em]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="63" width="37" height="12" uuid="7645391f-176b-4002-90a0-ed5a6062c74e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vMesFim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="63" width="4" height="12" uuid="b8fcf721-da02-41f0-b3c2-5fdd2b753ae8"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="63" width="23" height="12" uuid="9b2c735b-2a1b-44a8-8a8e-a2571edc2036">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANOFIM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="363" y="63" width="4" height="12" uuid="120c67bf-4c43-4a14-99a5-10a00c728e5d"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="359" height="12" uuid="059e7445-17a7-4dbd-bce5-89bffdb2e609"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1. A carga horária deste contrato dependerá do número de alunos de cada turma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="31" width="554" height="12" uuid="e70cbaef-624a-4370-b4cc-c00dfa595c73"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Turmas regulares: carga horária de 95 horas.                                                        Turmas reduzidas: carga horária de 76 horas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="42" width="168" height="12" uuid="50ac6718-d36a-4222-97da-0e6cae314433"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[que poderá ser pago em até 12 parcelas de R$ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="22" height="12" uuid="1ae8ed82-f5cc-4ef6-a2c3-c756678019b1"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[de R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="223" width="554" height="21" uuid="e5f9850a-4f66-4413-b112-0ed5fad9b2ef"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[2. O material didático poderá ser adquirido na Unique ou por meios próprios, através de sites ou livrarias. Não será permitido o uso de material previamente utilizado por outro aluno. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="242" width="282" height="12" uuid="6635a9b3-cb3b-470a-ad5d-68e786f516c0"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[2.1. Caso seja adquirido através da Unique o contratante pagará o valor de R$]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="283" y="242" width="44" height="12" uuid="b169f273-ffed-48ad-9bf2-29e9c6678842"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORMATERIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="242" width="224" height="12" uuid="15b71600-ddba-48b8-a7b4-b7781d98e5db"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[que poderá ser parcelado em até 2x (entrada+ 30 dias) ou em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="253" width="224" height="12" uuid="4d1c5cdb-1934-4c79-9a83-2ac0bb1a5596"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[até 4x (entrada + 3x) no cartão ou cheque pré.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="648" width="554" height="42" uuid="e51dfeae-2930-4d29-aaf8-6ccd25397383"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contratante 								                              		           Contratado
+ 		
+					
+Testemunha 1 									                                            Testemunha 2]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="678" width="150" height="1" uuid="c54260e9-0d03-4f3d-9f5b-cc97cea43ffe">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
