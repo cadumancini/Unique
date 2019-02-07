@@ -81,6 +81,9 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtValorPagoMaterial.setDocument(new JTextFieldLimit(8, false));
         txtValorPagoMaterial.setText("0.000,00");
         
+        txtDiaVencto.setDocument(new JTextFieldLimit(2, false));
+        txtDiaVencto.setText("");
+        
         //Escondendo alguns campos:
         txtNroIdentCheque.setEnabled(false);
         txtNroIdentCheque.setEnabled(false);
@@ -181,6 +184,8 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtMesAnoFim = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         txtBoxQtdeParcelas = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtDiaVencto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Matrícula de Aluno VIP");
@@ -421,7 +426,7 @@ public class MatriculaVip extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtMesAnoFim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMesAnoFim.setNextFocusableComponent(txtBoxQtdAulas);
+        txtMesAnoFim.setNextFocusableComponent(txtDiaVencto);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Quantidade de Parcelas:");
@@ -451,6 +456,22 @@ public class MatriculaVip extends javax.swing.JFrame {
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBoxQtdeParcelasKeyTyped(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setText("Dia do Vencimento do Boleto:");
+
+        txtDiaVencto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDiaVencto.setNextFocusableComponent(txtBoxQtdAulas);
+        txtDiaVencto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDiaVenctoFocusGained(evt);
+            }
+        });
+        txtDiaVencto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaVenctoKeyTyped(evt);
             }
         });
 
@@ -504,16 +525,18 @@ public class MatriculaVip extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMesAnoIni, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 98, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -536,7 +559,7 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtBoxVlrMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -553,6 +576,10 @@ public class MatriculaVip extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -792,6 +819,15 @@ public class MatriculaVip extends javax.swing.JFrame {
             salvou = false;
             return;
         }
+        
+        int diaVencto = 0;
+        try{
+            diaVencto = Integer.parseInt(txtDiaVencto.getText());
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Verifique o dia informado para Vencimento do Boleto!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtDiaVencto.requestFocusInWindow();
+            return;
+        }
 
         if(JOptionPane.showConfirmDialog(this, "Confirma matricula do aluno(a) " + aluno.getNome() + ", no nível " + aluno.getNivelAtual().getCodigo() + "?", "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             String[] mesAnoIni = txtMesAnoIni.getText().split("/");
@@ -817,6 +853,7 @@ public class MatriculaVip extends javax.swing.JFrame {
             matricula.setAnoIni(anoIni);
             matricula.setMesFim(mesFim);
             matricula.setAnoFim(anoFim);
+            matricula.setDiaVenctoBoleto(diaVencto);
 
             //Buscando o valor da aula extra:
             String valorAulaExtra = txtBoxValorAulaExtra.getText();
@@ -1057,6 +1094,18 @@ public class MatriculaVip extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBoxQtdeParcelasKeyTyped
 
+    private void txtDiaVenctoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaVenctoFocusGained
+        txtDiaVencto.selectAll();
+    }//GEN-LAST:event_txtDiaVenctoFocusGained
+
+    private void txtDiaVenctoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaVenctoKeyTyped
+        if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
+            (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
+            (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
+            (evt.getKeyChar() == '9')))
+    return;
+    }//GEN-LAST:event_txtDiaVenctoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1106,6 +1155,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1122,6 +1172,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtBoxQtdeParcelas;
     private javax.swing.JFormattedTextField txtBoxValorAulaExtra;
     private javax.swing.JFormattedTextField txtBoxVlrMensalidade;
+    private javax.swing.JTextField txtDiaVencto;
     private javax.swing.JFormattedTextField txtHorasSemanais;
     private javax.swing.JFormattedTextField txtMesAno;
     private javax.swing.JFormattedTextField txtMesAnoFim;
