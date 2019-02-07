@@ -61,6 +61,9 @@ public class GerarMensalidades extends javax.swing.JFrame {
         txtValorPagoMaterial.setDocument(new JTextFieldLimit(8, false));
         txtValorPagoMaterial.setText("0.000,00");
         
+        txtDiaVencto.setDocument(new JTextFieldLimit(2, false));
+        txtDiaVencto.setText("");
+        
         comboMaterialEscola.addActionListener((ActionEvent e) -> {
             MudouItemComboBox(e); 
         });
@@ -543,8 +546,8 @@ public class GerarMensalidades extends javax.swing.JFrame {
                     .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNroIdentCheque)
@@ -620,6 +623,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
             diaVencto = Integer.parseInt(txtDiaVencto.getText());
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, "Verifique o dia informado para Vencimento do Boleto!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtDiaVencto.requestFocusInWindow();
             return;
         }
         
