@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2019-01-31T16:06:48 -->
+<!-- 2019-02-07T09:58:06 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -22,7 +22,7 @@
         c.QTDHORAS, c.DURACAO, e.VALORAULAS, (e.VALORAULAS * 0.95) as aulasdesconto, e.VALORMATERIAL, (e.VALORMATERIAL / 2) as materialparcela, 
         e.QTDEPARCELASAULAS as parcelas, (e.VALORAULAS / e.QTDEPARCELASAULAS) as valorparcela,
         d.descontoMaior, d.descontoMenor, d.diaLimiteDescontoMaior, d.diaLimiteDescontoMenor, e.MATERIALESCOLA as materialDaEscola,
-        e.mesini, e.anoini, e.mesfim, e.anofim,
+        e.mesini, e.anoini, e.mesfim, e.anofim, e.diavenctoboleto,
         CASE when DATEDIFF(YEAR, a.NASCIMENTO, CURRENT_DATE) >= 18 then
         	a.NOME
         else
@@ -36,167 +36,49 @@ inner join config d on 1 = 1
 where a.ID = $P{AlunoID}
 AND a.ATIVO = 1]]>
 	</queryString>
-	<field name="ID" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="ID"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="NOME" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="ATIVO" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="ATIVO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="ENDERECO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="ENDERECO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="NUMERO" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="NUMERO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="BAIRRO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="BAIRRO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="DESCRICAO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="DESCRICAO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
-	</field>
-	<field name="CIDADE" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CIDADE"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="ESTADO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="CEP" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CEP"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="EMAIL" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="TELEFONE" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="TELEFONE"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="CELULAR" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CELULAR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="CPF" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CPF"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="RG" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RG"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ALUNO"/>
-	</field>
-	<field name="RESPNOME" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RESPNOME"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
-	</field>
-	<field name="RESPCPF" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RESPCPF"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
-	</field>
-	<field name="RESPRG" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RESPRG"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
-	</field>
-	<field name="RESPTEL" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RESPTEL"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
-	</field>
-	<field name="RESPCELULAR" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="RESPCELULAR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="RESPONSAVEL"/>
-	</field>
-	<field name="CODIGO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CODIGO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
-	</field>
-	<field name="HORASSEMANAIS" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="HORASSEMANAIS"/>
-	</field>
-	<field name="MINUTOSSEMANAIS" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="MINUTOSSEMANAIS"/>
-	</field>
-	<field name="VALORMAXPARCELAS" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="VALORMAXPARCELAS"/>
-	</field>
-	<field name="QTDHORAS" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="QTDHORAS"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
-	</field>
-	<field name="DURACAO" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="DURACAO"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="NIVEL"/>
-	</field>
-	<field name="VALORAULAS" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="VALORAULAS"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="AULASDESCONTO" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="AULASDESCONTO"/>
-	</field>
-	<field name="VALORMATERIAL" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="VALORMATERIAL"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="MATERIALPARCELA" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="MATERIALPARCELA"/>
-	</field>
-	<field name="PARCELAS" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="PARCELAS"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="VALORPARCELA" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="VALORPARCELA"/>
-	</field>
-	<field name="DESCONTOMAIOR" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="DESCONTOMAIOR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
-	</field>
-	<field name="DESCONTOMENOR" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="DESCONTOMENOR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
-	</field>
-	<field name="DIALIMITEDESCONTOMAIOR" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="DIALIMITEDESCONTOMAIOR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
-	</field>
-	<field name="DIALIMITEDESCONTOMENOR" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="DIALIMITEDESCONTOMENOR"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="CONFIG"/>
-	</field>
-	<field name="MATERIALDAESCOLA" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="MATERIALDAESCOLA"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="MESINI" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="MESINI"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="ANOINI" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="ANOINI"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="MESFIM" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="MESFIM"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="ANOFIM" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="ANOFIM"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="MATRICULA"/>
-	</field>
-	<field name="CONTRATANTE" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="CONTRATANTE"/>
-	</field>
+	<field name="ID" class="java.lang.Long"/>
+	<field name="NOME" class="java.lang.String"/>
+	<field name="ATIVO" class="java.lang.Integer"/>
+	<field name="ENDERECO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.Long"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="DESCRICAO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="TELEFONE" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="CPF" class="java.lang.String"/>
+	<field name="RG" class="java.lang.String"/>
+	<field name="RESPNOME" class="java.lang.String"/>
+	<field name="RESPCPF" class="java.lang.String"/>
+	<field name="RESPRG" class="java.lang.String"/>
+	<field name="RESPTEL" class="java.lang.String"/>
+	<field name="RESPCELULAR" class="java.lang.String"/>
+	<field name="CODIGO" class="java.lang.String"/>
+	<field name="HORASSEMANAIS" class="java.lang.Long"/>
+	<field name="MINUTOSSEMANAIS" class="java.lang.Long"/>
+	<field name="VALORMAXPARCELAS" class="java.lang.Double"/>
+	<field name="QTDHORAS" class="java.lang.Integer"/>
+	<field name="DURACAO" class="java.lang.Long"/>
+	<field name="VALORAULAS" class="java.lang.Double"/>
+	<field name="AULASDESCONTO" class="java.lang.Double"/>
+	<field name="VALORMATERIAL" class="java.lang.Double"/>
+	<field name="MATERIALPARCELA" class="java.lang.Double"/>
+	<field name="PARCELAS" class="java.lang.Long"/>
+	<field name="VALORPARCELA" class="java.lang.Double"/>
+	<field name="DESCONTOMAIOR" class="java.lang.Long"/>
+	<field name="DESCONTOMENOR" class="java.lang.Long"/>
+	<field name="DIALIMITEDESCONTOMAIOR" class="java.lang.Integer"/>
+	<field name="DIALIMITEDESCONTOMENOR" class="java.lang.Integer"/>
+	<field name="MATERIALDAESCOLA" class="java.lang.Integer"/>
+	<field name="MESINI" class="java.lang.Integer"/>
+	<field name="ANOINI" class="java.lang.Integer"/>
+	<field name="MESFIM" class="java.lang.Integer"/>
+	<field name="ANOFIM" class="java.lang.Integer"/>
+	<field name="DIAVENCTOBOLETO" class="java.lang.Integer"/>
+	<field name="CONTRATANTE" class="java.lang.String"/>
 	<variable name="Desconto1" class="java.lang.Double">
 		<variableExpression><![CDATA[$F{VALORPARCELA} - $F{DESCONTOMAIOR}]]></variableExpression>
 	</variable>
@@ -916,21 +798,21 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<text><![CDATA[parcelas]]></text>
 			</staticText>
 			<textField pattern="#,##0.00">
-				<reportElement x="24" y="64" width="38" height="12" uuid="880aba49-5ecc-4647-a536-c1eeb37b747c"/>
+				<reportElement x="22" y="64" width="38" height="12" uuid="880aba49-5ecc-4647-a536-c1eeb37b747c"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VALORPARCELA}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="62" y="64" width="120" height="12" uuid="9967e70e-c5af-4b5b-b0dd-a25ab6ee5b89"/>
+				<reportElement x="60" y="64" width="120" height="12" uuid="9967e70e-c5af-4b5b-b0dd-a25ab6ee5b89"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[, sendo a primeira a ser paga em]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="182" y="64" width="35" height="12" uuid="53af5731-2a3f-4be8-a6de-e2be7a4f58ae">
+				<reportElement x="180" y="64" width="35" height="12" uuid="53af5731-2a3f-4be8-a6de-e2be7a4f58ae">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -939,14 +821,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textFieldExpression><![CDATA[$V{vMesIni}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="217" y="64" width="4" height="12" uuid="62b38552-feec-4ba7-857f-2956091831b9"/>
+				<reportElement x="215" y="64" width="4" height="12" uuid="62b38552-feec-4ba7-857f-2956091831b9"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="221" y="64" width="22" height="12" uuid="cff940ce-69f5-4e5c-b843-a38a833f43ca">
+				<reportElement x="219" y="64" width="22" height="12" uuid="cff940ce-69f5-4e5c-b843-a38a833f43ca">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -955,14 +837,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textFieldExpression><![CDATA[$F{ANOINI}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="244" y="64" width="54" height="12" uuid="fc505bbc-d75e-4bf5-bee4-028f5cbc36f9"/>
+				<reportElement x="241" y="64" width="54" height="12" uuid="fc505bbc-d75e-4bf5-bee4-028f5cbc36f9"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[finalizando em]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="299" y="64" width="37" height="12" uuid="7645391f-176b-4002-90a0-ed5a6062c74e">
+				<reportElement x="295" y="64" width="37" height="12" uuid="7645391f-176b-4002-90a0-ed5a6062c74e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -971,14 +853,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textFieldExpression><![CDATA[$V{vMesFim}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="337" y="64" width="4" height="12" uuid="b8fcf721-da02-41f0-b3c2-5fdd2b753ae8"/>
+				<reportElement x="333" y="64" width="3" height="12" uuid="b8fcf721-da02-41f0-b3c2-5fdd2b753ae8"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="340" y="64" width="23" height="12" uuid="9b2c735b-2a1b-44a8-8a8e-a2571edc2036">
+				<reportElement x="336" y="64" width="23" height="12" uuid="9b2c735b-2a1b-44a8-8a8e-a2571edc2036">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -987,11 +869,11 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textFieldExpression><![CDATA[$F{ANOFIM}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="363" y="64" width="4" height="12" uuid="120c67bf-4c43-4a14-99a5-10a00c728e5d"/>
+				<reportElement x="359" y="64" width="179" height="12" uuid="120c67bf-4c43-4a14-99a5-10a00c728e5d"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[.]]></text>
+				<text><![CDATA[. A data do vencimento das parcelas será todo dia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="16" width="169" height="12" uuid="545877a0-4484-4b20-80e2-8b8d54bbbee0"/>
@@ -1079,6 +961,20 @@ Testemunha 1 									                                            Testemunha 2]]
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
+			<textField pattern="00">
+				<reportElement x="538" y="64" width="12" height="12" uuid="78b35734-1fd1-4cbb-ad38-1ffb78bc0867"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIAVENCTOBOLETO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="550" y="64" width="4" height="12" uuid="387690df-82f1-4b25-8f75-b1504f0e4ee7"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>

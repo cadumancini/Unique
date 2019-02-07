@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2019-01-31T15:51:43 -->
+<!-- 2019-02-07T10:03:50 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoVip" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -26,7 +26,7 @@
         (E.AULASSEMANAIS * (E.MINUTOSSEMANAIS - (TRUNC((E.MINUTOSSEMANAIS / 60), 0) * 60)) * 42) AS MINUTOS_MIN,
         (E.AULASSEMANAIS * TRUNC((E.MINUTOSSEMANAIS / 60), 0) * 44) AS HORAS_MAX,
         (E.AULASSEMANAIS * (E.MINUTOSSEMANAIS - (TRUNC((E.MINUTOSSEMANAIS / 60), 0) * 60)) * 44) AS MINUTOS_MAX,
-        C.CARGAHORMAX AS CARGAMAX, C.CARGAHORMIN AS CARGAMIN
+        C.CARGAHORMAX AS CARGAMAX, C.CARGAHORMIN AS CARGAMIN, E.DIAVENCTOBOLETO
 from aluno a
 left join RESPONSAVEL b on a.ID = b.ALUNO_ID
 inner join nivel c on a.NIVELATUAL_ID = c.ID
@@ -79,6 +79,7 @@ WHERE a.ID = $P{AlunoID}]]>
 	<field name="MINUTOS_MAX" class="java.lang.Long"/>
 	<field name="CARGAMAX" class="java.lang.Integer"/>
 	<field name="CARGAMIN" class="java.lang.Integer"/>
+	<field name="DIAVENCTOBOLETO" class="java.lang.Integer"/>
 	<variable name="vCompraEsola" class="java.lang.String">
 		<variableExpression><![CDATA[$F{MATERIALDAESCOLA} == 1 ? "X" : ""]]></variableExpression>
 	</variable>
@@ -734,11 +735,11 @@ Testemunha 1 									                                            Testemunha 2]]
 				<textFieldExpression><![CDATA[$F{ANOFIM}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="323" y="44" width="4" height="12" uuid="e2a7daaf-f915-42cb-95dd-d44edc1f1874"/>
+				<reportElement x="323" y="44" width="180" height="12" uuid="e2a7daaf-f915-42cb-95dd-d44edc1f1874"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[.]]></text>
+				<text><![CDATA[. A data do vencimento das parcelas será todo dia]]></text>
 			</staticText>
 			<textField pattern="00">
 				<reportElement x="154" y="382" width="11" height="12" uuid="0fe80c87-84a6-480e-9d7e-d14333773f5c">
@@ -873,6 +874,20 @@ Testemunha 1 									                                            Testemunha 2]]
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
+			<textField pattern="00">
+				<reportElement x="503" y="44" width="11" height="12" uuid="be68571d-ac71-4f8f-aa30-481a34c4d629"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIAVENCTOBOLETO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="514" y="44" width="4" height="12" uuid="93b69809-f69f-4991-9767-8d0c1a0336dc"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>
