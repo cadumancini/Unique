@@ -49,6 +49,9 @@ public class MatriculaVip implements Serializable{
     private int MinutosSemanais;
     
     @Column(nullable=true)
+    private int DiaVenctoBoleto;
+    
+    @Column(nullable=true)
     private int MesIni;
     
     @Column(nullable=true)
@@ -265,5 +268,19 @@ public class MatriculaVip implements Serializable{
      */
     public void setQtdeParcelasAulas(Long QtdeParcelasAulas) {
         this.QtdeParcelasAulas = QtdeParcelasAulas;
+    }
+
+    /**
+     * @return the DiaVenctoBoleto
+     */
+    public int getDiaVenctoBoleto() {
+        return DiaVenctoBoleto;
+    }
+
+    /**
+     * @param DiaVenctoBoleto the DiaVenctoBoleto to set
+     */
+    public void setDiaVenctoBoleto(int DiaVenctoBoleto) {
+        this.DiaVenctoBoleto = DiaVenctoBoleto;
     }
 }

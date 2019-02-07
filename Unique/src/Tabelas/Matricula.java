@@ -46,6 +46,9 @@ public class Matricula implements Serializable{
     private Date DataMatricula;
     
     @Column(nullable=true)
+    private int DiaVenctoBoleto;
+    
+    @Column(nullable=true)
     private int MesIni;
     
     @Column(nullable=true)
@@ -231,6 +234,20 @@ public class Matricula implements Serializable{
      */
     public void setAnoFim(int AnoFim) {
         this.AnoFim = AnoFim;
+    }
+
+    /**
+     * @return the DiaVenctoBoleto
+     */
+    public int getDiaVenctoBoleto() {
+        return DiaVenctoBoleto;
+    }
+
+    /**
+     * @param DiaVenctoBoleto the DiaVenctoBoleto to set
+     */
+    public void setDiaVenctoBoleto(int DiaVenctoBoleto) {
+        this.DiaVenctoBoleto = DiaVenctoBoleto;
     }
     
 }
