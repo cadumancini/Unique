@@ -163,6 +163,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
         int anoAtual = Calendar.getInstance().get(Calendar.YEAR);
         
         txtMesAno.setText(mes+String.valueOf(anoAtual));
+        txtDiaVencto.setText("");
         
         lblInfoVlrTotalMaterial.setText("Valor total do material: R$ " + aluno.getNivelAtual().getValorMaterial());
     }
@@ -209,6 +210,8 @@ public class GerarMensalidades extends javax.swing.JFrame {
         txtMesAnoIni = new javax.swing.JFormattedTextField();
         txtMesAnoFim = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtDiaVencto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerar Mensalidades");
@@ -375,7 +378,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtMesAnoFim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMesAnoFim.setNextFocusableComponent(comboAulas);
+        txtMesAnoFim.setNextFocusableComponent(txtDiaVencto);
         txtMesAnoFim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMesAnoFimActionPerformed(evt);
@@ -384,6 +387,22 @@ public class GerarMensalidades extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Mês/Ano Fim do Contrato:");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("Dia do Vencimento do Boleto:");
+
+        txtDiaVencto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDiaVencto.setNextFocusableComponent(comboAulas);
+        txtDiaVencto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDiaVenctoFocusGained(evt);
+            }
+        });
+        txtDiaVencto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaVenctoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -410,7 +429,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(4, 4, 4)
                                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 215, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createSequentialGroup()
@@ -442,16 +461,17 @@ public class GerarMensalidades extends javax.swing.JFrame {
                                                 .addComponent(txtValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel10))))
+                                    .addComponent(lblNroIdentCheque)
+                                    .addComponent(lblDatComCheque)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblNroIdentCheque)
-                                            .addComponent(lblDatComCheque)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(517, 517, 517)))))
+                                            .addComponent(jLabel14)
+                                            .addComponent(jLabel13))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(517, 517, 517)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -521,7 +541,11 @@ public class GerarMensalidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNroIdentCheque)
                     .addComponent(txtNroIdentCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -588,6 +612,14 @@ public class GerarMensalidades extends javax.swing.JFrame {
         //Se estamos pagando o material em cheque, validando a data do mesmo:
         if(comboDinheiroCheque.isEnabled() && comboDinheiroCheque.getSelectedIndex() == 1 && "".equals(txtNroIdentCheque.getText())) {
             JOptionPane.showMessageDialog(this, "Número de identificação do cheque não pode ficar vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int diaVencto = 0;
+        try{
+            diaVencto = Integer.parseInt(txtDiaVencto.getText());
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Verifique o dia informado para Vencimento do Boleto!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -749,6 +781,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
         matricula.setAnoFim(anoFim);
         matricula.setValorAulas(aluno.getNivelAtual().getValorAulas());
         matricula.setValorMaterial(aluno.getNivelAtual().getValorMaterial());
+        matricula.setDiaVenctoBoleto(diaVencto);
         
         if(comboMaterialEscola.getSelectedIndex() > 0)
             matricula.setMaterialEscola(true);
@@ -863,6 +896,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
         comboMaterialEscola.setSelectedIndex(0);
         txtValorPagoMaterial.setText("0.000,00");
         txtMesAno.setText("");
+        txtDiaVencto.setText("");
         
         txtMesAno.requestFocusInWindow();
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -933,6 +967,18 @@ public class GerarMensalidades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMesAnoFimActionPerformed
 
+    private void txtDiaVenctoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaVenctoKeyTyped
+        if(!((evt.getKeyChar() == '0') || (evt.getKeyChar() == '1') || (evt.getKeyChar() == '2') ||
+            (evt.getKeyChar() == '3') || (evt.getKeyChar() == '4') || (evt.getKeyChar() == '5') ||
+            (evt.getKeyChar() == '6') || (evt.getKeyChar() == '7') || (evt.getKeyChar() == '8') ||
+            (evt.getKeyChar() == '9')))
+            return;
+    }//GEN-LAST:event_txtDiaVenctoKeyTyped
+
+    private void txtDiaVenctoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaVenctoFocusGained
+        txtDiaVencto.selectAll();
+    }//GEN-LAST:event_txtDiaVenctoFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -977,6 +1023,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -990,6 +1037,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
     private javax.swing.JLabel lblInfoVlrTotalMaterial;
     private javax.swing.JLabel lblNroIdentCheque;
     private javax.swing.JFormattedTextField txtBoxDataCompensacao;
+    private javax.swing.JTextField txtDiaVencto;
     private javax.swing.JTextField txtDuracao;
     private javax.swing.JFormattedTextField txtMesAno;
     private javax.swing.JFormattedTextField txtMesAnoFim;
