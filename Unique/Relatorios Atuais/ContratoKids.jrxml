@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2019-02-07T09:58:06 -->
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -593,8 +592,8 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[1.2. O pagamento das parcelas será efetuado na escola através de carnê.
-1.3. Pagamentos efetuados no mês seguinte do mês vigente será cobrada multa de 2% ao mês mais 0,033% ao dia.
+				<text><![CDATA[1.2. O pagamento das parcelas será efetuado na escola através de boleto bancário
+1.3. Pagamentos efetuados no mês seguinte do mês vigente será cobrada multa de 2% ao mês mais R$ 0,50 (cinquenta centavos) ao dia.
 1.4. O não comparecimento do aluno aos atos escolares não exime o pagamento.
 1.5. O aluno será considerado matriculado no curso desejado no ato da assinatura deste contrato de prestação de serviços.
 1.6. No preço do curso não estão incluídos os custos com materiais didáticos e demais taxas que serão eventualmente cobradas.
@@ -962,14 +961,14 @@ Testemunha 1 									                                            Testemunha 2]]
 				</reportElement>
 			</line>
 			<textField pattern="00">
-				<reportElement x="538" y="64" width="12" height="12" uuid="78b35734-1fd1-4cbb-ad38-1ffb78bc0867"/>
+				<reportElement x="540" y="64" width="12" height="12" uuid="78b35734-1fd1-4cbb-ad38-1ffb78bc0867"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DIAVENCTOBOLETO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="550" y="64" width="4" height="12" uuid="387690df-82f1-4b25-8f75-b1504f0e4ee7"/>
+				<reportElement x="552" y="64" width="4" height="12" uuid="387690df-82f1-4b25-8f75-b1504f0e4ee7"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
