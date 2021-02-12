@@ -28,6 +28,7 @@ import org.hibernate.Session;
 import util.ConnectionUtil;
 import util.HibernateUtil;
 import util.PropertiesReader;
+import util.ReportUtil;
 
 /**
  *
@@ -152,7 +153,7 @@ public class Aniversariantes extends javax.swing.JFrame {
 
             map.put("mes", mes);
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("\\\\" + new PropertiesReader().getProperty("ipAddress") + "\\Banco\\Relatorios\\Aniversariantes.jrxml");
+                JasperReport compiled = ReportUtil.getReport("Aniversariantes");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -163,7 +164,7 @@ public class Aniversariantes extends javax.swing.JFrame {
                 c.add(viewer);
                 report.setVisible(true);
 
-            } catch (JRException | IOException ex) {
+            } catch (JRException ex) {
                 JOptionPane.showMessageDialog(this, "Não foi possível imprimir o relatório. Motivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
