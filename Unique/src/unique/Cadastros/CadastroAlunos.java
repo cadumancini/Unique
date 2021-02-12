@@ -56,7 +56,9 @@ import org.hibernate.criterion.Restrictions;
 import unique.Consultas.AlunosCadastrados;
 import unique.GerarMensalidades;
 import unique.MatriculaVip;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -1351,24 +1353,19 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Connection connection = ConnectionUtil.getConnection();
 
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
                 if(aluno.isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoVip.jrxml");
+                    compiled = ReportUtil.getReport("ContratoVip");
                 else if(aluno.getNivelAtual().isProrrogavel())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Contrato.jrxml");
+                    compiled = ReportUtil.getReport("Contrato");
                 else if(aluno.getNivelAtual().isGotIt())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoGotIt.jrxml");
+                    compiled = ReportUtil.getReport("ContratoGotIt");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoKids.jrxml");
+                    compiled = ReportUtil.getReport("ContratoKids");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1397,20 +1394,15 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Connection connection = ConnectionUtil.getConnection();
 
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
                 if(!aluno.isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Carne.jrxml");
+                    compiled = ReportUtil.getReport("Carne");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip2.jrxml");
+                    compiled = ReportUtil.getReport("CarneVip2");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

@@ -8,6 +8,7 @@ package unique;
 import java.awt.Container;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -24,7 +25,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import org.hibernate.Session;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.PropertiesReader;
 
 /**
  *
@@ -145,16 +148,11 @@ public class Aniversariantes extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Connection connection = ConnectionUtil.getConnection();
 
             map.put("mes", mes);
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Aniversariantes.jrxml");
+                JasperReport compiled = JasperCompileManager.compileReport("\\\\" + new PropertiesReader().getProperty("ipAddress") + "\\Banco\\Relatorios\\Aniversariantes.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -165,7 +163,7 @@ public class Aniversariantes extends javax.swing.JFrame {
                 c.add(viewer);
                 report.setVisible(true);
 
-            } catch (JRException ex) {
+            } catch (JRException | IOException ex) {
                 JOptionPane.showMessageDialog(this, "Não foi possível imprimir o relatório. Motivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }

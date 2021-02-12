@@ -36,7 +36,9 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import unique.Consultas.AlunosCadastrados;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -395,16 +397,11 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                     //Gerando relatorio:
                     HashMap map = new HashMap();
                     JasperPrint jasperPrint = null;
-                    Connection connection = null;
-                    try {
-                        connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    Connection connection = ConnectionUtil.getConnection();
 
                     map.put("MensalidadeID", mens.getID());
                     try {
-                        JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip.jrxml");
+                        JasperReport compiled = ReportUtil.getReport("CarneVip");
                         jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                         JRViewer viewer = new JRViewer(jasperPrint);
                         JFrame report = new JFrame();
@@ -449,16 +446,11 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                 //Gerando relatorio:
                 HashMap map = new HashMap();
                 JasperPrint jasperPrint = null;
-                Connection connection = null;
-                try {
-                    connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-                } catch (SQLException ex) {
-                    Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Connection connection = ConnectionUtil.getConnection();
 
                 map.put("MensalidadeID", mens.getID());
                 try {
-                    JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip.jrxml");
+                    JasperReport compiled = ReportUtil.getReport("CarneVip");
                     jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                     JRViewer viewer = new JRViewer(jasperPrint);
                     JFrame report = new JFrame();

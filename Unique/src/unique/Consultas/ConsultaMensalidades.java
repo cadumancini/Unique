@@ -47,7 +47,9 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import unique.Cobrancas;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -989,12 +991,7 @@ public class ConsultaMensalidades extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(ConsultaMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Connection connection = ConnectionUtil.getConnection();
 
             map.put("idAluno", sqlIdAluno);
             map.put("nomeAluno", sqlNomeAluno);
@@ -1003,7 +1000,7 @@ public class ConsultaMensalidades extends javax.swing.JFrame {
             map.put("pagto", sqlPagto);
             map.put("status", sqlStatus);
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Financeiro.jrxml");
+                JasperReport compiled = ReportUtil.getReport("Financeiro");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

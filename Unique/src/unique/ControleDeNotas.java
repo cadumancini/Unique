@@ -45,7 +45,9 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import unique.Cadastros.CadastroTurmas;
 import unique.Consultas.AlunosCadastrados;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -921,17 +923,12 @@ public class ControleDeNotas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Connection connection = ConnectionUtil.getConnection();
 
             map.put("AlunoID", alunoID);
             map.put("TurmaID", turmaID);
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Historico.jrxml");
+                JasperReport compiled = ReportUtil.getReport("Historico");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

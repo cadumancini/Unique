@@ -5,9 +5,11 @@
  */
 package unique;
 
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import util.PropertiesReader;
 
 /**
  *
