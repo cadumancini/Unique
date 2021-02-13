@@ -201,11 +201,11 @@ public class ConsultaNiveis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (Meses)", "VIP", "Got It!", "Idioma"
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (Meses)", "VIP", "Got It!", "Idioma", "Online"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -225,7 +225,7 @@ public class ConsultaNiveis extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -525,9 +525,15 @@ public class ConsultaNiveis extends javax.swing.JFrame {
                 if(n.isGotIt())
                     gotIt = "Sim";
                 
+                String online = "Não";
+                if(n.isOnline())
+                    online = "Sim";
+                
                 String idioma = n.getIdioma();
 
-                String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, duracao, vip, gotIt, idioma};
+                String[] linha = new String[]{n.getID().toString(), codigo, nome, 
+                    descricao, valorAulas, valorMaterial, duracao, vip, gotIt, 
+                    idioma, online};
 
                 model.addRow(linha);
             }

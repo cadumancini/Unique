@@ -61,6 +61,9 @@ public class Nivel implements Serializable{
     
     @Column(nullable=true)
     private String Idioma;
+    
+    @Column(nullable=true)
+    private boolean Online;
 
     public Long getID() {
         return ID;
@@ -265,4 +268,18 @@ public class Nivel implements Serializable{
     public void setIdioma(String Idioma) {
         this.Idioma = Idioma;
     }    
+
+    /**
+     * @return the Online
+     */
+    public boolean isOnline() {
+        return Online;
+    }
+
+    /**
+     * @param Online the Online to set
+     */
+    public void setOnline(boolean Online) {
+        this.Online = Online;
+    }
 }
