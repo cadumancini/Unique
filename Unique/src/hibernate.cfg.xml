@@ -5,9 +5,10 @@
     <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
     <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
     <!--<property name="hibernate.connection.url">jdbc:firebirdsql:192.168.0.113:C:\Banco\UNIQUE.FDB</property>-->
-    <property name="hibernate.connection.url">jdbc:firebirdsql:localhost:C:\Banco\UNIQUE.FDB</property>
+    <property name="hibernate.connection.url">jdbc:firebirdsql:localhost:C:\Banco\UNIQUE.FDB?lc_ctype=ISO8859_1&amp;charset=UTF8</property>
     <property name="hibernate.connection.username">SYSDBA</property>
     <property name="hibernate.connection.password">1123581321</property>
+    <property name="LC_CTYPE">WIN1252</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
