@@ -13,8 +13,6 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +25,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -188,6 +185,8 @@ public class MatriculaVip extends javax.swing.JFrame {
         txtBoxQtdeParcelas = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
         txtDiaVencto = new javax.swing.JTextField();
+        txtBoxQtdeMeses = new javax.swing.JFormattedTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Matrícula de Aluno VIP");
@@ -441,7 +440,7 @@ public class MatriculaVip extends javax.swing.JFrame {
         }
         txtBoxQtdeParcelas.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtBoxQtdeParcelas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBoxQtdeParcelas.setNextFocusableComponent(txtMesAno);
+        txtBoxQtdeParcelas.setNextFocusableComponent(txtBoxQtdeMeses);
         txtBoxQtdeParcelas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBoxQtdeParcelasFocusGained(evt);
@@ -476,6 +475,37 @@ public class MatriculaVip extends javax.swing.JFrame {
                 txtDiaVenctoKeyTyped(evt);
             }
         });
+
+        txtBoxQtdeMeses.setColumns(8);
+        try {
+            txtBoxQtdeMeses.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtBoxQtdeMeses.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBoxQtdeMeses.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBoxQtdeMeses.setNextFocusableComponent(txtMesAno);
+        txtBoxQtdeMeses.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBoxQtdeMesesFocusGained(evt);
+            }
+        });
+        txtBoxQtdeMeses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBoxQtdeMesesMouseClicked(evt);
+            }
+        });
+        txtBoxQtdeMeses.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBoxQtdeMesesKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBoxQtdeMesesKeyTyped(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setText("Aluno optou por (meses):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -530,17 +560,27 @@ public class MatriculaVip extends javax.swing.JFrame {
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel13)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel14))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtMesAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMesAnoIni, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 98, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBoxQtdeMeses, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -565,6 +605,10 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtBoxQtdeParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtBoxQtdeMeses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMesAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -581,7 +625,7 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtDiaVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBoxQtdAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -613,7 +657,7 @@ public class MatriculaVip extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDatComCheque)
                     .addComponent(txtBoxDataCompensacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -771,8 +815,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorPagoMaterialKeyTyped
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //PAssando o foco para o campo de valor:
-        txtMesAno.requestFocusInWindow();
+        txtBoxQtdeParcelas.requestFocusInWindow();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -798,6 +841,13 @@ public class MatriculaVip extends javax.swing.JFrame {
                 txtBoxQtdeParcelas.getText().equals("0")){
             JOptionPane.showMessageDialog(this, "A quantidade de parcelas não foi preenchida. Verifique!", "Erro", JOptionPane.ERROR_MESSAGE);
             txtBoxQtdeParcelas.requestFocusInWindow();
+            return;
+        }
+        
+        if(txtBoxQtdeMeses.getText().equals("") || txtBoxQtdeMeses.getText().equals(" ") || 
+                txtBoxQtdeMeses.getText().equals("0")){
+            JOptionPane.showMessageDialog(this, "A opção em meses do aluno não foi preenchida. Verifique!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtBoxQtdeMeses.requestFocusInWindow();
             return;
         }
         
@@ -888,6 +938,8 @@ public class MatriculaVip extends javax.swing.JFrame {
             matricula.setDataMatricula(dataHoje);
             matricula.setAulasSemanais(Long.parseLong(txtBoxQtdAulas.getText()));
             matricula.setQtdeParcelasAulas(Long.parseLong(txtBoxQtdeParcelas.getText()));
+            int meses = Integer.parseInt(txtBoxQtdeMeses.getText());
+            matricula.setQtdeMesesOpcaoAluno(meses);
 
             //Salvando no banco:
             Session conexao;
@@ -1098,6 +1150,22 @@ public class MatriculaVip extends javax.swing.JFrame {
     return;
     }//GEN-LAST:event_txtDiaVenctoKeyTyped
 
+    private void txtBoxQtdeMesesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBoxQtdeMesesFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdeMesesFocusGained
+
+    private void txtBoxQtdeMesesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBoxQtdeMesesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdeMesesMouseClicked
+
+    private void txtBoxQtdeMesesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxQtdeMesesKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdeMesesKeyPressed
+
+    private void txtBoxQtdeMesesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBoxQtdeMesesKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoxQtdeMesesKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1148,6 +1216,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1161,6 +1230,7 @@ public class MatriculaVip extends javax.swing.JFrame {
     private javax.swing.JLabel lblNroIdentCheque;
     private javax.swing.JFormattedTextField txtBoxDataCompensacao;
     private javax.swing.JFormattedTextField txtBoxQtdAulas;
+    private javax.swing.JFormattedTextField txtBoxQtdeMeses;
     private javax.swing.JFormattedTextField txtBoxQtdeParcelas;
     private javax.swing.JFormattedTextField txtBoxValorAulaExtra;
     private javax.swing.JFormattedTextField txtBoxVlrMensalidade;
