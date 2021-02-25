@@ -1358,8 +1358,10 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
-                if(aluno.isVip())
-                    compiled = ReportUtil.getReport("ContratoVip");
+                if(aluno.isVip()) {
+                    String reportName = aluno.getNivelAtual().isOnline() ? "ContratoVipOnline" : "ContratoVip";
+                    compiled = ReportUtil.getReport(reportName);
+                }
                 else if(aluno.getNivelAtual().isProrrogavel())
                     compiled = ReportUtil.getReport("Contrato");
                 else if(aluno.getNivelAtual().isGotIt())

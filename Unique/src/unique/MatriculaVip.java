@@ -1050,8 +1050,9 @@ public class MatriculaVip extends javax.swing.JFrame {
                     Connection connection = ConnectionUtil.getConnection();
 
                     map.put("AlunoID", aluno.getID());
+                    String reportName = aluno.getNivelAtual().isOnline() ? "ContratoVipOnline" : "ContratoVip";
                     try {
-                        JasperReport compiled = ReportUtil.getReport("ContratoVip");
+                        JasperReport compiled = ReportUtil.getReport(reportName);
                         jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                         JRViewer viewer = new JRViewer(jasperPrint);
                         JFrame report = new JFrame();
