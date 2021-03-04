@@ -743,9 +743,7 @@ public class CadastroNiveis extends javax.swing.JFrame {
             nivel.setProrrogavel(checkBoxProrrogavel.isSelected());
             
             if(nivel.isVIP()){
-                nivel.setQtdHoras(0);
                 nivel.setMinutosSemanais(0);
-                nivel.setDuracao(0L);
                 int cargaMin = 0, cargaMax = 0;
                 try{
                     cargaMin = (Integer.parseInt(txtCargaHorMin.getText()));
@@ -769,15 +767,15 @@ public class CadastroNiveis extends javax.swing.JFrame {
                     return;
                 }
             } else{
-                nivel.setQtdHoras(Integer.parseInt(txtTotalHoras.getText()));
                 String[] tempo = txtHorasSemanais.getText().split(":");
                 int horasSemanais = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
                 nivel.setMinutosSemanais(horasSemanais);
-                nivel.setDuracao(Long.parseLong(txtDuracao.getText()));
                 nivel.setCargaHorMin(0);
                 nivel.setCargaHorMax(0);
             }
             
+            nivel.setQtdHoras(Integer.parseInt(txtTotalHoras.getText()));
+            nivel.setDuracao(Long.parseLong(txtDuracao.getText()));
             nivel.setCodigo(txtCodigo.getText());
             nivel.setNome(txtNome.getText());
             nivel.setDescricao(txtDescricao.getText());
@@ -1037,8 +1035,8 @@ public class CadastroNiveis extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxVipMouseClicked
 
     private void habilitarCamposVip(boolean ativar){
-        txtDuracao.setEnabled(ativar);
-        txtTotalHoras.setEnabled(ativar);
+        txtDuracao.setEnabled(!ativar);
+        txtTotalHoras.setEnabled(!ativar);
         txtHorasSemanais.setEnabled(ativar);
         checkBoxProrrogavel.setEnabled(ativar);
         txtCargaHorMin.setEnabled(!ativar); // contrario dos demais
