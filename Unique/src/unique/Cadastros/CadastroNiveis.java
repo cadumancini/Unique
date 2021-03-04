@@ -744,34 +744,34 @@ public class CadastroNiveis extends javax.swing.JFrame {
             
             if(nivel.isVIP()){
                 nivel.setMinutosSemanais(0);
-                int cargaMin = 0, cargaMax = 0;
-                try{
-                    cargaMin = (Integer.parseInt(txtCargaHorMin.getText()));
-                    cargaMax = (Integer.parseInt(txtCargaHorMax.getText()));
-                    if(cargaMin == 0 || cargaMax == 0){
-                        JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima não podem ser preenchidos com zero!", 
-                            "Erro", JOptionPane.ERROR_MESSAGE);
-                        txtCargaHorMin.requestFocusInWindow();
-                        tx.rollback();
-                        conexao.close();
-                        return;
-                    }
-                    nivel.setCargaHorMin(cargaMin);
-                    nivel.setCargaHorMax(cargaMax);
-                } catch (Exception e){
-                    JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima devem ser preenchidos com valores inteiros!", 
-                            "Erro", JOptionPane.ERROR_MESSAGE);
-                    txtCargaHorMin.requestFocusInWindow();                    
-                    tx.rollback();
-                    conexao.close();
-                    return;
-                }
+                nivel.setCargaHorMin(0);
+                nivel.setCargaHorMax(0);
+//                int cargaMin = 0, cargaMax = 0;
+//                try{
+//                    cargaMin = (Integer.parseInt(txtCargaHorMin.getText()));
+//                    cargaMax = (Integer.parseInt(txtCargaHorMax.getText()));
+//                    if(cargaMin == 0 || cargaMax == 0){
+//                        JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima não podem ser preenchidos com zero!", 
+//                            "Erro", JOptionPane.ERROR_MESSAGE);
+//                        txtCargaHorMin.requestFocusInWindow();
+//                        tx.rollback();
+//                        conexao.close();
+//                        return;
+//                    }
+//                    nivel.setCargaHorMin(cargaMin);
+//                    nivel.setCargaHorMax(cargaMax);
+//                } catch (Exception e){
+//                    JOptionPane.showMessageDialog(this, "Os campos de carga horária mínima e máxima devem ser preenchidos com valores inteiros!", 
+//                            "Erro", JOptionPane.ERROR_MESSAGE);
+//                    txtCargaHorMin.requestFocusInWindow();                    
+//                    tx.rollback();
+//                    conexao.close();
+//                    return;
+//                }
             } else{
                 String[] tempo = txtHorasSemanais.getText().split(":");
                 int horasSemanais = (Integer.parseInt(tempo[0]) * 60) + (Integer.parseInt(tempo[1]));
                 nivel.setMinutosSemanais(horasSemanais);
-                nivel.setCargaHorMin(0);
-                nivel.setCargaHorMax(0);
             }
             
             nivel.setQtdHoras(Integer.parseInt(txtTotalHoras.getText()));
