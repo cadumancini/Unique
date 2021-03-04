@@ -73,7 +73,7 @@ ORDER BY b.NOME, c.CODIGO, a.ANOVENCTO, a.MESVENCTO]]>
 			</rectangle>
 			<image>
 				<reportElement x="31" y="2" width="200" height="97" uuid="04a14be6-d859-40c7-b069-968c2a7e02ab"/>
-				<imageExpression><![CDATA["\\\\192.168.1.74\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="260" y="3" width="290" height="95" uuid="876ab376-2ea7-4584-9314-f3b0eadfc56a"/>

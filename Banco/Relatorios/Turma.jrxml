@@ -244,7 +244,7 @@ ORDER BY c.NOME]]>
 			</rectangle>
 			<image>
 				<reportElement x="169" y="3" width="226" height="95" uuid="42b934b9-251b-4cdc-9abd-283b5fc9ed8f"/>
-				<imageExpression><![CDATA["\\\\192.168.1.74\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>
