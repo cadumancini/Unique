@@ -68,7 +68,7 @@ AND a.MENSALIDADE_ID = $P{mensalidadeID}]]>
 		<band height="604" splitType="Stretch">
 			<image>
 				<reportElement x="52" y="10" width="50" height="50" uuid="98f7f2da-818d-4a25-9017-cb683414608e"/>
-				<imageExpression><![CDATA["\\\\192.168.1.74\\Banco\\Relatorios\\Logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\Logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="0" y="30" width="556" height="30" uuid="30dbb56a-f91c-498c-b590-8927ba313595"/>
@@ -143,7 +143,7 @@ AND a.MENSALIDADE_ID = $P{mensalidadeID}]]>
 					<bottomPen lineWidth="0.2"/>
 					<rightPen lineWidth="0.2"/>
 				</box>
-				<imageExpression><![CDATA["\\\\192.168.1.74\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
 			</image>
 		</band>
 	</detail>

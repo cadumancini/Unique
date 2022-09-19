@@ -648,7 +648,7 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 		<band height="791" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<rectangle>
-				<reportElement x="-2" y="565" width="559" height="225" uuid="38ff1b4a-97e5-4508-91ae-cfa8d88663ef"/>
+				<reportElement x="-2" y="565" width="559" height="225" uuid="0f33bd10-30de-48d1-bb65-11b3589a8d8a"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="-2" y="-2" width="559" height="567" uuid="0774bb70-8402-4384-84b4-6a056549c1a8"/>
@@ -658,7 +658,7 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Contrato de prestação de serviços:]]></text>
+				<text><![CDATA[Contrato de prestação de serviços de aulas online:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="34" width="182" height="12" uuid="b707ded2-19e4-424d-bf3b-66700f2e474b"/>
@@ -757,7 +757,7 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 5.3. É dever do contratante pagar o material didático integralmente, caso adquirido através da Unique. Não há devolução do mesmo.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="237" width="555" height="12" uuid="42c6c9a7-91e9-4faf-964b-3eef7cbb2298"/>
+				<reportElement x="0" y="228" width="555" height="12" uuid="42c6c9a7-91e9-4faf-964b-3eef7cbb2298"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -936,22 +936,6 @@ Testemunha 1 									                                            Testemunha 2]]
 				<text><![CDATA[finalizando em]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="77" width="4" height="12" uuid="d22f7d42-4eec-4cf9-899e-64c6759d15d0"/>
-				<textElement textAlignment="Left">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[/]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="253" y="77" width="23" height="12" uuid="eeb4eeab-2974-4b5f-8407-b1e95a23d7c4">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ANOFIMPARC}]]></textFieldExpression>
-			</textField>
-			<staticText>
 				<reportElement x="276" y="77" width="180" height="12" uuid="e2a7daaf-f915-42cb-95dd-d44edc1f1874"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
@@ -959,22 +943,23 @@ Testemunha 1 									                                            Testemunha 2]]
 				<text><![CDATA[. A data do vencimento das parcelas será todo dia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="247" width="554" height="112" uuid="cb807546-6299-4d90-9ea2-f60c3b19b054">
+				<reportElement x="0" y="238" width="554" height="122" uuid="cb807546-6299-4d90-9ea2-f60c3b19b054">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[3. Caso o aluno falte não é responsabilidade da Unique repor as aulas perdidas.
-3.1. Caso o professor desmarque a aula é obrigação da Unique repor ou descontar o valor da aula perdida na parcela.
-3.2. A frequência às aulas é fundamental para o desenvolvimento do aluno.
-3.3. No caso de pandemia em que a Unique não poderá oferecer aulas presenciais, as aulas acontecerão de maneira online pelas plataformas digitais (Zoom ou Google Meet). 
-Recomendamos que:
+				<text><![CDATA[3. As aulas acontecerão de modo remoto, através de plataformas escolhidas pela escola para a realização da aula (Zoom, Google Meet). 
+3.1. O horário da aula será estabelecido antes do início do contrato, dentro das possibilidades da escola e do aluno. 
+3.2. Recomendamos que:
   • o aluno escolha um ambiente tranquilo e silencioso para a realização da aula.
   • que a aula seja feita em um computador, laptop, mas também poderá ser feita através de celular ou tablet. 
   • é indispensável o uso de fones de ouvidos para evitar problemas de microfonia.
   • é necessária uma conexão de internet estável e de boa qualidade, tanto do aluno quanto do professor, para que a aula aconteça de maneira eficiente.
-3.4. Haverá tolerância de atraso de 15 minutos tanto em aulas presenciais quanto online, após esse período a aula será cancelada sem direito a reposição.]]></text>
+3.3. O professor enviará o link da aula pontualmente para o seu aluno por WhatsApp ou e-mail. Caso o mesmo não se conecte para a realização da aula após 15 minutos a aula será cancelada sem direito a reposição.
+3.4. Caso o aluno falte não é responsabilidade da Unique repor as aulas perdidas.
+3.5. Caso o professor desmarque a aula é obrigação da Unique repor ou descontar o valor da aula perdida na parcela.
+3.6. A frequência às aulas é fundamental para o desenvolvimento do aluno.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="205" y="34" width="71" height="12" uuid="c12b8b96-f938-48f5-b14b-db1a07982dfc"/>
@@ -1045,7 +1030,7 @@ Recomendamos que:
 				</textElement>
 				<text><![CDATA[.]]></text>
 			</staticText>
-			<textField pattern="#00">
+			<textField pattern="000">
 				<reportElement x="183" y="34" width="22" height="12" uuid="6612fcb2-7dfd-48c6-807e-cdd61de9acfd"/>
 				<textElement>
 					<font size="8"/>
@@ -1208,65 +1193,63 @@ Recomendamos que:
 				<text><![CDATA[O contratante optou por]]></text>
 			</staticText>
 			<textField pattern="000">
-				<reportElement x="87" y="208" width="26" height="11" uuid="e4cf92b0-e3e1-4120-af11-ed9730ca0837"/>
+				<reportElement x="87" y="208" width="22" height="11" uuid="e4cf92b0-e3e1-4120-af11-ed9730ca0837"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{QTDHORAS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="113" y="208" width="66" height="11" uuid="f0f7b8ed-8a42-4d0e-a5ed-2654fcf6f166"/>
+				<reportElement x="109" y="208" width="66" height="11" uuid="f0f7b8ed-8a42-4d0e-a5ed-2654fcf6f166"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[horas diluídas em]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="208" width="165" height="11" uuid="af2a3305-56c4-491f-a12c-ff6ad6a68392"/>
+				<reportElement x="189" y="208" width="165" height="11" uuid="af2a3305-56c4-491f-a12c-ff6ad6a68392"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[meses no período letivo com carga horária de ]]></text>
 			</staticText>
 			<textField pattern="00">
-				<reportElement x="355" y="208" width="11" height="11" uuid="6f4a2e4d-b45e-4b45-a4c5-167458069648"/>
+				<reportElement x="354" y="208" width="11" height="11" uuid="6f4a2e4d-b45e-4b45-a4c5-167458069648"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{AULASSEMANAIS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="366" y="208" width="61" height="11" uuid="3c667a56-1e7d-4c18-9dac-f5fe06cd1c27"/>
+				<reportElement x="365" y="208" width="61" height="11" uuid="3c667a56-1e7d-4c18-9dac-f5fe06cd1c27"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[x por semana de ]]></text>
 			</staticText>
 			<textField pattern="00">
-				<reportElement x="427" y="208" width="11" height="11" uuid="4812e30b-c7ef-4c9e-af1b-11fa6c9139e4"/>
+				<reportElement x="426" y="208" width="11" height="11" uuid="4812e30b-c7ef-4c9e-af1b-11fa6c9139e4"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{HORASSEMANAIS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="452" y="208" width="61" height="11" uuid="52c8b7ca-1ac2-411e-834a-b0105f2f9694"/>
+				<reportElement x="451" y="208" width="61" height="11" uuid="52c8b7ca-1ac2-411e-834a-b0105f2f9694"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[hora(s).]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="218" width="554" height="21" uuid="394989d2-4c1c-43d2-b975-00001f8f77ab"/>
+				<reportElement x="0" y="218" width="554" height="12" uuid="394989d2-4c1c-43d2-b975-00001f8f77ab"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Nos dias que forem feriados não terá aula, mas também não será contado como aula dada.
-2.1. Caso as aulas aconteçam de forma online e a Unique cumprir com todas as horas do contrato não haverá redução do valor do mesmo.
-]]></text>
+				<text><![CDATA[Nos dias que forem feriados não terá aula, mas também não será contado como aula dada.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="438" y="208" width="4" height="11" uuid="9c342509-274e-48ad-af2b-0ae199eb2a52">
+				<reportElement x="437" y="208" width="4" height="11" uuid="9c342509-274e-48ad-af2b-0ae199eb2a52">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -1275,7 +1258,7 @@ Recomendamos que:
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField pattern="00">
-				<reportElement x="442" y="208" width="10" height="11" uuid="f6e823b6-cafd-46e6-ba2b-05d7c74cf996">
+				<reportElement x="441" y="208" width="10" height="11" uuid="f6e823b6-cafd-46e6-ba2b-05d7c74cf996">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1300,28 +1283,44 @@ Recomendamos que:
 				<text><![CDATA[Contrato:]]></text>
 			</staticText>
 			<textField pattern="00">
-				<reportElement x="452" y="65" width="14" height="11" uuid="1e0f3ee6-be91-489f-8e86-dbbd388e317e"/>
+				<reportElement x="452" y="65" width="14" height="12" uuid="107c7082-077c-4b08-a9a8-f9cf66895805"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{QTDEMESESOPCAOALUNO}]]></textFieldExpression>
 			</textField>
 			<textField pattern="00">
-				<reportElement x="179" y="208" width="11" height="11" uuid="c43ab699-7575-4e92-a75d-72a37e07b910"/>
+				<reportElement x="175" y="208" width="14" height="11" uuid="42ccc64e-0372-45e0-946c-9c63f9438943"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{QTDEPARCELASAULAS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="211" y="77" width="38" height="12" uuid="5cb145f7-2aa4-4db0-8691-4b96f52dcb53"/>
+				<reportElement x="253" y="77" width="23" height="12" uuid="5705a107-d059-4069-9bd2-9a9ad6f87ce0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANOFIMPARC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="249" y="77" width="4" height="12" uuid="018d19b1-5a0f-424f-beff-73f1506c9f5f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="77" width="38" height="12" uuid="e2ecd871-4b9a-4d9a-8038-361e92955003"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{vMesFimParc}]]></textFieldExpression>
 			</textField>
 			<break>
-				<reportElement x="0" y="560" width="100" height="1" isRemoveLineWhenBlank="true" uuid="16c8061f-3f7b-49b4-b5c8-7a09d2d30af7"/>
+				<reportElement x="0" y="560" width="100" height="1" isRemoveLineWhenBlank="true" uuid="2bf7a2b8-3ddd-4071-b453-c217ca639b4c"/>
 			</break>
 		</band>
 	</detail>

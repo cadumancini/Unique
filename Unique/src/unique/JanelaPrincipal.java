@@ -411,7 +411,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }else {
             //Chamando a tela de acadastro de alunos:
             cadastroAlunos = CadastroAlunos.getInstance();
-            cadastroAlunos.setVisible(rootPaneCheckingEnabled);
+            cadastroAlunos.setVisible(true);
             cadastroAlunos.setExtendedState(this.getExtendedState() | MAXIMIZED_BOTH);
         }
         

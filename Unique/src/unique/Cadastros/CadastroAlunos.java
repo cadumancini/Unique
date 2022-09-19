@@ -179,7 +179,6 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Alunos");
-        setType(java.awt.Window.Type.POPUP);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -776,7 +775,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
         if(!lblId.getText().isEmpty()){
             Aluno aluno = (Aluno) conexao.get(Aluno.class, Long.parseLong(lblId.getText()));
             //O aluno mudou de nível?
-            if((!aluno.getNivelAtual().getCodigo().equals(comboBoxNivel.getSelectedItem().toString())) && (aluno != null)){
+            if(aluno.getNivelAtual() != null && (!aluno.getNivelAtual().getCodigo().equals(comboBoxNivel.getSelectedItem().toString())) && (aluno != null)){
                 mudouNivel = true;
                 Criteria crit = conexao.createCriteria(Mensalidade.class);
                 crit.add(Restrictions.eq("Aluno", aluno));
@@ -1353,7 +1352,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1362,13 +1361,13 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             try {
                 JasperReport compiled;
                 if(aluno.isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoVip.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoVip.jrxml");
                 else if(aluno.getNivelAtual().isProrrogavel())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Contrato.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Contrato.jrxml");
                 else if(aluno.getNivelAtual().isGotIt())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoGotIt.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoGotIt.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\ContratoKids.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoKids.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1399,7 +1398,7 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1408,9 +1407,9 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             try {
                 JasperReport compiled;
                 if(!aluno.isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Carne.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Carne.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\CarneVip2.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/CarneVip2.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1498,7 +1497,8 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                 //Adicionando os valores na tabela:
                 List<Aluno> temp = select.list();
 
-                temp.stream().forEach((Aluno list) -> {
+//                temp.stream().forEach((Aluno list) -> {
+                for(Aluno list : temp) {
                     txtBoxNome.setText(list.getNome());
 
                     if(!"   .   .   -  ".equals(list.getCPF())){
@@ -1532,12 +1532,13 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                     txtBoxCep.setText(list.getCEP());
                     comboBoxEstado.setSelectedItem(list.getEstado());
                     txtBoxEmail.setText(list.getEmail());
-                    comboBoxNivel.setSelectedItem(list.getNivelAtual().getCodigo());
+                    if(list.getNivelAtual() != null)
+                        comboBoxNivel.setSelectedItem(list.getNivelAtual().getCodigo());
                     txtBoxTelefone.setText(list.getTelefone());
                     txtBoxCelular.setText(list.getCelular());
                     lblId.setText(list.getID().toString());
                     checkAlunoVip.setSelected(list.isVip());
-                });
+                }
 
                 //Liberando o botão para excluir:
                 btnApagar.setEnabled(true);
@@ -1578,22 +1579,22 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
         //</editor-fold>
 
         /* Create and display the form */

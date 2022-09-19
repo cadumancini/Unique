@@ -251,7 +251,7 @@
 			</rectangle>
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="2" width="799" height="54" uuid="d34e51b0-b3b5-4ab1-a64f-02865407e883"/>
-				<imageExpression><![CDATA["\\\\192.168.1.74\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

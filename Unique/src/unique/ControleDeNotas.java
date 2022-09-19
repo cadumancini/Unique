@@ -923,7 +923,7 @@ public class ControleDeNotas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -931,7 +931,7 @@ public class ControleDeNotas extends javax.swing.JFrame {
             map.put("AlunoID", alunoID);
             map.put("TurmaID", turmaID);
             try {
-                JasperReport compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Historico.jrxml");
+                JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Historico.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

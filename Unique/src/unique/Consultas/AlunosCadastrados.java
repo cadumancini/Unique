@@ -72,7 +72,7 @@ public class AlunosCadastrados extends javax.swing.JFrame {
 
                 List<Aluno> temp = select.list();
 
-                temp.stream().forEach((list) -> {
+                for(Aluno list : temp) {
                     Date data = list.getNascimento();
                     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");    
 
@@ -82,7 +82,7 @@ public class AlunosCadastrados extends javax.swing.JFrame {
                     }
 
                     model.addRow(new Object[]{list.getID(),  list.getNome(), list.getCPF(), df.format(data), list.getEndereco(), sit });
-                });
+                }
 
                 resizeColumnWidth(tabelaAlunos);
             }

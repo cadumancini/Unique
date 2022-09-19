@@ -23,7 +23,7 @@ public class Unique {
      * @throws javax.swing.UnsupportedLookAndFeelException
      */
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         JFrame janela = new Login();
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);

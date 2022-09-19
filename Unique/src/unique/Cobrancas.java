@@ -684,7 +684,7 @@ public class Cobrancas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -693,9 +693,9 @@ public class Cobrancas extends javax.swing.JFrame {
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\AvisoMensalidade.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/AvisoMensalidade.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\AvisoMensalidadeVip.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/AvisoMensalidadeVip.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -742,7 +742,7 @@ public class Cobrancas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -751,9 +751,9 @@ public class Cobrancas extends javax.swing.JFrame {
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca1.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca1.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca1Vip.jrxml");    
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca1Vip.jrxml");    
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -800,7 +800,7 @@ public class Cobrancas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -809,9 +809,9 @@ public class Cobrancas extends javax.swing.JFrame {
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca2.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca2.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca2Vip.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca2Vip.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -878,7 +878,7 @@ public class Cobrancas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -887,9 +887,9 @@ public class Cobrancas extends javax.swing.JFrame {
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca3.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca3.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca3Vip.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca3Vip.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -939,7 +939,7 @@ public class Cobrancas extends javax.swing.JFrame {
             JasperPrint jasperPrint = null;
             Connection connection = null;
             try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:192.168.0.113:C:\\Banco\\UNIQUE.FDB","sysdba","1123581321");
+                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -948,9 +948,9 @@ public class Cobrancas extends javax.swing.JFrame {
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca4.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca4.jrxml");
                 else
-                    compiled = JasperCompileManager.compileReport("\\\\192.168.0.113\\Banco\\Relatorios\\Cobranca4Vip.jrxml");
+                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca4Vip.jrxml");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
