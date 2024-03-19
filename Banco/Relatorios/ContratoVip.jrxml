@@ -648,10 +648,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 		<band height="791" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<rectangle>
+<<<<<<< HEAD
 				<reportElement x="-2" y="565" width="559" height="225" uuid="38ff1b4a-97e5-4508-91ae-cfa8d88663ef"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="-2" y="-2" width="559" height="567" uuid="0774bb70-8402-4384-84b4-6a056549c1a8"/>
+=======
+				<reportElement x="-2" y="-2" width="559" height="790" uuid="0774bb70-8402-4384-84b4-6a056549c1a8"/>
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="-1" width="555" height="12" uuid="b87ec5ef-a768-4fb2-a3e6-e039906bb82a"/>
@@ -1320,9 +1324,12 @@ Recomendamos que:
 				</textElement>
 				<textFieldExpression><![CDATA[$V{vMesFimParc}]]></textFieldExpression>
 			</textField>
+<<<<<<< HEAD
 			<break>
 				<reportElement x="0" y="560" width="100" height="1" isRemoveLineWhenBlank="true" uuid="16c8061f-3f7b-49b4-b5c8-7a09d2d30af7"/>
 			</break>
+=======
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 		</band>
 	</detail>
 </jasperReport>

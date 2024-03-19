@@ -605,7 +605,11 @@ WHERE a.ID = $P{AlunoID}]]>
 					<paragraph lineSpacing="Proportional" lineSpacingSize="1.0" firstLineIndent="0"/>
 				</textElement>
 				<text><![CDATA[Unique Instituto de Idiomas S/S Ltda. – ME      Fone: (16) 3384-7741
+<<<<<<< HEAD
 Av. Cleofas Guimarães, 139 – Nova Matão – 15990-040 – Matão-SP
+=======
+Rua José Bonifácio, 731 – Centro – Cep: 15.990-040 – Matão-SP
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 ]]></text>
 			</staticText>
@@ -648,10 +652,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 		<band height="791" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<rectangle>
+<<<<<<< HEAD
 				<reportElement x="-2" y="565" width="559" height="225" uuid="0f33bd10-30de-48d1-bb65-11b3589a8d8a"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="-2" y="-2" width="559" height="567" uuid="0774bb70-8402-4384-84b4-6a056549c1a8"/>
+=======
+				<reportElement x="-2" y="-2" width="559" height="790" uuid="0774bb70-8402-4384-84b4-6a056549c1a8"/>
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="-1" width="555" height="12" uuid="b87ec5ef-a768-4fb2-a3e6-e039906bb82a"/>
@@ -1319,9 +1327,12 @@ Testemunha 1 									                                            Testemunha 2]]
 				</textElement>
 				<textFieldExpression><![CDATA[$V{vMesFimParc}]]></textFieldExpression>
 			</textField>
+<<<<<<< HEAD
 			<break>
 				<reportElement x="0" y="560" width="100" height="1" isRemoveLineWhenBlank="true" uuid="2bf7a2b8-3ddd-4071-b453-c217ca639b4c"/>
 			</break>
+=======
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 		</band>
 	</detail>
 </jasperReport>

@@ -48,7 +48,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             List<Nivel> results = crit.list(); 
             DefaultTableModel model = (DefaultTableModel) tblNiveis.getModel();
 
-            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, cargaMin, cargaMax, gotIt;
+            String codigo, nome, descricao, valorAulas, valorMaterial, duracao, cargaHoraria, horasSemanais, cargaMin, cargaMax, gotIt, idioma, online;
 
             for(Nivel n : results)
             {
@@ -108,15 +108,20 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                 if(n.isGotIt())
                     gotIt = "Sim";
                 
+                online = "Não";
+                if(n.isOnline())
+                    online = "Sim";
+                
                 String prorrogavel = "Não";
                 if(n.isProrrogavel())
                     prorrogavel = "Sim";
                 
                 cargaMin = Integer.toString(n.getCargaHorMin());
                 cargaMax = Integer.toString(n.getCargaHorMax());
+                idioma = n.getIdioma();
 
                 String[] linha = new String[]{n.getID().toString(), codigo, nome, descricao, valorAulas, valorMaterial, 
-                    duracao, cargaHoraria, horasSemanais, vip, prorrogavel, cargaMin, cargaMax, gotIt};
+                    duracao, cargaHoraria, horasSemanais, vip, prorrogavel, cargaMin, cargaMax, gotIt, idioma, online};
 
                 model.addRow(linha);
             } 
@@ -199,11 +204,11 @@ public class NiveisCadastrados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável", "Carga Mín.", "Carga Máx.", "Got It!"
+                "ID", "Código", "Nome", "Descrição", "Valor Aulas (R$)", "Valor Material (R$)", "Duração (meses)", "Carga Horária", "Horas Semanais", "VIP", "Prorrogável", "Carga Mín.", "Carga Máx.", "Got It!", "Idioma", "Online"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -236,7 +241,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 431, Short.MAX_VALUE)))
+                        .addGap(0, 512, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -268,6 +273,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             boolean vip = false;
             boolean prorrogavel = false;
             boolean gotIt = false;
+            boolean online = false;
             
             System.out.println(tblNiveis.getValueAt(linha, 9));
             
@@ -280,6 +286,9 @@ public class NiveisCadastrados extends javax.swing.JFrame {
             if(tblNiveis.getValueAt(linha, 13) == "Sim")
                 gotIt = true;
             
+            if(tblNiveis.getValueAt(linha, 15) == "Sim")
+                online = true;
+            
             cadastroNiveis.preencherCampos(Long.parseLong(tblNiveis.getValueAt(linha, 0).toString()),
                                             tblNiveis.getValueAt(linha, 1).toString(), 
                                             tblNiveis.getValueAt(linha, 2).toString(),
@@ -291,7 +300,7 @@ public class NiveisCadastrados extends javax.swing.JFrame {
                                             totalMinutos, vip, prorrogavel, 
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 11).toString()),
                                             Integer.parseInt(tblNiveis.getValueAt(linha, 12).toString()), 
-                                            gotIt);
+                                            gotIt, tblNiveis.getValueAt(linha, 14).toString(), online);
         }
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed

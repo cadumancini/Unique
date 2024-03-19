@@ -56,7 +56,9 @@ import org.hibernate.criterion.Restrictions;
 import unique.Consultas.AlunosCadastrados;
 import unique.GerarMensalidades;
 import unique.MatriculaVip;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -1350,16 +1352,21 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
+=======
+            Connection connection = ConnectionUtil.getConnection();
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
+<<<<<<< HEAD
                 if(aluno.isVip())
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoVip.jrxml");
                 else if(aluno.getNivelAtual().isProrrogavel())
@@ -1368,6 +1375,18 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoGotIt.jrxml");
                 else
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoKids.jrxml");
+=======
+                if(aluno.isVip()) {
+                    String reportName = aluno.getNivelAtual().isOnline() ? "ContratoVipOnline" : "ContratoVip";
+                    compiled = ReportUtil.getReport(reportName);
+                }
+                else if(aluno.getNivelAtual().isProrrogavel())
+                    compiled = ReportUtil.getReport("Contrato");
+                else if(aluno.getNivelAtual().isGotIt())
+                    compiled = ReportUtil.getReport("ContratoGotIt");
+                else
+                    compiled = ReportUtil.getReport("ContratoKids");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -1396,20 +1415,30 @@ public class CadastroAlunos extends javax.swing.JFrame implements WindowListener
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
+=======
+            Connection connection = ConnectionUtil.getConnection();
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
                 if(!aluno.isVip())
+<<<<<<< HEAD
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Carne.jrxml");
                 else
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/CarneVip2.jrxml");
+=======
+                    compiled = ReportUtil.getReport("Carne");
+                else
+                    compiled = ReportUtil.getReport("CarneVip2");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

@@ -14,8 +14,6 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +26,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -36,7 +33,9 @@ import net.sf.jasperreports.swing.JRViewer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import unique.Cadastros.JTextFieldLimit;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -824,6 +823,7 @@ public class GerarMensalidades extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
@@ -834,6 +834,13 @@ public class GerarMensalidades extends javax.swing.JFrame {
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Carne.jrxml");
+=======
+            Connection connection = ConnectionUtil.getConnection();
+
+            map.put("AlunoID", aluno.getID());
+            try {
+                JasperReport compiled = ReportUtil.getReport("Carne");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -859,22 +866,34 @@ public class GerarMensalidades extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
+=======
+            Connection connection = ConnectionUtil.getConnection();
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("AlunoID", aluno.getID());
             try {
                 JasperReport compiled;
                 if(aluno.getNivelAtual().isProrrogavel())
+<<<<<<< HEAD
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Contrato.jrxml");
                 else if(aluno.getNivelAtual().isGotIt())
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoGotIt.jrxml");
                 else
                     compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/ContratoKids.jrxml");
+=======
+                    compiled = ReportUtil.getReport("Contrato");
+                else if(aluno.getNivelAtual().isGotIt())
+                    compiled = ReportUtil.getReport("ContratoGotIt");
+                else
+                    compiled = ReportUtil.getReport("ContratoKids");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

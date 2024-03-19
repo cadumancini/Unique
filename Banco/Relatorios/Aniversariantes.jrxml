@@ -40,6 +40,7 @@ ORDER BY 1]]>
 			</rectangle>
 			<image hAlign="Center">
 				<reportElement x="0" y="10" width="115" height="110" uuid="9d276d3e-4e16-40cd-8481-9638411cdb18"/>
+<<<<<<< HEAD
 				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\balloons.png"]]></imageExpression>
 			</image>
 			<image hAlign="Center">
@@ -49,6 +50,17 @@ ORDER BY 1]]>
 			<image hAlign="Center">
 				<reportElement x="115" y="10" width="325" height="130" uuid="8119f156-4d37-4979-b40c-d5b28407f2b9"/>
 				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\0935804001357123051.png"]]></imageExpression>
+=======
+				<imageExpression><![CDATA["\\\localhost\\Banco\\Relatorios\\balloons.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center">
+				<reportElement x="440" y="10" width="116" height="110" uuid="4d8db60a-cef3-4cab-b05d-96d7fd5870f2"/>
+				<imageExpression><![CDATA["\\\localhost\\Banco\\Relatorios\\balloons.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center">
+				<reportElement x="115" y="10" width="325" height="130" uuid="8119f156-4d37-4979-b40c-d5b28407f2b9"/>
+				<imageExpression><![CDATA["\\\localhost\\Banco\\Relatorios\\0935804001357123051.png"]]></imageExpression>
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</image>
 			<textField>
 				<reportElement x="240" y="144" width="200" height="43" forecolor="#0011FF" uuid="0f1a7c5f-f0ab-476d-a3be-5c0c64f66f5a"/>
@@ -100,7 +112,11 @@ ORDER BY 1]]>
 			</rectangle>
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="2" width="556" height="106" uuid="91bcd9e3-06c3-41d8-bf40-63a3b179ce3e"/>
+<<<<<<< HEAD
 				<imageExpression><![CDATA["\\\\localhost\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+=======
+				<imageExpression><![CDATA["\\\\lo\\Banco\\Relatorios\\logoUnique.png"]]></imageExpression>
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</image>
 		</band>
 	</pageFooter>

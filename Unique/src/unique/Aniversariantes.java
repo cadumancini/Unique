@@ -9,22 +9,19 @@ import java.awt.Container;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import org.hibernate.Session;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -145,6 +142,7 @@ public class Aniversariantes extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
@@ -155,6 +153,13 @@ public class Aniversariantes extends javax.swing.JFrame {
             map.put("mes", mes);
             try {
                 JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Aniversariantes.jrxml");
+=======
+            Connection connection = ConnectionUtil.getConnection();
+
+            map.put("mes", mes);
+            try {
+                JasperReport compiled = ReportUtil.getReport("Aniversariantes");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

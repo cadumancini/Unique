@@ -65,6 +65,9 @@ public class MatriculaVip implements Serializable{
     
     @Column(nullable=true)
     private Long QtdeParcelasAulas;
+    
+    @Column(nullable=true)
+    private int QtdeMesesOpcaoAluno;
 
     public Long getID() {
         return ID;
@@ -282,5 +285,19 @@ public class MatriculaVip implements Serializable{
      */
     public void setDiaVenctoBoleto(int DiaVenctoBoleto) {
         this.DiaVenctoBoleto = DiaVenctoBoleto;
+    }
+
+    /**
+     * @return the QtdeMesesOpcaoAluno
+     */
+    public int getQtdeMesesOpcaoAluno() {
+        return QtdeMesesOpcaoAluno;
+    }
+
+    /**
+     * @param QtdeMesesOpcaoAluno the QtdeMesesOpcaoAluno to set
+     */
+    public void setQtdeMesesOpcaoAluno(int QtdeMesesOpcaoAluno) {
+        this.QtdeMesesOpcaoAluno = QtdeMesesOpcaoAluno;
     }
 }

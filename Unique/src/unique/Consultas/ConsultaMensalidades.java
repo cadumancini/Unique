@@ -47,7 +47,9 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import unique.Cobrancas;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -989,12 +991,16 @@ public class ConsultaMensalidades extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
+<<<<<<< HEAD
             Connection connection = null;
             try {
                 connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
             } catch (SQLException ex) {
                 Logger.getLogger(ConsultaMensalidades.class.getName()).log(Level.SEVERE, null, ex);
             }
+=======
+            Connection connection = ConnectionUtil.getConnection();
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("idAluno", sqlIdAluno);
             map.put("nomeAluno", sqlNomeAluno);
@@ -1003,7 +1009,11 @@ public class ConsultaMensalidades extends javax.swing.JFrame {
             map.put("pagto", sqlPagto);
             map.put("status", sqlStatus);
             try {
+<<<<<<< HEAD
                 JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Financeiro.jrxml");
+=======
+                JasperReport compiled = ReportUtil.getReport("Financeiro");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();

@@ -36,7 +36,9 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import unique.Consultas.AlunosCadastrados;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -395,6 +397,7 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                     //Gerando relatorio:
                     HashMap map = new HashMap();
                     JasperPrint jasperPrint = null;
+<<<<<<< HEAD
                     Connection connection = null;
                     try {
                         connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
@@ -405,6 +408,13 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                     map.put("MensalidadeID", mens.getID());
                     try {
                         JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/CarneVip.jrxml");
+=======
+                    Connection connection = ConnectionUtil.getConnection();
+
+                    map.put("MensalidadeID", mens.getID());
+                    try {
+                        JasperReport compiled = ReportUtil.getReport("CarneVip");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                         jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                         JRViewer viewer = new JRViewer(jasperPrint);
                         JFrame report = new JFrame();
@@ -449,6 +459,7 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                 //Gerando relatorio:
                 HashMap map = new HashMap();
                 JasperPrint jasperPrint = null;
+<<<<<<< HEAD
                 Connection connection = null;
                 try {
                     connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
@@ -459,6 +470,13 @@ public class GerarMensalidadeVIP extends javax.swing.JFrame {
                 map.put("MensalidadeID", mens.getID());
                 try {
                     JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/CarneVip.jrxml");
+=======
+                Connection connection = ConnectionUtil.getConnection();
+
+                map.put("MensalidadeID", mens.getID());
+                try {
+                    JasperReport compiled = ReportUtil.getReport("CarneVip");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                     jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                     JRViewer viewer = new JRViewer(jasperPrint);
                     JFrame report = new JFrame();

@@ -58,6 +58,12 @@ public class Nivel implements Serializable{
     
     @Column(nullable=true)
     private boolean Prorrogavel;
+    
+    @Column(nullable=true)
+    private String Idioma;
+    
+    @Column(nullable=true)
+    private boolean Online;
 
     public Long getID() {
         return ID;
@@ -247,5 +253,33 @@ public class Nivel implements Serializable{
      */
     public void setGotIt(boolean GotIt) {
         this.GotIt = GotIt;
+    }
+
+    /**
+     * @return the Idioma
+     */
+    public String getIdioma() {
+        return Idioma;
+    }
+
+    /**
+     * @param Idioma the Idioma to set
+     */
+    public void setIdioma(String Idioma) {
+        this.Idioma = Idioma;
+    }    
+
+    /**
+     * @return the Online
+     */
+    public boolean isOnline() {
+        return Online;
+    }
+
+    /**
+     * @param Online the Online to set
+     */
+    public void setOnline(boolean Online) {
+        this.Online = Online;
     }
 }

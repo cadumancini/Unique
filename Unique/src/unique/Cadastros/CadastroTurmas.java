@@ -53,7 +53,9 @@ import org.hibernate.criterion.Restrictions;
 import unique.Consultas.AlunosCadastrados;
 import unique.Consultas.TurmasCadastradas;
 import unique.GerarMensalidades;
+import util.ConnectionUtil;
 import util.HibernateUtil;
+import util.ReportUtil;
 
 /**
  *
@@ -1022,6 +1024,7 @@ public class CadastroTurmas extends javax.swing.JFrame {
                 //Gerando relatorio:
                 HashMap map = new HashMap();
                 JasperPrint jasperPrint = null;
+<<<<<<< HEAD
                 Connection connection = null;
                 try {
                     connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
@@ -1032,6 +1035,13 @@ public class CadastroTurmas extends javax.swing.JFrame {
                 map.put("turma", Long.parseLong(lblID.getText()));
                 try {
                     JasperReport compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Turma.jrxml");
+=======
+                Connection connection = ConnectionUtil.getConnection();
+
+                map.put("turma", Long.parseLong(lblID.getText()));
+                try {
+                    JasperReport compiled = ReportUtil.getReport("Turma");
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                     jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                     JRViewer viewer = new JRViewer(jasperPrint);
                     JFrame report = new JFrame();

@@ -701,10 +701,14 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 	<detail>
 		<band height="878" splitType="Stretch">
 			<rectangle>
+<<<<<<< HEAD
 				<reportElement x="-2" y="669" width="559" height="209" uuid="aff6f504-a151-4d87-ad79-bb6c524643dc"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="-2" y="-1" width="559" height="670" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
+=======
+				<reportElement x="-2" y="-1" width="559" height="879" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="-1" width="555" height="12" uuid="b87ec5ef-a768-4fb2-a3e6-e039906bb82a"/>
@@ -1200,9 +1204,12 @@ Testemunha 1 									                                            Testemunha 2]]
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ANOFIMPARC}]]></textFieldExpression>
 			</textField>
+<<<<<<< HEAD
 			<break>
 				<reportElement x="0" y="668" width="100" height="1" isRemoveLineWhenBlank="true" uuid="837822f2-6846-4f43-8b59-7cb148a39376"/>
 			</break>
+=======
+>>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 		</band>
 	</detail>
 </jasperReport>
