@@ -1,3 +1,6 @@
 /Unique/nbproject/private/
 /Unique/build/
 /Unique/dist/
+/Unique/.idea/
+*.iml
+/Unique/out/

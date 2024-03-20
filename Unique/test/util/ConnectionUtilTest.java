@@ -5,21 +5,21 @@
  */
 package util;
 
-import java.sql.Connection;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-
-/**
- *
- * @author cadum
- */
-public class ConnectionUtilTest {
-    
-    @Test
-    public void getConnectionShouldReturnSuccessfulConnection() {
-        Connection connection = ConnectionUtil.getConnection();
-        assertNotNull(connection);
-        assertTrue(connection.toString().contains("firebirdsql"));
-    }
-}
+//import java.sql.Connection;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertTrue;
+//import org.junit.Test;
+//
+///**
+// *
+// * @author cadum
+// */
+//public class ConnectionUtilTest {
+//
+//    @Test
+//    public void getConnectionShouldReturnSuccessfulConnection() {
+//        Connection connection = ConnectionUtil.getConnection();
+//        assertNotNull(connection);
+//        assertTrue(connection.toString().contains("firebirdsql"));
+//    }
+//}

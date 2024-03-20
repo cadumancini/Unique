@@ -684,30 +684,15 @@ public class Cobrancas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-<<<<<<< HEAD
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
-=======
             Connection connection = ConnectionUtil.getConnection();
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("mensalidadeID", m.getID());
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-<<<<<<< HEAD
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/AvisoMensalidade.jrxml");
-                else
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/AvisoMensalidadeVip.jrxml");
-=======
                     compiled = ReportUtil.getReport("AvisoMensalidade");
                 else
                     compiled = ReportUtil.getReport("AvisoMensalidadeVip");
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -752,30 +737,15 @@ public class Cobrancas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-<<<<<<< HEAD
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
-=======
             Connection connection = ConnectionUtil.getConnection();
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("mensalidadeID", m.getID());
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-<<<<<<< HEAD
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca1.jrxml");
-                else
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca1Vip.jrxml");    
-=======
                     compiled = ReportUtil.getReport("Cobranca1");
                 else
-                    compiled = ReportUtil.getReport("Cobranca1Vip");    
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
+                    compiled = ReportUtil.getReport("Cobranca1Vip");
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -820,30 +790,15 @@ public class Cobrancas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-<<<<<<< HEAD
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
-=======
             Connection connection = ConnectionUtil.getConnection();
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("mensalidadeID", m.getID());
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-<<<<<<< HEAD
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca2.jrxml");
-                else
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca2Vip.jrxml");
-=======
                     compiled = ReportUtil.getReport("Cobranca2");
                 else
                     compiled = ReportUtil.getReport("Cobranca2Vip");
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -908,30 +863,15 @@ public class Cobrancas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-<<<<<<< HEAD
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
-=======
             Connection connection = ConnectionUtil.getConnection();
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("mensalidadeID", m.getID());
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-<<<<<<< HEAD
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca3.jrxml");
-                else
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca3Vip.jrxml");
-=======
                     compiled = ReportUtil.getReport("Cobranca3");
                 else
                     compiled = ReportUtil.getReport("Cobranca3Vip");
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
@@ -979,30 +919,15 @@ public class Cobrancas extends javax.swing.JFrame {
             //Gerando relatorio:
             HashMap map = new HashMap();
             JasperPrint jasperPrint = null;
-<<<<<<< HEAD
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection("jdbc:firebirdsql:/home/cadumancini/Unique/UNIQUE.FDB","sysdba","1123581321");
-            } catch (SQLException ex) {
-                Logger.getLogger(GerarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
-            }
-=======
             Connection connection = ConnectionUtil.getConnection();
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 
             map.put("mensalidadeID", m.getID());
             try {
                 JasperReport compiled;
                 if(!m.getAluno().isVip())
-<<<<<<< HEAD
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca4.jrxml");
-                else
-                    compiled = JasperCompileManager.compileReport("/home/cadumancini/Unique/Unique/Relatorios/Cobranca4Vip.jrxml");
-=======
                     compiled = ReportUtil.getReport("Cobranca4");
                 else
                     compiled = ReportUtil.getReport("Cobranca4Vip");
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
                 jasperPrint = JasperFillManager.fillReport(compiled, map, connection);
                 JRViewer viewer = new JRViewer(jasperPrint);
                 JFrame report = new JFrame();
