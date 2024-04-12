@@ -64,17 +64,19 @@
                                   <Component id="lblDatComCheque" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtBoxValorAulaExtra" min="-2" max="-2" attributes="0"/>
-                                  <Component id="comboMaterialEscola" min="-2" pref="64" max="-2" attributes="0"/>
                                   <Component id="comboDinheiroCheque" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtValorPagoMaterial" min="-2" pref="64" max="-2" attributes="0"/>
                                   <Component id="txtNroIdentCheque" min="-2" pref="354" max="-2" attributes="0"/>
                                   <Component id="txtBoxDataCompensacao" min="-2" pref="125" max="-2" attributes="0"/>
                                   <Component id="txtBoxQtdAulas" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="txtHorasSemanais" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="comboMaterialEscola" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Component id="comboPoliticaVantagens" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -185,11 +187,16 @@
                   <Component id="txtBoxValorAulaExtra" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboMaterialEscola" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="comboPoliticaVantagens" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="comboMaterialEscola" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboDinheiroCheque" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -209,7 +216,7 @@
                   <Component id="lblDatComCheque" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBoxDataCompensacao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -634,6 +641,24 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aluno optou por (meses):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboPoliticaVantagens">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="N&#xe3;o"/>
+            <StringItem index="1" value="Sim"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pol&#xed;tica de Vantagens:"/>
       </Properties>
     </Component>
   </SubComponents>

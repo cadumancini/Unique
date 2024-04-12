@@ -82,25 +82,23 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="txtMesAnoIni" min="-2" pref="70" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txtMesAno" min="-2" pref="70" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="txtValorMaterial" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtMesAno" min="-2" pref="70" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="lblNroIdentCheque" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDatComCheque" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -108,10 +106,23 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtDiaVencto" min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="txtMesAnoFim" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtDiaVencto" min="-2" pref="45" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="517" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtMesAnoFim" min="-2" pref="70" max="-2" attributes="0"/>
+                                              <EmptySpace pref="288" max="32767" attributes="0"/>
+                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="517" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblNroIdentCheque" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDatComCheque" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -123,6 +134,7 @@
                                           <Component id="comboMaterialEscola" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtValorPagoMaterial" alignment="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="comboDinheiroCheque" max="32767" attributes="0"/>
+                                          <Component id="comboPoliticaVantagens" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lblInfoVlrTotalMaterial" min="-2" pref="276" max="-2" attributes="0"/>
@@ -174,34 +186,30 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtValorMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboPoliticaVantagens" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMesAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblInfoVlrTotalMaterial" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboMaterialEscola" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="comboDinheiroCheque" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMesAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblInfoVlrTotalMaterial" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtValorPagoMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel12" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="txtMesAnoIni" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel12" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="txtMesAnoIni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboDinheiroCheque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel13" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="txtMesAnoFim" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorPagoMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -566,6 +574,24 @@
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtDiaVenctoFocusGained"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDiaVenctoKeyTyped"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboPoliticaVantagens">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="N&#xe3;o"/>
+            <StringItem index="1" value="Sim"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pol&#xed;tica de Vantagens:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
