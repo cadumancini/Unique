@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratoKids" pageWidth="595" pageHeight="1017" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2be3f27-13a0-4278-a998-ae28ad3294c2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Unique"/>
@@ -17,11 +17,11 @@
         a.CIDADE, a.ESTADO, a.CEP, a.EMAIL, a.TELEFONE, a.CELULAR, 
         a.CPF, a.RG, b.NOME as respNome, b.CPF as respCpf, b.RG as respRg, b.TELEFONE as respTel, b.CELULAR as respCelular,
         c.CODIGO, (c.MINUTOSSEMANAIS / 60) as horasSemanais, (c.MINUTOSSEMANAIS - ((c.MINUTOSSEMANAIS / 60)*60)) as minutosSemanais,
-        (e.VALORAULAS / 12) as VALORMAXPARCELAS,
+        (e.VALORAULAS / c.DURACAO) as VALORMAXPARCELAS,
         c.QTDHORAS, c.DURACAO, e.VALORAULAS, (e.VALORAULAS * 0.95) as aulasdesconto, e.VALORMATERIAL, (e.VALORMATERIAL / 2) as materialparcela, 
         e.QTDEPARCELASAULAS as parcelas, (e.VALORAULAS / e.QTDEPARCELASAULAS) as valorparcela,
         d.descontoMaior, d.descontoMenor, d.diaLimiteDescontoMaior, d.diaLimiteDescontoMenor, e.MATERIALESCOLA as materialDaEscola,
-        e.mesini, e.anoini, e.mesfim, e.anofim, e.diavenctoboleto,c.IDIOMA,
+        e.mesini, e.anoini, e.mesfim, e.anofim, e.diavenctoboleto,c.IDIOMA, e.POLITICAVANTAGENS, 
         CASE when DATEDIFF(YEAR, a.NASCIMENTO, CURRENT_DATE) >= 18 then
         	a.NOME
         else
@@ -289,6 +289,9 @@ AND a.ATIVO = 1]]>
 	</variable>
 	<variable name="vMesFimParc" class="java.lang.String">
 		<variableExpression><![CDATA[$F{MESFIMPARC} == 1 ? "janeiro" : $F{MESFIMPARC} == 2 ? "fevereiro" :$F{MESFIMPARC} == 3 ? "março" : $F{MESFIMPARC} == 4 ? "abril" : $F{MESFIMPARC} == 5 ? "maio" : $F{MESFIMPARC} == 6 ? "junho" : $F{MESFIMPARC} == 7 ? "julho" : $F{MESFIMPARC} == 8 ? "agosto" : $F{MESFIMPARC} == 9 ? "setembro" : $F{MESFIMPARC} == 10 ? "outubro" : $F{MESFIMPARC} == 11 ? "novembro" : "dezembro"]]></variableExpression>
+	</variable>
+	<variable name="vPolitica" class="java.lang.String">
+		<variableExpression><![CDATA[$F{POLITICAVANTAGENS} == 1 ? "X" : ""]]></variableExpression>
 	</variable>
 	<group name="ID">
 		<groupExpression><![CDATA[$F{ID}]]></groupExpression>
@@ -699,14 +702,10 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 	<detail>
 		<band height="880" splitType="Stretch">
 			<rectangle>
-<<<<<<< HEAD
 				<reportElement x="-2" y="675" width="559" height="205" uuid="0a631b6e-8a1f-450a-b827-0cd71f1c5d0b"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="-2" y="-1" width="559" height="676" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
-=======
-				<reportElement x="-2" y="-1" width="559" height="881" uuid="30695c9b-5ba5-46f7-bf2b-ddc682c3cb0d"/>
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="-2" width="555" height="12" uuid="b87ec5ef-a768-4fb2-a3e6-e039906bb82a"/>
@@ -779,12 +778,11 @@ CNPJ: 22.168.687/0001-01  Inscrição Estadual: ISENTO
 				<text><![CDATA[. Neste caso o contratante]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="73" width="555" height="114" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
+				<reportElement x="0" y="85" width="555" height="101" uuid="63d979ab-2a8d-4bad-a4ff-0c6c2000ea1a"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Política de Vantagens: pagamentos efetuados até o dia 8 de cada mês terá um abatimento de R$ 10,00 na parcela.
-1.2. O pagamento das parcelas será efetuado através de boleto bancário.
+				<text><![CDATA[1.2. O pagamento das parcelas será efetuado através de boleto bancário.
 1.3. Pagamentos efetuados após o vencimento será cobrada multa de 2% ao mês mais R$ 0,50 (cinquenta centavos) ao dia.
 1.4. O não comparecimento do aluno aos atos escolares não exime o pagamento.
 1.5. O aluno será considerado matriculado no curso desejado no ato da assinatura deste contrato de prestação de serviços.
@@ -1072,11 +1070,11 @@ Recomendamos que:
 				<text><![CDATA[Curso: Playtime: carga horária de 50 horas                                                                Curso: Let’s Go: carga horária de 76 horas.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="350" y="45" width="168" height="12" uuid="50ac6718-d36a-4222-97da-0e6cae314433"/>
+				<reportElement x="350" y="45" width="102" height="12" uuid="50ac6718-d36a-4222-97da-0e6cae314433"/>
 				<textElement textAlignment="Left">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[que poderá ser pago em até 12 parcelas de R$ ]]></text>
+				<text><![CDATA[que poderá ser pago em até]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="64" width="22" height="12" uuid="1ae8ed82-f5cc-4ef6-a2c3-c756678019b1"/>
@@ -1223,12 +1221,30 @@ Testemunha 1 									                                            Testemunha 2]]
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ANOFIMPARC}]]></textFieldExpression>
 			</textField>
-<<<<<<< HEAD
 			<break>
 				<reportElement x="0" y="672" width="100" height="1" isRemoveLineWhenBlank="true" uuid="fce0a689-233a-460a-98e2-03f86c91e72f"/>
 			</break>
-=======
->>>>>>> 57b4a00a2fad96d49b1df3fd6dbb3dae5190fa93
+			<textField pattern="00">
+				<reportElement x="452" y="45" width="14" height="12" uuid="ea0a34e8-fb9f-4cec-ae00-84721fc85e50"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DURACAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="463" y="45" width="55" height="12" uuid="aa801bd0-2ab9-4e26-94b0-c6bd8e9016cc"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[parcelas de R$ ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="75" width="554" height="12" uuid="46a857b6-b545-4502-82a9-467eaca1d5d5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vPolitica}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
