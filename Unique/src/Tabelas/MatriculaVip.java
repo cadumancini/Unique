@@ -68,6 +68,9 @@ public class MatriculaVip implements Serializable{
     
     @Column(nullable=true)
     private int QtdeMesesOpcaoAluno;
+    
+    @Column(nullable=true)
+    private boolean PoliticaVantagens;
 
     public Long getID() {
         return ID;
@@ -300,4 +303,19 @@ public class MatriculaVip implements Serializable{
     public void setQtdeMesesOpcaoAluno(int QtdeMesesOpcaoAluno) {
         this.QtdeMesesOpcaoAluno = QtdeMesesOpcaoAluno;
     }
+
+    /**
+     * @return the PoliticaVantagens
+     */
+    public boolean isPoliticaVantagens() {
+        return PoliticaVantagens;
+    }
+
+    /**
+     * @param PoliticaVantagens the PoliticaVantagens to set
+     */
+    public void setPoliticaVantagens(boolean PoliticaVantagens) {
+        this.PoliticaVantagens = PoliticaVantagens;
+    }
+    
 }

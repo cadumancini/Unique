@@ -59,6 +59,9 @@ public class Matricula implements Serializable{
     
     @Column(nullable=true)
     private int AnoFim;
+    
+    @Column(nullable=true)
+    private boolean PoliticaVantagens;
 
     public Long getID() {
         return ID;
@@ -249,5 +252,20 @@ public class Matricula implements Serializable{
     public void setDiaVenctoBoleto(int DiaVenctoBoleto) {
         this.DiaVenctoBoleto = DiaVenctoBoleto;
     }
+
+    /**
+     * @return the PoliticaVantagens
+     */
+    public boolean isPoliticaVantagens() {
+        return PoliticaVantagens;
+    }
+
+    /**
+     * @param PoliticaVantagens the PoliticaVantagens to set
+     */
+    public void setPoliticaVantagens(boolean PoliticaVantagens) {
+        this.PoliticaVantagens = PoliticaVantagens;
+    }
+    
     
 }
